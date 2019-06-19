@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.271
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28922.388
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvvardDev.EZLayoutDisplay.Desktop", "InvvardDev.EZLayoutDisplay.Desktop\InvvardDev.EZLayoutDisplay.Desktop.csproj", "{F12B94C1-40E4-429C-8EDE-5C410BE81FAF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvvardDev.EZLayoutDisplay.Tests", "InvvardDev.EZLayoutDisplay.Tests\InvvardDev.EZLayoutDisplay.Tests.csproj", "{82704A9A-B010-4A00-8CF4-00D33F4E23DF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvvardDev.EZLayoutDisplay.Console", "InvvardDev.EZLayoutDisplay.Console\InvvardDev.EZLayoutDisplay.Console.csproj", "{CC579192-C568-42B4-969C-445D5F0D79E1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{C6B7D7C3-9B69-4AB0-B285-DB90B59CEBF3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
