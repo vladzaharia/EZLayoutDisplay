@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media;
-using InvvardDev.EZLayoutDisplay.Desktop.Model.Enum;
+using InvvardDev.EZLayoutDisplay.PluginContract.Enum;
 
 namespace InvvardDev.EZLayoutDisplay.Desktop.View.Converter
 {

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
-using InvvardDev.EZLayoutDisplay.Desktop.Model.Enum;
+using InvvardDev.EZLayoutDisplay.PluginContract.Enum;
+using InvvardDev.EZLayoutDisplay.PluginContract.Model;
 
 namespace InvvardDev.EZLayoutDisplay.Desktop.Model.Dictionary
 {

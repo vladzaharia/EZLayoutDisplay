@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using InvvardDev.EZLayoutDisplay.Desktop.Model.Enum;
+using InvvardDev.EZLayoutDisplay.PluginContract.Enum;
 
-namespace InvvardDev.EZLayoutDisplay.Desktop.Model
+namespace InvvardDev.EZLayoutDisplay.PluginContract.Model
 {
     public class EZModifier
     {

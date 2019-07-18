@@ -1,4 +1,4 @@
-﻿using InvvardDev.EZLayoutDisplay.Desktop.Model.Enum;
+﻿using InvvardDev.EZLayoutDisplay.PluginContract.Enum;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 

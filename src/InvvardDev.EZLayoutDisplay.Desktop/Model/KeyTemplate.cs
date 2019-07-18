@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using InvvardDev.EZLayoutDisplay.PluginContract.Model;
 using Newtonsoft.Json;
 
 namespace InvvardDev.EZLayoutDisplay.Desktop.Model
