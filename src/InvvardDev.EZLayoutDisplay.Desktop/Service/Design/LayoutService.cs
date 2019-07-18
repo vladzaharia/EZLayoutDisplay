@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using InvvardDev.EZLayoutDisplay.Desktop.Model;
 using InvvardDev.EZLayoutDisplay.Desktop.Service.Interface;
+using InvvardDev.EZLayoutDisplay.PluginContract.Model;
 
 namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Design
 {

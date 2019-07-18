@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace InvvardDev.EZLayoutDisplay.Desktop.Model
+namespace InvvardDev.EZLayoutDisplay.PluginContract.Model
 {
     public class EZLayout
     {

@@ -110,7 +110,6 @@
     </ApplicationDefinition>
     <Compile Include="Helper\KeyContentTemplateSelector.cs" />
     <Compile Include="Helper\LoggerHelper.cs" />
-    <Compile Include="Model\Enum\KeyDisplayType.cs" />
     <Compile Include="Model\ErgodoxTag.cs" />
     <Compile Include="Model\KeyTemplate.cs" />
     <Compile Include="Model\Messenger\UpdatedLayoutMessage.cs" />
@@ -127,14 +126,8 @@
     <Compile Include="Service\Design\WindowService.cs" />
     <Compile Include="Helper\EZLayoutMaker.cs" />
     <Compile Include="Model\Dictionary\KeyModifierDictionary.cs" />
-    <Compile Include="Model\Enum\KeyModifier.cs" />
-    <Compile Include="Model\EZKey.cs" />
-    <Compile Include="Model\EZLayout.cs" />
-    <Compile Include="Model\EZModifier.cs" />
-    <Compile Include="Model\Enum\KeyCategory.cs" />
     <Compile Include="Model\Dictionary\KeyDefinitionDictionary.cs" />
     <Compile Include="Model\Enum\SettingsName.cs" />
-    <Compile Include="Model\EZLayer.cs" />
     <Compile Include="Model\Hotkey.cs" />
     <Compile Include="Model\ErgodoxKey.cs" />
     <Compile Include="Model\KeyDefinition.cs" />
@@ -281,6 +274,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Skins\Images\reddit-logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\plugins\InvvardDev.EZLayoutDisplay.PluginContract\InvvardDev.EZLayoutDisplay.PluginContract.csproj">
+      <Project>{8B9ED53F-1A7E-44B4-A3BA-3D997B255E5B}</Project>
+      <Name>InvvardDev.EZLayoutDisplay.PluginContract</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

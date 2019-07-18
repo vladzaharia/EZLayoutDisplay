@@ -1,4 +1,5 @@
 ﻿using InvvardDev.EZLayoutDisplay.Desktop.Model;
+using InvvardDev.EZLayoutDisplay.PluginContract.Model;
 
 namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Interface
 {

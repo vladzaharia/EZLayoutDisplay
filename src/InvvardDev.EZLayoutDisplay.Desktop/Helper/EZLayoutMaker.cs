@@ -2,7 +2,8 @@
 using System.Linq;
 using InvvardDev.EZLayoutDisplay.Desktop.Model;
 using InvvardDev.EZLayoutDisplay.Desktop.Model.Dictionary;
-using InvvardDev.EZLayoutDisplay.Desktop.Model.Enum;
+using InvvardDev.EZLayoutDisplay.PluginContract.Enum;
+using InvvardDev.EZLayoutDisplay.PluginContract.Model;
 using NLog;
 
 namespace InvvardDev.EZLayoutDisplay.Desktop.Helper
@@ -199,7 +200,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Helper
         /// Apply the command label.
         /// </summary>
         /// <param name="ergodoxKey">The <see cref="ErgodoxKey"/> containing the command to be applied.</param>
-        /// <param name="key">The <see cref="EZKey"/> to apply the command to.</param>
+        /// <param name="key">The <see cref="InvvardDev.EZLayoutDisplay.PluginContract.Model.EZKey"/> to apply the command to.</param>
         /// <returns><c>True</c> if command has been applied.</returns>
         private bool AddCommandLabel(ErgodoxKey ergodoxKey, EZKey key)
         {

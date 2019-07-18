@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InvvardDev.EZLayoutDisplay.Plugin.ErgoDoxEz
 {
-    public class Class1
+    public class ErgoDoxEzKeyboard
     {
     }
 }
