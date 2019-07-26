@@ -2,7 +2,8 @@
 using System.Linq;
 using InvvardDev.EZLayoutDisplay.Desktop.Helper;
 using InvvardDev.EZLayoutDisplay.Desktop.Model;
-using InvvardDev.EZLayoutDisplay.Desktop.Model.Enum;
+using InvvardDev.EZLayoutDisplay.PluginContract.Enum;
+using InvvardDev.EZLayoutDisplay.PluginContract.Model;
 using Xunit;
 using Assert = Xunit.Assert;
 
