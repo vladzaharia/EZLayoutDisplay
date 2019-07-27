@@ -53,6 +53,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\InvvardDev.EZLayoutDisplay.Plugin.CommonZsa\InvvardDev.EZLayoutDisplay.Plugin.CommonZsa.csproj">
+      <Project>{74216b33-5a36-4b7f-8450-d3f98f980162}</Project>
+      <Name>InvvardDev.EZLayoutDisplay.Plugin.CommonZsa</Name>
+    </ProjectReference>
     <ProjectReference Include="..\InvvardDev.EZLayoutDisplay.PluginContract\InvvardDev.EZLayoutDisplay.PluginContract.csproj">
       <Project>{8B9ED53F-1A7E-44B4-A3BA-3D997B255E5B}</Project>
       <Name>InvvardDev.EZLayoutDisplay.PluginContract</Name>
@@ -64,6 +68,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Skins\ErgoDoxEzSkin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ErgoDoxEzView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
