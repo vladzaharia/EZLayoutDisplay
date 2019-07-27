@@ -13,5 +13,10 @@ namespace InvvardDev.EZLayoutDisplay.Plugin.ErgoDoxEz
                                                           "ergodox ez"
                                                       };
         }
+
+        public string GetCurrentLayerName()
+        {
+            return "Not implemented yet";
+        }
     }
 }
