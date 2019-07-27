@@ -216,7 +216,6 @@
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\keyDefinitions.json" />
-    <None Include="Properties\layoutDefinition.json" />
     <None Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -241,6 +240,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -284,7 +284,9 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>SET path=$(TargetDir)plugins
-if not exist "%25path%25" mkdir "%25path%25"</PostBuildEvent>
+SET pathData=$(TargetDir)plugins\data
+if not exist "%25path%25" mkdir "%25path%25"
+if not exist "%25pathData%25" mkdir "%25pathData%25"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
