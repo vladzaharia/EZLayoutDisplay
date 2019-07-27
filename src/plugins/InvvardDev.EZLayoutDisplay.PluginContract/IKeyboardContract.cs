@@ -8,5 +8,13 @@ namespace InvvardDev.EZLayoutDisplay.PluginContract
         /// Gets or sets the list of supported keyboard model.
         /// </summary>
         IEnumerable<string> SupportedKeyboardModel { get; }
+
+        /// <summary>
+        /// Gets the current layer name.
+        /// </summary>
+        /// <returns>The current layer name.</returns>
+        string GetCurrentLayerName();
+
+
     }
 }
