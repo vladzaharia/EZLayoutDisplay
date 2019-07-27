@@ -1,0 +1,7 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <FontFamily x:Key="LatoFontFamily">/InvvardDev.EZLayoutDisplay.Plugin.CommonZsa;component/Skins/Fonts/#Lato</FontFamily>
+    <FontFamily x:Key="OryxFontFamily">/InvvardDev.EZLayoutDisplay.Plugin.CommonZsa;component/Skins/Fonts/#Oryx</FontFamily>
+
+</ResourceDictionary>
