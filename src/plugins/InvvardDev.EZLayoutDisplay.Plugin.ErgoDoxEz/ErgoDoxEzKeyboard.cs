@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using InvvardDev.EZLayoutDisplay.PluginContract;
 
 namespace InvvardDev.EZLayoutDisplay.Plugin.ErgoDoxEz
 {
-    public class ErgoDoxEzKeyboard
+    public class ErgoDoxEzKeyboard : IKeyboardContract
     {
     }
 }
