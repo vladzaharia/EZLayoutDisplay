@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -48,6 +51,8 @@
     <Compile Include="Helper\KeyCategoryToBrushConverter.cs" />
     <Compile Include="Helper\KeyContentTemplateSelector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\ILayoutService.cs" />
+    <Compile Include="Service\LayoutService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Skins\Fonts\Lato.ttf" />
@@ -68,6 +73,9 @@
       <Project>{8B9ED53F-1A7E-44B4-A3BA-3D997B255E5B}</Project>
       <Name>InvvardDev.EZLayoutDisplay.PluginContract</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
