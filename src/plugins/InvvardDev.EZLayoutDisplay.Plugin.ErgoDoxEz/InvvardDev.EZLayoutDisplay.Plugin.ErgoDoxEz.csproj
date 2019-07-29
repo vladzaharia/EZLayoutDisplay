@@ -53,7 +53,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\InvvardDev.EZLayoutDisplay.Plugin.CommonZsa\InvvardDev.EZLayoutDisplay.Plugin.CommonZsa.csproj">
+    <ProjectReference Include="..\..\InvvardDev.EZLayoutDisplay.Desktop\InvvardDev.EZLayoutDisplay.Desktop.csproj">
+      <Project>{F12B94C1-40E4-429C-8EDE-5C410BE81FAF}</Project>
+      <Name>InvvardDev.EZLayoutDisplay.Desktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InvvardDev.EZLayoutDisplay.Plugin.CommonZsa\InvvardDev.EZLayoutDisplay.Plugin.CommonZsa.csproj">
       <Project>{74216b33-5a36-4b7f-8450-d3f98f980162}</Project>
       <Name>InvvardDev.EZLayoutDisplay.Plugin.CommonZsa</Name>
     </ProjectReference>
