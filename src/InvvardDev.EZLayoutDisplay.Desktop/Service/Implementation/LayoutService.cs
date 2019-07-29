@@ -65,6 +65,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Implementation
         }
 
         /// <inheritdoc />
+        [Obsolete]
         public async Task<IEnumerable<KeyTemplate>> GetLayoutTemplate()
         {
             Logger.TraceMethod();

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using InvvardDev.EZLayoutDisplay.Desktop.Model;
 using InvvardDev.EZLayoutDisplay.PluginContract.Model;
@@ -33,6 +34,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Interface
         /// Gets the list of <see cref="KeyTemplate"/> from the local repository.
         /// </summary>
         /// <returns>An <see cref="IEnumerable{KeyTemplate}"/></returns>
+        [ Obsolete ]
         Task<IEnumerable<KeyTemplate>> GetLayoutTemplate();
     }
 }
