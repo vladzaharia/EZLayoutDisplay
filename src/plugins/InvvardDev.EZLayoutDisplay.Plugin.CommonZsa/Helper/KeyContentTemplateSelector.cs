@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using InvvardDev.EZLayoutDisplay.Desktop.Model;
 using InvvardDev.EZLayoutDisplay.PluginContract.Enum;
 
-namespace InvvardDev.EZLayoutDisplay.Desktop.Helper
+namespace InvvardDev.EZLayoutDisplay.Plugin.CommonZsa.Helper
 {
     public class KeyContentTemplateSelector : DataTemplateSelector
     {
