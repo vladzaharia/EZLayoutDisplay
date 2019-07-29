@@ -45,6 +45,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\KeyCategoryToBrushConverter.cs" />
+    <Compile Include="Helper\KeyContentTemplateSelector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -56,6 +58,16 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\InvvardDev.EZLayoutDisplay.Desktop\InvvardDev.EZLayoutDisplay.Desktop.csproj">
+      <Project>{F12B94C1-40E4-429C-8EDE-5C410BE81FAF}</Project>
+      <Name>InvvardDev.EZLayoutDisplay.Desktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InvvardDev.EZLayoutDisplay.PluginContract\InvvardDev.EZLayoutDisplay.PluginContract.csproj">
+      <Project>{8B9ED53F-1A7E-44B4-A3BA-3D997B255E5B}</Project>
+      <Name>InvvardDev.EZLayoutDisplay.PluginContract</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

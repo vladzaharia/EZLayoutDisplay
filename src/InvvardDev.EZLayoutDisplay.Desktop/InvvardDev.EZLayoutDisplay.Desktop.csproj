@@ -108,7 +108,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Helper\KeyContentTemplateSelector.cs" />
     <Compile Include="Helper\LoggerHelper.cs" />
     <Compile Include="Model\ErgodoxTag.cs" />
     <Compile Include="Model\KeyTemplate.cs" />
@@ -156,7 +155,6 @@
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Converter\BoolToVisibilityConverter.cs" />
-    <Compile Include="View\Converter\KeyCategoryToBrushConverter.cs" />
     <Compile Include="View\Converter\KeyCodeToCharConverter.cs" />
     <Compile Include="View\SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
