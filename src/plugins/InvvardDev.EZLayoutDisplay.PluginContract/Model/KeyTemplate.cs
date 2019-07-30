@@ -1,8 +1,7 @@
-﻿using System.ComponentModel;
-using InvvardDev.EZLayoutDisplay.PluginContract.Model;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using System.ComponentModel;
 
-namespace InvvardDev.EZLayoutDisplay.Desktop.Model
+namespace InvvardDev.EZLayoutDisplay.PluginContract.Model
 {
     public class KeyTemplate
     {
