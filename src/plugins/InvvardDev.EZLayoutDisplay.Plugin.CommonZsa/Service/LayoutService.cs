@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using InvvardDev.EZLayoutDisplay.Desktop.Model;
 using InvvardDev.EZLayoutDisplay.Desktop.Properties;
+using InvvardDev.EZLayoutDisplay.PluginContract.Model;
 using Newtonsoft.Json;
 
 namespace InvvardDev.EZLayoutDisplay.Plugin.CommonZsa.Service

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using InvvardDev.EZLayoutDisplay.Desktop.Model;
+using InvvardDev.EZLayoutDisplay.PluginContract.Model;
 
 namespace InvvardDev.EZLayoutDisplay.Plugin.CommonZsa.Service
 {
