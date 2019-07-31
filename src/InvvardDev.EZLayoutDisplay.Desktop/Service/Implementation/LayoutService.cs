@@ -64,17 +64,6 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Implementation
             return ezLayout;
         }
 
-        /// <inheritdoc />
-        [Obsolete]
-        public async Task<IEnumerable<KeyTemplate>> GetLayoutTemplate()
-        {
-            Logger.TraceMethod();
-
-            IEnumerable<KeyTemplate> layoutTemplate = await ReadLayoutDefinition();
-
-            return layoutTemplate;
-        }
-
         #endregion
 
         #region Private methods
@@ -124,30 +113,6 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Implementation
             }
 
             return layout;
-        }
-
-        private async Task<IEnumerable<KeyTemplate>> ReadLayoutDefinition()
-        {
-            Logger.TraceMethod();
-
-            if (Resources.layoutDefinition.Length <= 0)
-            {
-                Logger.Warn("Layout definition is empty");
-
-                return new List<KeyTemplate>();
-            }
-
-            var layoutTemplate = await Task.Run(() => {
-                                                    var json = Encoding.Default.GetString(Resources.layoutDefinition);
-
-                                                    var layoutDefinition = JsonConvert.DeserializeObject<IEnumerable<KeyTemplate>>(json);
-
-                                                    return layoutDefinition;
-                                                });
-
-            Logger.DebugOutputParam(nameof(layoutTemplate), layoutTemplate);
-
-            return layoutTemplate;
         }
 
         #endregion

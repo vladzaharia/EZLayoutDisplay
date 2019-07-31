@@ -29,12 +29,5 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Interface
         /// <param name="layoutRevisionId">The layout revision identifier.</param>
         /// <returns>The <see cref="EZLayout"/> transformed into.</returns>
         EZLayout PrepareEZLayout(ErgodoxLayout ergodoxLayout, string layoutRevisionId);
-
-        /// <summary>
-        /// Gets the list of <see cref="KeyTemplate"/> from the local repository.
-        /// </summary>
-        /// <returns>An <see cref="IEnumerable{KeyTemplate}"/></returns>
-        [ Obsolete ]
-        Task<IEnumerable<KeyTemplate>> GetLayoutTemplate();
     }
 }

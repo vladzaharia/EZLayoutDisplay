@@ -34,13 +34,5 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Design
 
             return new EZLayout();
         }
-
-        /// <inheritdoc />
-        public async Task<IEnumerable<KeyTemplate>> GetLayoutTemplate()
-        {
-            var layoutTemplate = new Task<IEnumerable<KeyTemplate>>(() => new List<KeyTemplate>());
-
-            return await layoutTemplate;
-        }
     }
 }
