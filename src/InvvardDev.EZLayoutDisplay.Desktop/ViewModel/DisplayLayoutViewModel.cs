@@ -286,7 +286,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
             NoLayoutAvailable = false;
             CurrentLayerName = "Current Layer Name";
 
-            var json = Encoding.Default.GetString(Resources.layoutDefinition);
+            var json = "";
             var layoutDefinition = JsonConvert.DeserializeObject<IEnumerable<KeyTemplate>>(json) as List<KeyTemplate>;
 
             Debug.Assert(layoutDefinition != null, nameof(layoutDefinition) + " != null");
