@@ -16,7 +16,6 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../Skins/KeyboardLayoutSkin.xaml" />
                 <ResourceDictionary Source="../Skins/DisplayLayoutSkin.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
