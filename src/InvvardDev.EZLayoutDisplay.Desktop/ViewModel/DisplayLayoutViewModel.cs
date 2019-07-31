@@ -2,16 +2,13 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Messaging;
 using InvvardDev.EZLayoutDisplay.Desktop.Helper;
-using InvvardDev.EZLayoutDisplay.Desktop.Model;
 using InvvardDev.EZLayoutDisplay.Desktop.Model.Messenger;
-using InvvardDev.EZLayoutDisplay.Desktop.Properties;
 using InvvardDev.EZLayoutDisplay.Desktop.Service.Interface;
 using InvvardDev.EZLayoutDisplay.Desktop.View;
 using InvvardDev.EZLayoutDisplay.PluginContract.Enum;
@@ -36,8 +33,6 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
         private ICommand _nextLayerCommand;
         private ICommand _scrollLayerCommand;
 
-        private List<List<KeyTemplate>> _layoutTemplates;
-        private ObservableCollection<KeyTemplate> _currentLayoutTemplate;
         private int _currentLayerIndex;
         private EZLayout _ezLayout;
 
@@ -149,15 +144,6 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
         }
 
         /// <summary>
-        /// Gets or sets the layout template.
-        /// </summary>
-        public ObservableCollection<KeyTemplate> CurrentLayoutTemplate
-        {
-            get => _currentLayoutTemplate;
-            set => Set(ref _currentLayoutTemplate, value);
-        }
-
-        /// <summary>
         /// Gets or sets the current layer index.
         /// </summary>
         public int CurrentLayerIndex
@@ -219,8 +205,6 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
 
             Messenger.Default.Register<UpdatedLayoutMessage>(this, LoadCompleteLayout);
 
-            CurrentLayoutTemplate = new ObservableCollection<KeyTemplate>();
-
             SetLabelUi();
             SetWindowParameters();
             LoadCompleteLayout();
@@ -260,8 +244,6 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
 
             _ezLayout = _settingsService.EZLayout;
             Logger.Debug("EZLayout = {@value0}", _ezLayout);
-
-            _layoutTemplates = new List<List<KeyTemplate>>();
 
             if (_ezLayout?.EZLayers == null
                 || !_ezLayout.EZLayers.Any()
@@ -335,14 +317,6 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
 
                 _layoutTemplates.Add(layoutTemplate);
             }
-        }
-
-        private async Task<IEnumerable<KeyTemplate>> LoadLayoutDefinition()
-        {
-            Logger.TraceMethod();
-            var layoutDefinition = await _layoutService.GetLayoutTemplate();
-
-            return layoutDefinition;
         }
 
         private void SwitchLayer()
