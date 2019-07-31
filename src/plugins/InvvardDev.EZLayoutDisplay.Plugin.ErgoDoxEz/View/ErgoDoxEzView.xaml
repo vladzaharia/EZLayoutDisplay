@@ -8,7 +8,21 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              d:DataContext="{d:DesignInstance vm:ErgoDoxEzViewModel}">
-    <Grid>
-            
-    </Grid>
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/InvvardDev.EZLayoutDisplay.Plugin.CommonZsa;component/Skins/ZsaCommonSkin.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+        <ItemsControl ItemsSource="{Binding}" Focusable="False"
+                      ItemTemplateSelector="{StaticResource KeyContentTemplateSelector}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas Margin="10" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
 </UserControl>
