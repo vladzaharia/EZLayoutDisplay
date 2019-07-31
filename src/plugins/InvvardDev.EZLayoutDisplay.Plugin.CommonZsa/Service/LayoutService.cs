@@ -2,8 +2,6 @@
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-using InvvardDev.EZLayoutDisplay.Desktop.Model;
-using InvvardDev.EZLayoutDisplay.Desktop.Properties;
 using InvvardDev.EZLayoutDisplay.PluginContract.Model;
 using Newtonsoft.Json;
 
@@ -12,13 +10,18 @@ namespace InvvardDev.EZLayoutDisplay.Plugin.CommonZsa.Service
     public class LayoutService : ILayoutService
     {
         /// <inheritdoc />
-        public async Task<IEnumerable<KeyTemplate>> GetLayoutTemplate(string filePath)
+        public async Task<IEnumerable<KeyTemplate>> LoadLayoutDefinitionAsync(string filePath)
         {
             var fileContent = GetFileContent(filePath);
 
             IEnumerable<KeyTemplate> layoutTemplate = await ReadLayoutDefinition(fileContent);
 
             return layoutTemplate;
+        }
+
+        public Task<IEnumerable<IEnumerable<KeyTemplate>>> PopulateLayoutTemplatesAsync(IEnumerable<KeyTemplate> layoutDefinition, EZLayout ezLayout)
+        {
+
         }
 
         private byte[] GetFileContent(string filePath)
