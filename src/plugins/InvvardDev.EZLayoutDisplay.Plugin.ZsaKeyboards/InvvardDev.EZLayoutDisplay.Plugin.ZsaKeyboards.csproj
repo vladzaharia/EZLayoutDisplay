@@ -73,9 +73,11 @@
     <Compile Include="Service\ILayoutService.cs" />
     <Compile Include="Service\LayoutService.cs" />
     <Compile Include="ViewModel\ErgoDoxEzViewModel.cs" />
+    <Compile Include="ViewModel\ZsaKeyboardViewModelBase.cs" />
     <Compile Include="View\ErgoDoxEzView.xaml.cs">
       <DependentUpon>ErgoDoxEzView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ZsaKeyboardBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\InvvardDev.EZLayoutDisplay.PluginContract\InvvardDev.EZLayoutDisplay.PluginContract.csproj">
