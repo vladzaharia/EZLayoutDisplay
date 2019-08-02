@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using InvvardDev.EZLayoutDisplay.PluginContract.Model;
 
-namespace InvvardDev.EZLayoutDisplay.Plugin.ErgoDoxEz.ViewModel
+namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.ViewModel
 {
     public class ErgoDoxEzViewModel : ViewModelBase
     {

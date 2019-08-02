@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:helper="clr-namespace:InvvardDev.EZLayoutDisplay.Plugin.CommonZsa.Helper">
+                    xmlns:helper="clr-namespace:InvvardDev.EZLayoutDisplay.Plugin.CommonZsa.Helper"
+                    xmlns:helper1="clr-namespace:InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.Helper">
 
     <FontFamily x:Key="LatoFontFamily">/InvvardDev.EZLayoutDisplay.Plugin.CommonZsa;component/Skins/Fonts/#Lato</FontFamily>
     <FontFamily x:Key="OryxFontFamily">/InvvardDev.EZLayoutDisplay.Plugin.CommonZsa;component/Skins/Fonts/#Oryx</FontFamily>
@@ -15,12 +16,12 @@
     <SolidColorBrush x:Key="TopModifierBackgroundBrush" Color="#ebffe1" />
     <SolidColorBrush x:Key="TopShineBackgroundBrush" Color="#fff1ba" />
 
-    <helper:KeyCategoryToBrushConverter x:Key="KeyCategoryToBaseBrushConverter"
+    <helper1:KeyCategoryToBrushConverter x:Key="KeyCategoryToBaseBrushConverter"
                                            DefaultBackgroundBrush="{StaticResource BaseDefaultBackgroundBrush}"
                                            DualFunctionBackgroundBrush="{StaticResource BaseDualFunctionBackgroundBrush}"
                                            ModifierBackgroundBrush="{StaticResource BaseModifierBackgroundBrush}"
                                            ShineBackgroundBrush="{StaticResource BaseShineBackgroundBrush}"/>
-    <helper:KeyCategoryToBrushConverter x:Key="KeyCategoryToTopBrushConverter"
+    <helper1:KeyCategoryToBrushConverter x:Key="KeyCategoryToTopBrushConverter"
                                            DefaultBackgroundBrush="{StaticResource TopDefaultBackgroundBrush}"
                                            DualFunctionBackgroundBrush="{StaticResource TopDualFunctionBackgroundBrush}"
                                            ModifierBackgroundBrush="{StaticResource TopModifierBackgroundBrush}"
@@ -168,7 +169,7 @@
     </DataTemplate>
     <!-- ReSharper restore Xaml.BindingWithContextNotResolved -->
 
-    <helper:KeyContentTemplateSelector x:Key="KeyContentTemplateSelector"
+    <helper1:KeyContentTemplateSelector x:Key="KeyContentTemplateSelector"
                                        SimpleLabelDataTemplate="{StaticResource SimpleLabelDataTemplate}"
                                        ModifierOnTopDataTemplate="{StaticResource ModifierOnTopDataTemplate}"
                                        ModifierUnderDataTemplate="{StaticResource ModifierUnderDataTemplate}" />

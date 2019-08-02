@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
-namespace InvvardDev.EZLayoutDisplay.Desktop.View.Converter
+namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.Helper
 {
     [ ValueConversion(typeof(bool), typeof(Visibility)) ]
     public sealed class BoolToVisibilityConverter : IValueConverter

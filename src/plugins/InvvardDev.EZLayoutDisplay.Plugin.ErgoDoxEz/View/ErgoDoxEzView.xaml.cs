@@ -1,4 +1,4 @@
-﻿namespace InvvardDev.EZLayoutDisplay.Plugin.ErgoDoxEz.View
+﻿namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.View
 {
     /// <summary>
     /// Interaction logic for ErgoDoxEzView.xaml

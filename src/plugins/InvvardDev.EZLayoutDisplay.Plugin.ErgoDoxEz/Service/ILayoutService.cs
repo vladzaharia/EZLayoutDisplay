@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using InvvardDev.EZLayoutDisplay.PluginContract.Model;
 
-namespace InvvardDev.EZLayoutDisplay.Plugin.CommonZsa.Service
+namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.Service
 {
     public interface ILayoutService
     {

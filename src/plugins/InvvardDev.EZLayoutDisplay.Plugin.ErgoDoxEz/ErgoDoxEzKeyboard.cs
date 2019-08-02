@@ -1,14 +1,15 @@
 ﻿using System.Collections.Generic;
-using System.IO;
+using System.ComponentModel.Composition;
 using System.Threading.Tasks;
-using InvvardDev.EZLayoutDisplay.Plugin.CommonZsa.Service;
-using InvvardDev.EZLayoutDisplay.Plugin.ErgoDoxEz.View;
-using InvvardDev.EZLayoutDisplay.Plugin.ErgoDoxEz.ViewModel;
+using InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.Service;
+using InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.View;
+using InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.ViewModel;
 using InvvardDev.EZLayoutDisplay.PluginContract;
 using InvvardDev.EZLayoutDisplay.PluginContract.Model;
 
-namespace InvvardDev.EZLayoutDisplay.Plugin.ErgoDoxEz
+namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards
 {
+    [Export(typeof(IKeyboardContract))]
     public class ErgoDoxEzKeyboard : IKeyboardContract
     {
         private const string LayoutDefinitionPath = "/data/ergoDoxEzLayoutDefinition.json";
