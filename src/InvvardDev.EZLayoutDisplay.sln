@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvvardDev.EZLayoutDisplay.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{C6B7D7C3-9B69-4AB0-B285-DB90B59CEBF3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards", "plugins\InvvardDev.EZLayoutDisplay.Plugin.ErgoDoxEz\InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.csproj", "{34392DD3-7720-4FCA-8E41-4135DD2F4E06}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards", "plugins\InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards\InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.csproj", "{34392DD3-7720-4FCA-8E41-4135DD2F4E06}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InvvardDev.EZLayoutDisplay.PluginContract", "plugins\InvvardDev.EZLayoutDisplay.PluginContract\InvvardDev.EZLayoutDisplay.PluginContract.csproj", "{8B9ED53F-1A7E-44B4-A3BA-3D997B255E5B}"
 EndProject
