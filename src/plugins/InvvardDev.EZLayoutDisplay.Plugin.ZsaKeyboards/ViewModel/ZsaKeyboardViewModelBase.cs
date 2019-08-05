@@ -27,10 +27,14 @@ namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.ViewModel
 
         #endregion
 
+        #region Constructor
+
         protected ZsaKeyboardViewModelBase(IEnumerable<IEnumerable<KeyTemplate>> layoutTemplates)
         {
             _layoutTemplates = layoutTemplates;
             CurrentLayoutTemplate = new ObservableCollection<KeyTemplate>();
-        }
+        } 
+
+        #endregion
     }
 }
