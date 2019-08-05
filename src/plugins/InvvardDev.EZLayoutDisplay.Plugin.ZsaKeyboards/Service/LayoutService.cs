@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using InvvardDev.EZLayoutDisplay.PluginContract.Model;
@@ -9,6 +11,8 @@ namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.Service
 {
     public class LayoutService : ILayoutService
     {
+        #region ILayoutService implementation
+
         /// <inheritdoc />
         public async Task<IEnumerable<KeyTemplate>> LoadLayoutDefinitionAsync(string filePath)
         {
@@ -19,10 +23,31 @@ namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.Service
             return layoutTemplate;
         }
 
-        public Task<IEnumerable<IEnumerable<KeyTemplate>>> PopulateLayoutTemplatesAsync(IEnumerable<KeyTemplate> layoutDefinition, EZLayout ezLayout)
+        public async Task<IEnumerable<IEnumerable<KeyTemplate>>> PopulateLayoutTemplatesAsync(List<KeyTemplate> layoutDefinition, EZLayout ezLayout)
         {
+            var keyTemplates = new List<List<EZLayout>>();
 
+            keyTemplates = await Task.Run(() => {
+
+                         foreach (var ezLayer in ezLayout.EZLayers)
+                         {
+                             for (int j = 0 ; j < layoutDefinition.Count ; j++)
+                             {
+                                 layoutDefinition[j].EZKey = ezLayer.EZKeys[j];
+                             }
+
+                             keyTemplates.Add(layoutTemplate);
+                         }
+
+                         return keyTemplates;
+                     });
+
+            return keyTemplates;
         }
+
+        #endregion
+
+        #region Private methods
 
         private byte[] GetFileContent(string filePath)
         {
@@ -54,5 +79,6 @@ namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.Service
             return layoutTemplate;
         }
 
+        #endregion
     }
 }
