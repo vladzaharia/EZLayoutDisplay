@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.Service;
 using InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.ViewModel;
@@ -28,7 +29,7 @@ namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards
         public async Task LoadLayoutAsync(EZLayout ezLayout)
         {
             var layoutDefinition = await _layoutService.LoadLayoutDefinitionAsync(LayoutDefinitionPath);
-            var layoutTemplates = await _layoutService.PopulateLayoutTemplatesAsync(layoutDefinition, ezLayout);
+            var layoutTemplates = await _layoutService.PopulateLayoutTemplatesAsync(layoutDefinition.ToList(), ezLayout);
 
             CreateViewModel(layoutTemplates);
         }
