@@ -29,14 +29,14 @@ namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.Service
             keyTemplates = await Task.Run(() => {
                                               foreach (var ezLayer in ezLayout.EZLayers)
                                               {
-                                                  var clonedlayoutDefinition = layoutDefinition.Select(l => (KeyTemplate) l.Clone()).ToList();
+                                                  var clonedLayoutDefinition = layoutDefinition.Select(l => (KeyTemplate) l.Clone()).ToList();
 
                                                   for (int j = 0 ; j < layoutDefinition.Count ; j++)
                                                   {
-                                                      clonedlayoutDefinition[j].EZKey = ezLayer.EZKeys[j];
+                                                      clonedLayoutDefinition[j].EZKey = ezLayer.EZKeys[j];
                                                   }
 
-                                                  keyTemplates.Add(clonedlayoutDefinition);
+                                                  keyTemplates.Add(clonedLayoutDefinition);
                                               }
 
                                               return keyTemplates;
