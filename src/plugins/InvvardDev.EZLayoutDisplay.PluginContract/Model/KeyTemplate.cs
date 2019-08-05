@@ -1,11 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using System.ComponentModel;
 
 namespace InvvardDev.EZLayoutDisplay.PluginContract.Model
 {
-    public class KeyTemplate
+    public class KeyTemplate : ICloneable
     {
-        private const int KeyUnitSize = 54;
+        private int KeyUnitSize = 54;
 
         /// <summary>
         /// Gets or sets the key X position.
@@ -84,9 +85,11 @@ namespace InvvardDev.EZLayoutDisplay.PluginContract.Model
 
         public EZKey EZKey { get; set; }
 
+        #region Constructors
+
         public KeyTemplate()
         {
-            
+
         }
 
         public KeyTemplate(double x, double y, double width = 1, double height = 1, double vOffset = 0, double hOffset = 0, int rotationAngle = 0, string rotationOrigin = "0,0", bool isGlowing = false)
@@ -101,5 +104,18 @@ namespace InvvardDev.EZLayoutDisplay.PluginContract.Model
             RotationOrigin = rotationOrigin;
             IsGlowing = isGlowing;
         }
+
+        #endregion
+
+        #region ICloneable implementation
+
+        public object Clone()
+        {
+            var clone = MemberwiseClone();
+
+            return clone;
+        } 
+
+        #endregion
     }
 }
