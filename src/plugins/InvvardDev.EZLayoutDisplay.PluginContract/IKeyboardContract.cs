@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using InvvardDev.EZLayoutDisplay.PluginContract.Enum;
 using InvvardDev.EZLayoutDisplay.PluginContract.Model;
 
 namespace InvvardDev.EZLayoutDisplay.PluginContract
@@ -29,5 +30,11 @@ namespace InvvardDev.EZLayoutDisplay.PluginContract
         /// </summary>
         /// <returns>A rendered Keyboard user control.</returns>
         object GetKeyboardView();
+
+        /// <summary>
+        /// Switches to another layer.
+        /// </summary>
+        /// <param name="direction">The direction to switch the layer to.</param>
+        void SwitchLayer(SwitchDirection direction);
     }
 }
