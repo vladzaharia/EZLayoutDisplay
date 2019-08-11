@@ -1,8 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
@@ -11,9 +8,8 @@ using InvvardDev.EZLayoutDisplay.Desktop.Helper;
 using InvvardDev.EZLayoutDisplay.Desktop.Model.Messenger;
 using InvvardDev.EZLayoutDisplay.Desktop.Service.Interface;
 using InvvardDev.EZLayoutDisplay.Desktop.View;
-using InvvardDev.EZLayoutDisplay.PluginContract.Enum;
+using InvvardDev.EZLayoutDisplay.PluginContract;
 using InvvardDev.EZLayoutDisplay.PluginContract.Model;
-using Newtonsoft.Json;
 using NLog;
 
 namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
@@ -27,11 +23,14 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
         private readonly IWindowService _windowService;
         private readonly ILayoutService _layoutService;
         private readonly ISettingsService _settingsService;
+        private readonly IKeyboardContract _keyboard;
 
         private ICommand _lostFocusCommand;
         private ICommand _hideWindowCommand;
         private ICommand _nextLayerCommand;
         private ICommand _scrollLayerCommand;
+
+        private object _keyboardView;
 
         private int _currentLayerIndex;
         private EZLayout _ezLayout;
@@ -161,6 +160,15 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
             set => Set(ref _isWindowPinned, value);
         }
 
+        /// <summary>
+        /// Gets or sets the keyboard view.
+        /// </summary>
+        public object KeyboardView
+        {
+            get => _keyboardView;
+            set => Set(ref _keyboardView, value);
+        }
+
         #endregion
 
         #region Relay commands
@@ -195,13 +203,14 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
 
         #endregion
 
-        public DisplayLayoutViewModel(IWindowService windowService, ILayoutService layoutService, ISettingsService settingsService)
+        public DisplayLayoutViewModel(IWindowService windowService, ILayoutService layoutService, ISettingsService settingsService, IKeyboardContract keyboard)
         {
             Logger.TraceConstructor();
 
             _windowService = windowService;
             _layoutService = layoutService;
             _settingsService = settingsService;
+            _keyboard = keyboard;
 
             Messenger.Default.Register<UpdatedLayoutMessage>(this, LoadCompleteLayout);
 
@@ -256,68 +265,12 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
             }
 
             NoLayoutAvailable = false;
-            await PopulateLayoutTemplates();
+            await _keyboard.LoadLayoutAsync(_ezLayout);
 
-            SwitchLayer();
+            var test = _keyboard.GetKeyboardView();
         }
 
-        private void LoadDesignTimeModel()
-        {
-            Logger.TraceMethod();
-
-            NoLayoutAvailable = false;
-            CurrentLayerName = "Current Layer Name";
-
-            var json = "";
-            var layoutDefinition = JsonConvert.DeserializeObject<IEnumerable<KeyTemplate>>(json) as List<KeyTemplate>;
-
-            Debug.Assert(layoutDefinition != null, nameof(layoutDefinition) + " != null");
-
-            // ReSharper disable once UseObjectOrCollectionInitializer
-            CurrentLayoutTemplate = new ObservableCollection<KeyTemplate>(layoutDefinition);
-            CurrentLayoutTemplate[0].EZKey = new EZKey {
-                                                           Label = new KeyLabel("="),
-                                                           Modifier = new KeyLabel("Left Shift"),
-                                                           DisplayType = KeyDisplayType.ModifierOnTop,
-                                                           KeyCategory = KeyCategory.DualFunction,
-                                                           Color = "#111"
-                                                       };
-
-            CurrentLayoutTemplate[1].EZKey = new EZKey {
-                                                           Label = new KeyLabel("LT \u2192 1"),
-                                                           DisplayType = KeyDisplayType.SimpleLabel,
-                                                           KeyCategory = KeyCategory.DualFunction,
-                                                           Color = "#BBB"
-                                                       };
-
-            for (int i = 2 ; i < CurrentLayoutTemplate.Count ; i++)
-            {
-                CurrentLayoutTemplate[i].EZKey = new EZKey {
-                                                               Label = new KeyLabel("E"),
-                                                               Modifier = new KeyLabel("Left Shift"),
-                                                               KeyCategory = KeyCategory.French,
-                                                               InternationalHint = "fr",
-                                                               Color = "#777"
-                                                           };
-            }
-        }
-
-        private async Task PopulateLayoutTemplates()
-        {
-            Logger.TraceMethod();
-
-            foreach (var t in _ezLayout.EZLayers)
-            {
-                if (!(await LoadLayoutDefinition() is List<KeyTemplate> layoutTemplate)) break;
-
-                for (int j = 0 ; j < layoutTemplate.Count ; j++)
-                {
-                    layoutTemplate[j].EZKey = t.EZKeys[j];
-                }
-
-                _layoutTemplates.Add(layoutTemplate);
-            }
-        }
+        private void LoadDesignTimeModel() { }
 
         private void SwitchLayer()
         {
