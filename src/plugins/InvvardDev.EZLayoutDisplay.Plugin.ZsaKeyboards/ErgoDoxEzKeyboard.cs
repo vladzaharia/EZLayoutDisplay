@@ -18,6 +18,7 @@ namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards
                                                       };
         }
 
+        /// <inheritdoc />
         protected override void CreateViewModel(IEnumerable<IEnumerable<KeyTemplate>> layoutTemplates)
         {
             _viewModel = new ErgoDoxEzViewModel(layoutTemplates);

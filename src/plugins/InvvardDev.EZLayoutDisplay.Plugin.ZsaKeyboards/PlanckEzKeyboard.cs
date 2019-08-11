@@ -16,6 +16,8 @@ namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards
                                                           "planck ez"
                                                       };
         }
+
+        /// <inheritdoc />
         protected override void CreateViewModel(IEnumerable<IEnumerable<KeyTemplate>> layoutTemplates)
         {
             _viewModel = new PlanckEzViewModel(layoutTemplates);
