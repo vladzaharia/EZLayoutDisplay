@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -23,24 +22,24 @@ namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.Service
             return layoutTemplate;
         }
 
-        public async Task<IEnumerable<IEnumerable<KeyTemplate>>> PopulateLayoutTemplatesAsync(List<KeyTemplate> layoutDefinition, EZLayout ezLayout)
+        /// <inheritdoc />
+        public async Task<List<List<KeyTemplate>>> PopulateLayoutTemplatesAsync(List<KeyTemplate> layoutDefinition, EZLayout ezLayout)
         {
-            var keyTemplates = new List<List<EZLayout>>();
+            List<List<KeyTemplate>> keyTemplates = new List<List<KeyTemplate>>();
 
-            keyTemplates = await Task.Run(() => {
+            await Task.Run(() => {
+                               foreach (var ezLayer in ezLayout.EZLayers)
+                               {
+                                   var clonedLayoutDefinition = layoutDefinition.Select(l => (KeyTemplate) l.Clone()).ToList();
 
-                         foreach (var ezLayer in ezLayout.EZLayers)
-                         {
-                             for (int j = 0 ; j < layoutDefinition.Count ; j++)
-                             {
-                                 layoutDefinition[j].EZKey = ezLayer.EZKeys[j];
-                             }
+                                   for (int j = 0 ; j < clonedLayoutDefinition.Count ; j++)
+                                   {
+                                       clonedLayoutDefinition[j].EZKey = ezLayer.EZKeys[j];
+                                   }
 
-                             keyTemplates.Add(layoutTemplate);
-                         }
-
-                         return keyTemplates;
-                     });
+                                   keyTemplates.Add(clonedLayoutDefinition);
+                               }
+                           });
 
             return keyTemplates;
         }
