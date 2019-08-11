@@ -1,9 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using System.ComponentModel;
 
 namespace InvvardDev.EZLayoutDisplay.PluginContract.Model
 {
-    public class KeyTemplate
+    public class KeyTemplate : ICloneable
     {
         private const int KeyUnitSize = 54;
 
@@ -100,6 +101,13 @@ namespace InvvardDev.EZLayoutDisplay.PluginContract.Model
             RotationAngle = rotationAngle;
             RotationOrigin = rotationOrigin;
             IsGlowing = isGlowing;
+        }
+
+        public object Clone()
+        {
+            var clone = MemberwiseClone();
+
+            return clone;
         }
     }
 }
