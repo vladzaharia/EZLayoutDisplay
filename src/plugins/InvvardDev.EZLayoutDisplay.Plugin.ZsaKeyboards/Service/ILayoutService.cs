@@ -13,6 +13,12 @@ namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.Service
         /// <returns>An <see cref="IEnumerable{KeyTemplate}"/></returns>
         Task<IEnumerable<KeyTemplate>> LoadLayoutDefinitionAsync(string filePath);
 
-        Task<IEnumerable<IEnumerable<KeyTemplate>>> PopulateLayoutTemplatesAsync(IEnumerable<KeyTemplate> layoutDefinition, EZLayout ezLayout);
+        /// <summary>
+        /// Populates the layout templates with <see cref="EZLayout"/> keys.
+        /// </summary>
+        /// <param name="layoutDefinition">The keyboard key layout definition.</param>
+        /// <param name="ezLayout">The <see cref="EZLayout"/> to get the key value from.</param>
+        /// <returns></returns>
+        Task<List<List<KeyTemplate>>> PopulateLayoutTemplatesAsync(List<KeyTemplate> layoutDefinition, EZLayout ezLayout);
     }
 }
