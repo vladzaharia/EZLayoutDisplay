@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -23,9 +24,9 @@ namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.Service
         }
 
         /// <inheritdoc />
-        public async Task<List<List<KeyTemplate>>> PopulateLayoutTemplatesAsync(List<KeyTemplate> layoutDefinition, EZLayout ezLayout)
+        public async Task<List<ObservableCollection<KeyTemplate>>> PopulateLayoutTemplatesAsync(List<KeyTemplate> layoutDefinition, EZLayout ezLayout)
         {
-            List<List<KeyTemplate>> keyTemplates = new List<List<KeyTemplate>>();
+            var keyTemplates = new List<ObservableCollection<KeyTemplate>>();
 
             await Task.Run(() => {
                                foreach (var ezLayer in ezLayout.EZLayers)
@@ -37,7 +38,7 @@ namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.Service
                                        clonedLayoutDefinition[j].EZKey = ezLayer.EZKeys[j];
                                    }
 
-                                   keyTemplates.Add(clonedLayoutDefinition);
+                                   keyTemplates.Add(new ObservableCollection<KeyTemplate>(clonedLayoutDefinition));
                                }
                            });
 

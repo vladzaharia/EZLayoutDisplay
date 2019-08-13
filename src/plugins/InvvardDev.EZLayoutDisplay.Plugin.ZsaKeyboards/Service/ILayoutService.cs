@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using InvvardDev.EZLayoutDisplay.PluginContract.Model;
 
@@ -19,6 +20,6 @@ namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.Service
         /// <param name="layoutDefinition">The keyboard key layout definition.</param>
         /// <param name="ezLayout">The <see cref="EZLayout"/> to get the key value from.</param>
         /// <returns></returns>
-        Task<List<List<KeyTemplate>>> PopulateLayoutTemplatesAsync(List<KeyTemplate> layoutDefinition, EZLayout ezLayout);
+        Task<List<ObservableCollection<KeyTemplate>>> PopulateLayoutTemplatesAsync(List<KeyTemplate> layoutDefinition, EZLayout ezLayout);
     }
 }
