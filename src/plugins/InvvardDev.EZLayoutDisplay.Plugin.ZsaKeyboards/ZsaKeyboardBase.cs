@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.Service;
 using InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.ViewModel;
 using InvvardDev.EZLayoutDisplay.PluginContract;
@@ -11,15 +13,22 @@ namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards
 {
     public abstract class ZsaKeyboardBase : IKeyboardContract
     {
-        protected string LayoutDefinitionPath;
         private readonly ILayoutService _layoutService;
-        protected ZsaKeyboardViewModelBase _viewModel;
+        private List<ObservableCollection<KeyTemplate>> _layoutTemplates;
+        private int _currentLayerIndex;
+        private int _maxLayerIndex;
+        private EZLayout _ezLayout;
+
+        protected UserControl KeyboardView;
+        protected string LayoutDefinitionPath;
+        protected ZsaKeyboardViewModelBase ViewModel;
 
         public IEnumerable<string> SupportedKeyboardModel { get; protected set; }
 
         protected ZsaKeyboardBase()
         {
             _layoutService = new LayoutService();
+            _currentLayerIndex = 0;
         }
 
         #region IKeyboardContract implementation
@@ -27,22 +36,25 @@ namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards
         /// <inheritdoc />
         public string GetCurrentLayerName()
         {
-            throw new System.NotImplementedException();
+            return $"{_ezLayout.EZLayers[_currentLayerIndex].Name} {_ezLayout.EZLayers[_currentLayerIndex].Index}";
         }
 
         /// <inheritdoc />
         public async Task LoadLayoutAsync(EZLayout ezLayout)
         {
-            var layoutDefinition = await _layoutService.LoadLayoutDefinitionAsync(LayoutDefinitionPath);
-            var layoutTemplates = await _layoutService.PopulateLayoutTemplatesAsync(layoutDefinition.ToList(), ezLayout);
+            _ezLayout = ezLayout;
 
-            CreateViewModel(layoutTemplates);
+            var layoutDefinition = await _layoutService.LoadLayoutDefinitionAsync(LayoutDefinitionPath);
+            _layoutTemplates = await _layoutService.PopulateLayoutTemplatesAsync(layoutDefinition.ToList(), _ezLayout);
+            _maxLayerIndex = _layoutTemplates.Count() - 1;
+
+            SwitchLayer();
         }
 
         /// <inheritdoc />
         public void SwitchLayer(SwitchDirection direction)
         {
-            throw new System.NotImplementedException();
+            VaryLayer(direction);
         }
 
         /// <inheritdoc />
@@ -51,13 +63,41 @@ namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards
         #endregion
 
         #region Private methods
-        
-        /// <summary>
-        /// Creates the view model to be used alongside the view.
-        /// </summary>
-        /// <param name="layoutTemplates">The <see cref="List{KeyTemplate}"/> to be displayed.</param>
-        protected abstract void CreateViewModel(IEnumerable<IEnumerable<KeyTemplate>> layoutTemplates);
-        
+
+        private void VaryLayer(SwitchDirection direction)
+        {
+            switch (_currentLayerIndex)
+            {
+                case var _ when _maxLayerIndex <= 0:
+                    _currentLayerIndex = 0;
+
+                    break;
+                case var _ when _currentLayerIndex <= 0 && direction == SwitchDirection.Down:
+                    _currentLayerIndex = _maxLayerIndex;
+
+                    break;
+                case var _ when _currentLayerIndex > 0 && direction == SwitchDirection.Down:
+                    _currentLayerIndex--;
+
+                    break;
+                case var _ when _currentLayerIndex >= _maxLayerIndex && direction == SwitchDirection.Up:
+                    _currentLayerIndex = 0;
+
+                    break;
+                case var _ when _currentLayerIndex < _maxLayerIndex && direction == SwitchDirection.Up:
+                    _currentLayerIndex++;
+
+                    break;
+            }
+
+            SwitchLayer();
+        }
+
+        private void SwitchLayer()
+        {
+            ViewModel.CurrentLayoutTemplate = _layoutTemplates[_currentLayerIndex];
+        }
+
         #endregion
     }
 }
