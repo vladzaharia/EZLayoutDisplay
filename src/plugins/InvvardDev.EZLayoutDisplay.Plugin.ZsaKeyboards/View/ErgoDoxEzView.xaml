@@ -12,12 +12,12 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary
-                    Source="/InvvardDev.EZLayoutDisplay.Plugin.CommonZsa;component/Skins/ZsaCommonSkin.xaml" />
+                    Source="/Skins/ZsaCommonSkin.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <ItemsControl ItemsSource="{Binding}" Focusable="False"
+    <ItemsControl ItemsSource="{Binding CurrentLayoutTemplate}" Focusable="False"
                   ItemTemplateSelector="{StaticResource KeyContentTemplateSelector}">
         <ItemsControl.ItemsPanel>
             <ItemsPanelTemplate>
