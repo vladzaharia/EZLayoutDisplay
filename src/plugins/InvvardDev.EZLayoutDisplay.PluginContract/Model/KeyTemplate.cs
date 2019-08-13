@@ -116,13 +116,6 @@ namespace InvvardDev.EZLayoutDisplay.PluginContract.Model
             IsGlowing = isGlowing;
         }
 
-        public object Clone()
-        {
-            var clone = MemberwiseClone();
-
-            return clone;
-        }
-
         #endregion
 
         #region ICloneable implementation
