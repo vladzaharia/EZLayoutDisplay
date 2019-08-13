@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Linq;
+﻿using System.Linq;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
@@ -9,6 +8,7 @@ using InvvardDev.EZLayoutDisplay.Desktop.Model.Messenger;
 using InvvardDev.EZLayoutDisplay.Desktop.Service.Interface;
 using InvvardDev.EZLayoutDisplay.Desktop.View;
 using InvvardDev.EZLayoutDisplay.PluginContract;
+using InvvardDev.EZLayoutDisplay.PluginContract.Enum;
 using InvvardDev.EZLayoutDisplay.PluginContract.Model;
 using NLog;
 
@@ -31,9 +31,6 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
         private ICommand _scrollLayerCommand;
 
         private object _keyboardView;
-
-        private int _currentLayerIndex;
-        private EZLayout _ezLayout;
 
         private bool _isWindowPinned;
 
@@ -143,15 +140,6 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
         }
 
         /// <summary>
-        /// Gets or sets the current layer index.
-        /// </summary>
-        public int CurrentLayerIndex
-        {
-            get => _currentLayerIndex;
-            private set => Set(ref _currentLayerIndex, value);
-        }
-
-        /// <summary>
         /// Gets or sets the pinned status.
         /// </summary>
         public bool IsWindowPinned
@@ -192,7 +180,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
         /// </summary>
         public ICommand NextLayerCommand =>
             _nextLayerCommand
-            ?? (_nextLayerCommand = new RelayCommand(NextLayer, NextLayerCanExecute));
+            ?? (_nextLayerCommand = new RelayCommand(NextLayer));
 
         /// <summary>
         /// Next layer command.
@@ -219,6 +207,55 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
             LoadCompleteLayout();
         }
 
+        #region Delegates
+
+        private void LoadCompleteLayout(UpdatedLayoutMessage obj)
+        {
+            Logger.TraceMethod("Intercept {0} message");
+            LoadCompleteLayout();
+        }
+
+        private void LostFocus()
+        {
+            Logger.TraceRelayCommand();
+            _windowService.CloseWindow<DisplayLayoutWindow>();
+        }
+
+        private void NextLayer()
+        {
+            Logger.TraceRelayCommand();
+
+            SwitchLayer(SwitchDirection.Up);
+        }
+
+        private void ScrollLayer(MouseWheelEventArgs e)
+        {
+            Logger.TraceRelayCommand();
+
+            SwitchDirection direction = SwitchDirection.Stay;
+
+            if (e.Delta < 0)
+            {
+                direction = SwitchDirection.Up;
+            }
+
+            if (e.Delta > 0)
+            {
+                direction = SwitchDirection.Down;
+            }
+
+            SwitchLayer(direction);
+        }
+
+        private bool LostFocusCanExecute()
+        {
+            var canExecute = !IsWindowPinned;
+
+            return canExecute;
+        }
+
+        #endregion
+
         #region Private methods
 
         private void SetLabelUi()
@@ -242,7 +279,6 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
         private async void LoadCompleteLayout()
         {
             Logger.TraceMethod();
-            CurrentLayerIndex = 0;
 
             if (IsInDesignModeStatic)
             {
@@ -251,128 +287,43 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
                 return;
             }
 
-            _ezLayout = _settingsService.EZLayout;
-            Logger.Debug("EZLayout = {@value0}", _ezLayout);
+            var ezLayout = _settingsService.EZLayout;
+            Logger.Debug("EZLayout = {@value0}", ezLayout);
 
-            if (_ezLayout?.EZLayers == null
-                || !_ezLayout.EZLayers.Any()
-                || !_ezLayout.EZLayers.SelectMany(l => l.EZKeys).Any())
+            if (IsLayoutAvailable(ezLayout)) return;
+
+            NoLayoutAvailable = false;
+            await _keyboard.LoadLayoutAsync(ezLayout);
+
+            KeyboardView = _keyboard.GetKeyboardView();
+        }
+
+        private bool IsLayoutAvailable(EZLayout ezLayout)
+        {
+            var isAvailable = false;
+
+            if (ezLayout?.EZLayers == null
+                || !ezLayout.EZLayers.Any()
+                || !ezLayout.EZLayers.SelectMany(l => l.EZKeys).Any())
             {
                 Logger.Info("No layout available");
                 NoLayoutAvailable = true;
 
-                return;
+                isAvailable = true;
             }
 
-            NoLayoutAvailable = false;
-            await _keyboard.LoadLayoutAsync(_ezLayout);
-
-            var test = _keyboard.GetKeyboardView();
+            return isAvailable;
         }
 
         private void LoadDesignTimeModel() { }
 
-        private void SwitchLayer()
+        private void SwitchLayer(SwitchDirection direction)
         {
             Logger.TraceMethod();
-            Logger.Info("Switch to Layer {0} on {1}", CurrentLayerIndex, _layoutTemplates.Count - 1);
 
-            if (_layoutTemplates.Any())
-            {
-                CurrentLayoutTemplate = new ObservableCollection<KeyTemplate>(_layoutTemplates[CurrentLayerIndex]);
-                ChangeLayerName();
-            }
+            _keyboard.SwitchLayer(SwitchDirection.Up);
+            CurrentLayerName = _keyboard.GetCurrentLayerName();
         }
-
-        private void ChangeLayerName()
-        {
-            CurrentLayerName = $"{_ezLayout.EZLayers[CurrentLayerIndex].Name} {_ezLayout.EZLayers[CurrentLayerIndex].Index}";
-        }
-
-        #region Delegates
-
-        private void LoadCompleteLayout(UpdatedLayoutMessage obj)
-        {
-            Logger.TraceMethod("Intercept {0} message");
-            LoadCompleteLayout();
-        }
-
-        private void LostFocus()
-        {
-            Logger.TraceRelayCommand();
-            _windowService.CloseWindow<DisplayLayoutWindow>();
-        }
-
-        private void NextLayer()
-        {
-            Logger.TraceRelayCommand();
-
-            VaryLayer(1);
-        }
-
-        private void ScrollLayer(MouseWheelEventArgs e)
-        {
-            Logger.TraceRelayCommand();
-
-            if (e.Delta < 0)
-            {
-                VaryLayer(1);
-            }
-
-            if (e.Delta > 0)
-            {
-                VaryLayer(-1);
-            }
-        }
-
-        private void VaryLayer(int variation)
-        {
-            Logger.TraceRelayCommand();
-
-            var maxLayerIndex = _ezLayout.EZLayers.Count - 1;
-
-            switch (CurrentLayerIndex)
-            {
-                case var _ when maxLayerIndex <= 0:
-                    CurrentLayerIndex = 0;
-
-                    break;
-                case var _ when CurrentLayerIndex <= 0 && variation < 0:
-                    CurrentLayerIndex = maxLayerIndex;
-
-                    break;
-                case var _ when CurrentLayerIndex > 0 && variation < 0:
-                    CurrentLayerIndex--;
-
-                    break;
-                case var _ when CurrentLayerIndex >= maxLayerIndex && variation > 0:
-                    CurrentLayerIndex = 0;
-
-                    break;
-                case var _ when CurrentLayerIndex < maxLayerIndex && variation > 0:
-                    CurrentLayerIndex++;
-
-                    break;
-            }
-
-            SwitchLayer();
-        }
-
-        private bool NextLayerCanExecute()
-        {
-            var canExecute = _layoutTemplates.Any();
-
-            return canExecute;
-        }
-
-        private bool LostFocusCanExecute()
-        {
-            var canExecute = !IsWindowPinned;
-
-            return canExecute;
-        }
-
-        #endregion
 
         #endregion
     }
