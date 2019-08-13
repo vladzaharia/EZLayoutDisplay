@@ -3,12 +3,11 @@ using System.ComponentModel.Composition;
 using InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.View;
 using InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.ViewModel;
 using InvvardDev.EZLayoutDisplay.PluginContract;
-using InvvardDev.EZLayoutDisplay.PluginContract.Model;
 
 namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards
 {
-    [Export(typeof(IKeyboardContract))]
-    public class ErgoDoxEzKeyboard : ZsaKeyboardBase
+    [ Export(typeof(IKeyboardContract)) ]
+    public sealed class ErgoDoxEzKeyboard : ZsaKeyboardBase
     {
         public ErgoDoxEzKeyboard()
         {
@@ -16,19 +15,19 @@ namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards
             SupportedKeyboardModel = new List<string> {
                                                           "ergodox ez"
                                                       };
-        }
-
-        /// <inheritdoc />
-        protected override void CreateViewModel(IEnumerable<IEnumerable<KeyTemplate>> layoutTemplates)
-        {
-            _viewModel = new ErgoDoxEzViewModel(layoutTemplates);
+            ViewModel = new ErgoDoxEzViewModel();
         }
 
         public override object GetKeyboardView()
         {
-            return new ErgoDoxEzView {
-                                         DataContext = _viewModel
-                                     };
+            if (KeyboardView == null)
+            {
+                KeyboardView = new ErgoDoxEzView {
+                                                     DataContext = ViewModel
+                                                 };
+            }
+
+            return KeyboardView;
         }
     }
 }
