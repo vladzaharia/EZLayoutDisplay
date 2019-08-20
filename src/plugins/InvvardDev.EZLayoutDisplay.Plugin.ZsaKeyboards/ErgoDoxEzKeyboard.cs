@@ -11,9 +11,10 @@ namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards
     {
         public ErgoDoxEzKeyboard()
         {
-            LayoutDefinitionPath = "/data/ergoDoxEzLayoutDefinition.json";
+            LayoutDefinitionPath = "\\data\\ergoDoxEzLayoutDefinition.json";
             SupportedKeyboardModel = new List<string> {
-                                                          "ergodox ez"
+                                                          "ergodox ez",
+                                                          "ergodox"
                                                       };
             ViewModel = new ErgoDoxEzViewModel();
         }
