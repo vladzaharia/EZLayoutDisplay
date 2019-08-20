@@ -4,9 +4,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.28922.388
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvvardDev.EZLayoutDisplay.Desktop", "InvvardDev.EZLayoutDisplay.Desktop\InvvardDev.EZLayoutDisplay.Desktop.csproj", "{F12B94C1-40E4-429C-8EDE-5C410BE81FAF}"
-	ProjectSection(ProjectDependencies) = postProject
-		{34392DD3-7720-4FCA-8E41-4135DD2F4E06} = {34392DD3-7720-4FCA-8E41-4135DD2F4E06}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvvardDev.EZLayoutDisplay.Tests", "InvvardDev.EZLayoutDisplay.Tests\InvvardDev.EZLayoutDisplay.Tests.csproj", "{82704A9A-B010-4A00-8CF4-00D33F4E23DF}"
 EndProject
