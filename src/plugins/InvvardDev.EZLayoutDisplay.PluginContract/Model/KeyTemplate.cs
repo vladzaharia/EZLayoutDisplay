@@ -89,6 +89,7 @@ namespace InvvardDev.EZLayoutDisplay.PluginContract.Model
 
         #region Constructors
 
+        [JsonConstructor]
         public KeyTemplate(int keyUnitSize = 54)
         {
             _keyUnitSize = keyUnitSize;
