@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using InvvardDev.EZLayoutDisplay.PluginContract.Model;
@@ -16,6 +17,14 @@ namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.Service
         /// <inheritdoc />
         public async Task<IEnumerable<KeyTemplate>> LoadLayoutDefinitionAsync(string filePath)
         {
+            var assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            filePath = $"{assemblyFolder}{filePath}";
+
+            if (!File.Exists(filePath))
+            {
+                return null;
+            }
+
             var fileContent = GetFileContent(filePath);
 
             IEnumerable<KeyTemplate> layoutTemplate = await ReadLayoutDefinition(fileContent);
