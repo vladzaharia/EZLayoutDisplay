@@ -17,7 +17,7 @@ namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.ViewModel
         /// <summary>
         /// Gets or sets the layout template.
         /// </summary>
-        internal ObservableCollection<KeyTemplate> CurrentLayoutTemplate
+        public ObservableCollection<KeyTemplate> CurrentLayoutTemplate
         {
             get => _currentLayoutTemplate;
             set => Set(ref _currentLayoutTemplate, value);
