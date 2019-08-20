@@ -23,7 +23,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
         private readonly IWindowService _windowService;
         private readonly ILayoutService _layoutService;
         private readonly ISettingsService _settingsService;
-        private readonly IKeyboardContract _keyboard;
+        private IKeyboardContract _keyboard;
 
         private ICommand _lostFocusCommand;
         private ICommand _hideWindowCommand;
@@ -191,17 +191,17 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
 
         #endregion
 
-        public DisplayLayoutViewModel(IWindowService windowService, ILayoutService layoutService, ISettingsService settingsService, IKeyboardContract keyboard)
+        public DisplayLayoutViewModel(IWindowService windowService, ILayoutService layoutService, ISettingsService settingsService, IPluginLoader<IKeyboardContract> pluginLoader)
         {
             Logger.TraceConstructor();
 
             _windowService = windowService;
             _layoutService = layoutService;
             _settingsService = settingsService;
-            _keyboard = keyboard;
 
             Messenger.Default.Register<UpdatedLayoutMessage>(this, LoadCompleteLayout);
 
+            SetKeyboardPlugin(pluginLoader);
             SetLabelUi();
             SetWindowParameters();
             LoadCompleteLayout();
@@ -275,6 +275,16 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
         {
             IsWindowPinned = false;
         }
+
+        private void SetKeyboardPlugin(IPluginLoader<IKeyboardContract> pluginLoader)
+        {
+            var keyboard = pluginLoader.Plugins.FirstOrDefault(p => p.SupportedKeyboardModel.Any(k => k == "ergodox ez"));
+
+            if (keyboard != null)
+            {
+                _keyboard = keyboard;
+            }
+        } 
 
         private async void LoadCompleteLayout()
         {
