@@ -3,7 +3,6 @@ using System.Windows.Input;
 using InvvardDev.EZLayoutDisplay.Desktop.Service.Interface;
 using InvvardDev.EZLayoutDisplay.Desktop.View;
 using InvvardDev.EZLayoutDisplay.Desktop.ViewModel;
-using InvvardDev.EZLayoutDisplay.PluginContract;
 using InvvardDev.EZLayoutDisplay.PluginContract.Model;
 using Moq;
 using Xunit;
@@ -33,14 +32,13 @@ namespace InvvardDev.EZLayoutDisplay.Tests.ViewModel
         public void DisplayLayoutViewModel_Constructor()
         {
             //Arrange
-            var mockKeyboard = new Mock<IKeyboardContract>();
             var mockWindowService = new Mock<IWindowService>();
             var mockLayoutService = new Mock<ILayoutService>();
             var mockSettingsService = new Mock<ISettingsService>();
             mockSettingsService.SetupProperty(s => s.EZLayout, CreateLayers(1));
 
             //Act
-            var displayLayoutViewModel = new DisplayLayoutViewModel(mockWindowService.Object, mockLayoutService.Object, mockSettingsService.Object, mockKeyboard.Object);
+            var displayLayoutViewModel = new DisplayLayoutViewModel(mockWindowService.Object, mockLayoutService.Object, mockSettingsService.Object);
 
             //Assert
             Assert.Equal("ErgoDox Layout", displayLayoutViewModel.WindowTitle);
@@ -58,7 +56,6 @@ namespace InvvardDev.EZLayoutDisplay.Tests.ViewModel
         public void LostFocusCommand_Execute()
         {
             //Arrange
-            var mockKeyboard = new Mock<IKeyboardContract>();
             var mockWindowService = new Mock<IWindowService>();
             mockWindowService.Setup(w => w.CloseWindow<DisplayLayoutWindow>()).Verifiable();
             var mockLayoutService = new Mock<ILayoutService>();
@@ -78,7 +75,6 @@ namespace InvvardDev.EZLayoutDisplay.Tests.ViewModel
         public void LostFocusCommand_CanExecute(bool isPinned)
         {
             //Arrange
-            var mockKeyboard = new Mock<IKeyboardContract>();
             var mockWindowService = new Mock<IWindowService>();
             mockWindowService.Setup(w => w.CloseWindow<DisplayLayoutWindow>()).Verifiable();
             var mockLayoutService = new Mock<ILayoutService>();
@@ -104,7 +100,6 @@ namespace InvvardDev.EZLayoutDisplay.Tests.ViewModel
         public void HideWindowCommand_Execute()
         {
             //Arrange
-            var mockKeyboard = new Mock<IKeyboardContract>();
             var mockLayoutService = new Mock<ILayoutService>();
             var mockWindowService = new Mock<IWindowService>();
             mockWindowService.Setup(w => w.CloseWindow<DisplayLayoutWindow>()).Verifiable();
