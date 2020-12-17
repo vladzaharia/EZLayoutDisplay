@@ -9,7 +9,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Design
 {
     public class LayoutService : ILayoutService
     {
-        public async Task<ErgodoxLayout> GetLayoutInfo(string layoutHashId)
+        public async Task<ErgodoxLayout> GetLayoutInfo(string layoutHashId, string layoutRevisionId)
         {
             Debug.WriteLine("Layout retrieved.");
 
@@ -20,7 +20,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Design
         }
 
         /// <inheritdoc />
-        public async Task<ErgodoxLayout> GetErgodoxLayout(string layoutHashId)
+        public async Task<ErgodoxLayout> GetErgodoxLayout(string layoutHashId, string layoutRevisionId)
         {
             Debug.WriteLine("Layout retrieved.");
 
@@ -28,7 +28,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Design
         }
 
         /// <inheritdoc />
-        public EZLayout PrepareEZLayout(ErgodoxLayout ergodoxLayout, string layoutRevisionIds)
+        public EZLayout PrepareEZLayout(ErgodoxLayout ergodoxLayouts)
         {
             Debug.WriteLine("Layout prepared");
 

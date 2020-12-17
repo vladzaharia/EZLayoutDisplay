@@ -19,10 +19,7 @@ namespace InvvardDev.EZLayoutDisplay.Tests.Helper
                    {
                        Title = "",
                        HashId = "",
-                       Revisions = new List<Revision>
-                                   {
-                                       new Revision { HashId = HashId, Layers = new List<ErgodoxLayer> { new ErgodoxLayer() { Color = "", Title = "", Position = 0, Keys = new List<ErgodoxKey>() } } }
-                                   }
+                       Revision = new Revision { HashId = HashId, Layers = new List<ErgodoxLayer> { new ErgodoxLayer() { Color = "", Title = "", Position = 0, Keys = new List<ErgodoxKey>() } } }
                    };
         }
 
@@ -32,13 +29,13 @@ namespace InvvardDev.EZLayoutDisplay.Tests.Helper
         {
             // Arrange
             var revision = new Revision { Layers = new List<ErgodoxLayer>() };
-            ErgodoxLayout ergodoxLayout = new ErgodoxLayout { Title = expectedTitle, HashId = expectedHashId, Revisions = new List<Revision> { new Revision { HashId = HashId } } };
-            ergodoxLayout.Revisions.Add(revision);
+            ErgodoxLayout ergodoxLayout = new ErgodoxLayout { Title = expectedTitle, HashId = expectedHashId, Revision = new Revision { HashId = HashId } };
+            ergodoxLayout.Revision = revision;
             EZLayout ezLayoutResult;
 
             // Act
             var ezLayoutMaker = new EZLayoutMaker();
-            ezLayoutResult = ezLayoutMaker.PrepareEZLayout(ergodoxLayout, HashId);
+            ezLayoutResult = ezLayoutMaker.PrepareEZLayout(ergodoxLayout);
 
             // Assert
             Assert.Equal(expectedTitle, ezLayoutResult.Name);
@@ -53,14 +50,14 @@ namespace InvvardDev.EZLayoutDisplay.Tests.Helper
             var ergodoxLayer = new ErgodoxLayer() { Color = expectedColor, Title = expectedTitle, Position = expectedIndex, Keys = new List<ErgodoxKey>() };
             ErgodoxLayout ergodoxLayout = new ErgodoxLayout
                                           {
-                                              Title = "", HashId = "", Revisions = new List<Revision> { new Revision { HashId = HashId, Layers = new List<ErgodoxLayer> { ergodoxLayer } } }
+                                              Title = "", HashId = "", Revision = new Revision { HashId = HashId, Layers = new List<ErgodoxLayer> { ergodoxLayer } }
                                           };
 
             EZLayout ezLayoutResult;
 
             // Act
             var ezLayoutMaker = new EZLayoutMaker();
-            ezLayoutResult = ezLayoutMaker.PrepareEZLayout(ergodoxLayout, HashId);
+            ezLayoutResult = ezLayoutMaker.PrepareEZLayout(ergodoxLayout);
 
             // Assert
             Assert.Single(ezLayoutResult.EZLayers);
@@ -83,14 +80,14 @@ namespace InvvardDev.EZLayoutDisplay.Tests.Helper
             var ergodoxLayer = new ErgodoxLayer { Color = layerColor, Keys = new List<ErgodoxKey> { new ErgodoxKey { GlowColor = keyColor } } };
             ErgodoxLayout ergodoxLayout = new ErgodoxLayout
                                           {
-                                              Title = "", HashId = "", Revisions = new List<Revision> { new Revision { HashId = HashId, Layers = new List<ErgodoxLayer> { ergodoxLayer } } }
+                                              Title = "", HashId = "", Revision = new Revision { HashId = HashId, Layers = new List<ErgodoxLayer> { ergodoxLayer } }
                                           };
 
             EZLayout ezLayoutResult;
 
             // Act
             var ezLayoutMaker = new EZLayoutMaker();
-            ezLayoutResult = ezLayoutMaker.PrepareEZLayout(ergodoxLayout, HashId);
+            ezLayoutResult = ezLayoutMaker.PrepareEZLayout(ergodoxLayout);
 
             // Assert
             Assert.Equal(expectedColor, ezLayoutResult.EZLayers.First().EZKeys.First().Color);
@@ -102,13 +99,13 @@ namespace InvvardDev.EZLayoutDisplay.Tests.Helper
             // Arrange
             var ergodoxKey = new ErgodoxKey() { GlowColor = "", Code = "KC_UNKNOWN_ADSLKFJ" };
             ErgodoxLayout ergodoxLayout = InitializeDataTree();
-            ergodoxLayout.Revisions.First().Layers.First().Keys.Add(ergodoxKey);
+            ergodoxLayout.Revision.Layers.First().Keys.Add(ergodoxKey);
 
             EZLayout ezLayoutResult;
 
             // Act
             var ezLayoutMaker = new EZLayoutMaker();
-            ezLayoutResult = ezLayoutMaker.PrepareEZLayout(ergodoxLayout, HashId);
+            ezLayoutResult = ezLayoutMaker.PrepareEZLayout(ergodoxLayout);
 
             // Assert
             Assert.Single(ezLayoutResult.EZLayers);
@@ -124,13 +121,13 @@ namespace InvvardDev.EZLayoutDisplay.Tests.Helper
             // Arrange
             var ergodoxKey = new ErgodoxKey() { GlowColor = expectedColor, Code = expectedKeyCode };
             ErgodoxLayout ergodoxLayout = InitializeDataTree();
-            ergodoxLayout.Revisions.First().Layers.First().Keys.Add(ergodoxKey);
+            ergodoxLayout.Revision.Layers.First().Keys.Add(ergodoxKey);
 
             EZLayout ezLayoutResult;
 
             // Act
             var ezLayoutMaker = new EZLayoutMaker();
-            ezLayoutResult = ezLayoutMaker.PrepareEZLayout(ergodoxLayout, HashId);
+            ezLayoutResult = ezLayoutMaker.PrepareEZLayout(ergodoxLayout);
 
             // Assert
             Assert.Single(ezLayoutResult.EZLayers);
@@ -160,13 +157,13 @@ namespace InvvardDev.EZLayoutDisplay.Tests.Helper
             // Arrange
             var ergodoxKey = new ErgodoxKey() { GlowColor = "", Code = keyCode };
             ErgodoxLayout ergodoxLayout = InitializeDataTree();
-            ergodoxLayout.Revisions.First().Layers.First().Keys.Add(ergodoxKey);
+            ergodoxLayout.Revision.Layers.First().Keys.Add(ergodoxKey);
 
             EZLayout ezLayoutResult;
 
             // Act
             var ezLayoutMaker = new EZLayoutMaker();
-            ezLayoutResult = ezLayoutMaker.PrepareEZLayout(ergodoxLayout, HashId);
+            ezLayoutResult = ezLayoutMaker.PrepareEZLayout(ergodoxLayout);
 
             // Assert
             Assert.Single(ezLayoutResult.EZLayers);
@@ -186,13 +183,13 @@ namespace InvvardDev.EZLayoutDisplay.Tests.Helper
             // Arrange
             var ergodoxKey = new ErgodoxKey() { GlowColor = "", Code = keyCode, Command = command, Layer = 1 };
             ErgodoxLayout ergodoxLayout = InitializeDataTree();
-            ergodoxLayout.Revisions.First().Layers.First().Keys.Add(ergodoxKey);
+            ergodoxLayout.Revision.Layers.First().Keys.Add(ergodoxKey);
 
             EZLayout ezLayoutResult;
 
             // Act
             var ezLayoutMaker = new EZLayoutMaker();
-            ezLayoutResult = ezLayoutMaker.PrepareEZLayout(ergodoxLayout, HashId);
+            ezLayoutResult = ezLayoutMaker.PrepareEZLayout(ergodoxLayout);
 
             // Assert
             Assert.Single(ezLayoutResult.EZLayers);
@@ -226,13 +223,13 @@ namespace InvvardDev.EZLayoutDisplay.Tests.Helper
             // Arrange
             var ergodoxKey = new ErgodoxKey() { GlowColor = "", Code = keyCode, Layer = 1 };
             ErgodoxLayout ergodoxLayout = InitializeDataTree();
-            ergodoxLayout.Revisions.First().Layers.First().Keys.Add(ergodoxKey);
+            ergodoxLayout.Revision.Layers.First().Keys.Add(ergodoxKey);
 
             EZLayout ezLayoutResult;
 
             // Act
             var ezLayoutMaker = new EZLayoutMaker();
-            ezLayoutResult = ezLayoutMaker.PrepareEZLayout(ergodoxLayout, HashId);
+            ezLayoutResult = ezLayoutMaker.PrepareEZLayout(ergodoxLayout);
 
             // Assert
             Assert.Single(ezLayoutResult.EZLayers);
@@ -255,13 +252,13 @@ namespace InvvardDev.EZLayoutDisplay.Tests.Helper
             // Arrange
             var ergodoxKey = new ErgodoxKey() { GlowColor = "", Code = keyCode, Command = command, Layer = 1 };
             ErgodoxLayout ergodoxLayout = InitializeDataTree();
-            ergodoxLayout.Revisions.First().Layers.First().Keys.Add(ergodoxKey);
+            ergodoxLayout.Revision.Layers.First().Keys.Add(ergodoxKey);
 
             EZLayout ezLayoutResult;
 
             // Act
             var ezLayoutMaker = new EZLayoutMaker();
-            ezLayoutResult = ezLayoutMaker.PrepareEZLayout(ergodoxLayout, HashId);
+            ezLayoutResult = ezLayoutMaker.PrepareEZLayout(ergodoxLayout);
 
             // Assert
             Assert.Single(ezLayoutResult.EZLayers);
@@ -297,13 +294,13 @@ namespace InvvardDev.EZLayoutDisplay.Tests.Helper
             // Arrange
             var ergodoxKey = new ErgodoxKey() { GlowColor = "", Code = keyCode };
             ErgodoxLayout ergodoxLayout = InitializeDataTree();
-            ergodoxLayout.Revisions.First().Layers.First().Keys.Add(ergodoxKey);
+            ergodoxLayout.Revision.Layers.First().Keys.Add(ergodoxKey);
 
             EZLayout ezLayoutResult;
 
             // Act
             var ezLayoutMaker = new EZLayoutMaker();
-            ezLayoutResult = ezLayoutMaker.PrepareEZLayout(ergodoxLayout, HashId);
+            ezLayoutResult = ezLayoutMaker.PrepareEZLayout(ergodoxLayout);
 
             // Assert
             Assert.Single(ezLayoutResult.EZLayers);
@@ -328,13 +325,13 @@ namespace InvvardDev.EZLayoutDisplay.Tests.Helper
             // Arrange
             var ergodoxKey = new ErgodoxKey() { GlowColor = "", Code = keyCode, Command = command };
             ErgodoxLayout ergodoxLayout = InitializeDataTree();
-            ergodoxLayout.Revisions.First().Layers.First().Keys.Add(ergodoxKey);
+            ergodoxLayout.Revision.Layers.First().Keys.Add(ergodoxKey);
 
             EZLayout ezLayoutResult;
 
             // Act
             var ezLayoutMaker = new EZLayoutMaker();
-            ezLayoutResult = ezLayoutMaker.PrepareEZLayout(ergodoxLayout, HashId);
+            ezLayoutResult = ezLayoutMaker.PrepareEZLayout(ergodoxLayout);
 
             // Assert
             Assert.Single(ezLayoutResult.EZLayers);
@@ -362,13 +359,13 @@ namespace InvvardDev.EZLayoutDisplay.Tests.Helper
             // Arrange
             var ergodoxKey = new ErgodoxKey() { GlowColor = "", Code = keyCode, Command = command };
             ErgodoxLayout ergodoxLayout = InitializeDataTree();
-            ergodoxLayout.Revisions.First().Layers.First().Keys.Add(ergodoxKey);
+            ergodoxLayout.Revision.Layers.First().Keys.Add(ergodoxKey);
 
             EZLayout ezLayoutResult;
 
             // Act
             var ezLayoutMaker = new EZLayoutMaker();
-            ezLayoutResult = ezLayoutMaker.PrepareEZLayout(ergodoxLayout, HashId);
+            ezLayoutResult = ezLayoutMaker.PrepareEZLayout(ergodoxLayout);
 
             // Assert
             Assert.Single(ezLayoutResult.EZLayers);
@@ -431,13 +428,13 @@ namespace InvvardDev.EZLayoutDisplay.Tests.Helper
                             };
             var ergodoxKey = new ErgodoxKey() { GlowColor = "", Code = "KC_A", Modifiers = modifiers };
             ErgodoxLayout ergodoxLayout = InitializeDataTree();
-            ergodoxLayout.Revisions.First().Layers.First().Keys.Add(ergodoxKey);
+            ergodoxLayout.Revision.Layers.First().Keys.Add(ergodoxKey);
 
             EZLayout ezLayoutResult;
 
             // Act
             var ezLayoutMaker = new EZLayoutMaker();
-            ezLayoutResult = ezLayoutMaker.PrepareEZLayout(ergodoxLayout, HashId);
+            ezLayoutResult = ezLayoutMaker.PrepareEZLayout(ergodoxLayout);
 
             // Assert
             Assert.Single(ezLayoutResult.EZLayers);

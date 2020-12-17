@@ -19,19 +19,17 @@ namespace InvvardDev.EZLayoutDisplay.Tests.Service
             return new ErgodoxLayout {
                                          Title = "",
                                          HashId = "",
-                                         Revisions = new List<Revision> {
-                                                                            new Revision {
-                                                                                             HashId = "hashId-1",
-                                                                                             Layers = new List<ErgodoxLayer> {
-                                                                                                                                 new ErgodoxLayer() {
-                                                                                                                                                        Color = "",
-                                                                                                                                                        Title = "",
-                                                                                                                                                        Position = 0,
-                                                                                                                                                        Keys = new List<ErgodoxKey>()
-                                                                                                                                                    }
-                                                                                                                             }
-                                                                                         }
-                                                                        }
+                                         Revision = new Revision { 
+                                                                        HashId = "hashId-1",
+                                                                        Layers = new List<ErgodoxLayer> {
+                                                                                                            new ErgodoxLayer() {
+                                                                                                                                Color = "",
+                                                                                                                                Title = "",
+                                                                                                                                Position = 0,
+                                                                                                                                Keys = new List<ErgodoxKey>()
+                                                                                                                            }
+                                                                                                        }
+                                                                   }
                                      };
         }
 
@@ -49,11 +47,11 @@ namespace InvvardDev.EZLayoutDisplay.Tests.Service
 
             if (exist)
             {
-                response = await layoutService.GetLayoutInfo(layoutHashId);
+                response = await layoutService.GetLayoutInfo(layoutHashId, "latest");
             }
             else
             {
-                await Assert.ThrowsAsync<ArgumentException>(() => layoutService.GetLayoutInfo(layoutHashId));
+                await Assert.ThrowsAsync<ArgumentException>(() => layoutService.GetLayoutInfo(layoutHashId, "latest"));
             }
 
             // Assert
@@ -61,7 +59,7 @@ namespace InvvardDev.EZLayoutDisplay.Tests.Service
             {
                 Assert.NotNull(response);
                 Assert.IsType<ErgodoxLayout>(response);
-                Assert.Single(response.Revisions);
+                Assert.NotNull(response.Revision);
                 Assert.False(string.IsNullOrWhiteSpace(response.HashId));
                 Assert.False(string.IsNullOrWhiteSpace(response.Title));
             }
@@ -81,11 +79,11 @@ namespace InvvardDev.EZLayoutDisplay.Tests.Service
 
             if (exist)
             {
-                response = await layoutService.GetErgodoxLayout(layoutHashId);
+                response = await layoutService.GetErgodoxLayout(layoutHashId, "latest");
             }
             else
             {
-                await Assert.ThrowsAsync<ArgumentException>(() => layoutService.GetErgodoxLayout(layoutHashId));
+                await Assert.ThrowsAsync<ArgumentException>(() => layoutService.GetErgodoxLayout(layoutHashId, "latest"));
             }
 
             // Assert
@@ -93,7 +91,7 @@ namespace InvvardDev.EZLayoutDisplay.Tests.Service
             {
                 Assert.NotNull(response);
                 Assert.IsType<ErgodoxLayout>(response);
-                Assert.Single(response.Revisions);
+                Assert.NotNull(response.Revision);
                 Assert.False(string.IsNullOrWhiteSpace(response.HashId));
                 Assert.False(string.IsNullOrWhiteSpace(response.Title));
             }
@@ -105,7 +103,7 @@ namespace InvvardDev.EZLayoutDisplay.Tests.Service
             // Arrange
             ILayoutService layoutService = new LayoutService();
             ErgodoxLayout ergodoxLayout = InitializeDataTree();
-            var keys = ergodoxLayout.Revisions.First().Layers.First().Keys;
+            var keys = ergodoxLayout.Revision.Layers.First().Keys;
             keys.Add(new ErgodoxKey() {
                                           GlowColor = "",
                                           Code = "KC_A"
@@ -121,7 +119,7 @@ namespace InvvardDev.EZLayoutDisplay.Tests.Service
             EZLayout ezLayoutResult;
 
             // Act
-            ezLayoutResult = layoutService.PrepareEZLayout(ergodoxLayout, ergodoxLayout.Revisions.First().HashId);
+            ezLayoutResult = layoutService.PrepareEZLayout(ergodoxLayout);
 
             // Assert
             Assert.Single(ezLayoutResult.EZLayers);
@@ -142,7 +140,7 @@ namespace InvvardDev.EZLayoutDisplay.Tests.Service
             // Arrange
             ILayoutService layoutService = new LayoutService();
             ErgodoxLayout ergodoxLayout = InitializeDataTree();
-            var layer0Keys = ergodoxLayout.Revisions.First().Layers.First().Keys;
+            var layer0Keys = ergodoxLayout.Revision.Layers.First().Keys;
             layer0Keys.Add(new ErgodoxKey() {
                                                 GlowColor = "",
                                                 Code = "KC_A"
@@ -156,14 +154,14 @@ namespace InvvardDev.EZLayoutDisplay.Tests.Service
                                                 Code = "KC_TRANSPARENT"
                                             });
 
-            ergodoxLayout.Revisions.First()
+            ergodoxLayout.Revision
                          .Layers.Add(new ErgodoxLayer {
                                                           Color = "color",
                                                           Title = "Layer 2",
                                                           Position = 1,
                                                           Keys = new List<ErgodoxKey>()
                                                       });
-            var layer1Keys = ergodoxLayout.Revisions.First().Layers[1].Keys;
+            var layer1Keys = ergodoxLayout.Revision.Layers[1].Keys;
             layer1Keys.Add(new ErgodoxKey() {
                                                 GlowColor = "",
                                                 Code = "KC_F1"
@@ -175,7 +173,7 @@ namespace InvvardDev.EZLayoutDisplay.Tests.Service
             EZLayout ezLayoutResult;
 
             // Act
-            ezLayoutResult = layoutService.PrepareEZLayout(ergodoxLayout, ergodoxLayout.Revisions.First().HashId);
+            ezLayoutResult = layoutService.PrepareEZLayout(ergodoxLayout);
 
             // Assert
             Assert.Equal(2, ezLayoutResult.EZLayers.Count);
@@ -204,7 +202,7 @@ namespace InvvardDev.EZLayoutDisplay.Tests.Service
             ILayoutService layoutService = new LayoutService();
 
             // Act
-            await Assert.ThrowsAsync<ArgumentNullException>(() => layoutService.GetErgodoxLayout(""));
+            await Assert.ThrowsAsync<ArgumentNullException>(() => layoutService.GetErgodoxLayout("", ""));
         }
     }
 }
