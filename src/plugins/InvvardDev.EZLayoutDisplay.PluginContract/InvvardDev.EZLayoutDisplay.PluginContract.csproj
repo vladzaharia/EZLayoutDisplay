@@ -8,4 +8,8 @@
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy /Y &quot;$(TargetPath)&quot; &quot;$(SolutionDir)InvvardDev.EZLayoutDisplay.Desktop\bin\Debug\plugins\$(TargetFileName)&quot;" />
+  </Target>
+
 </Project>
