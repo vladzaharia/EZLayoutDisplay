@@ -1,0 +1,133 @@
+﻿using System;
+using Newtonsoft.Json;
+using System.ComponentModel;
+
+namespace InvvardDev.EZLayoutDisplay.PluginContract.Model
+{
+    public class KeyTemplate : ICloneable
+    {
+        private readonly int _keyUnitSize;
+
+        /// <summary>
+        /// Gets or sets the key X position.
+        /// </summary>
+        [ JsonProperty("x") ]
+        public double BaseRelativeLeft { get; set; }
+
+        /// <summary>
+        /// Gets or sets the key Y position.
+        /// </summary>
+        [ JsonProperty("y") ]
+        public double BaseRelativeTop { get; set; }
+
+        /// <summary>
+        /// Gets or sets the key width.
+        /// </summary>
+        [ JsonProperty("width", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate) ]
+        [ DefaultValue(1) ]
+        public double BaseRelativeWidth { get; set; }
+
+        /// <summary>
+        /// Gets or sets the key height.
+        /// </summary>
+        [ JsonProperty("height", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate) ]
+        [ DefaultValue(1) ]
+        public double BaseRelativeHeight { get; set; }
+
+        /// <summary>
+        /// Gets or sets the key vertical offset.
+        /// </summary>
+        [ JsonProperty("voffset", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate) ]
+        [ DefaultValue(0) ]
+        public double VerticalOffset { get; set; }
+
+        /// <summary>
+        /// Gets or sets the key horizontal offset.
+        /// </summary>
+        [ JsonProperty("hoffset", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate) ]
+        [ DefaultValue(0) ]
+        public double HorizontalOffset { get; set; }
+
+        /// <summary>
+        /// Gets or sets the key rotation angle.
+        /// </summary>
+        [ JsonProperty("rotate", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate) ]
+        [ DefaultValue(0) ]
+        public int RotationAngle { get; set; }
+
+        /// <summary>
+        /// Gets or sets the key rotation origin.
+        /// </summary>
+        [ JsonProperty("origin", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate) ]
+        [ DefaultValue("0,0") ]
+        public string RotationOrigin { get; set; }
+
+        /// <summary>
+        /// Gets or sets the key Glowing indicator.
+        /// </summary>
+        [ JsonProperty("glow", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate) ]
+        [ DefaultValue(false) ]
+        public bool IsGlowing { get; set; }
+
+        // ReSharper disable UnusedMember.Global : Used in XAML
+        // ReSharper disable MemberCanBePrivate.Global : Used in XAML
+        public double BaseKeyX => HorizontalOffset * _keyUnitSize + BaseRelativeLeft * _keyUnitSize;
+        public double BaseKeyY => VerticalOffset * _keyUnitSize + BaseRelativeTop * _keyUnitSize;
+        public double TopKeyX => BaseKeyX + 3;
+        public double TopKeyY => BaseKeyY + 3;
+
+        public double BaseKeyWidth => BaseRelativeWidth * _keyUnitSize;
+        public double BaseKeyHeight => BaseRelativeHeight * _keyUnitSize;
+        public double TopKeyWidth => BaseKeyWidth - 6;
+
+        public double TopKeyHeight => BaseKeyHeight - 11;
+
+        // ReSharper restore MemberCanBePrivate.Global
+        // ReSharper restore UnusedMember.Global
+
+        public EZKey EZKey { get; set; }
+
+        #region Constructors
+
+        [JsonConstructor]
+        public KeyTemplate(int keyUnitSize = 54)
+        {
+            _keyUnitSize = keyUnitSize;
+        }
+
+        public KeyTemplate(double x,
+                           double y,
+                           double width          = 1,
+                           double height         = 1,
+                           double vOffset        = 0,
+                           double hOffset        = 0,
+                           int    rotationAngle  = 0,
+                           string rotationOrigin = "0,0",
+                           bool   isGlowing      = false,
+                           int    keyUnitSize    = 54) : this(keyUnitSize)
+        {
+            BaseRelativeLeft = x;
+            BaseRelativeTop = y;
+            BaseRelativeWidth = width;
+            BaseRelativeHeight = height;
+            VerticalOffset = vOffset;
+            HorizontalOffset = hOffset;
+            RotationAngle = rotationAngle;
+            RotationOrigin = rotationOrigin;
+            IsGlowing = isGlowing;
+        }
+
+        #endregion
+
+        #region ICloneable implementation
+
+        public object Clone()
+        {
+            var clone = MemberwiseClone();
+
+            return clone;
+        }
+
+        #endregion
+    }
+}
