@@ -3,7 +3,6 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using InvvardDev.EZLayoutDisplay.Desktop.Service.Implementation;
 using InvvardDev.EZLayoutDisplay.Desktop.Service.Interface;
-using InvvardDev.EZLayoutDisplay.Keyboards.Common;
 using NLog;
 
 namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
@@ -23,7 +22,6 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
 
             if (ViewModelBase.IsInDesignModeStatic)
             {
-                SimpleIoc.Default.Register<IPluginLoader<IKeyboardContract>, Service.Design.PluginLoaderService<IKeyboardContract>>();
                 SimpleIoc.Default.Register<IWindowService, Service.Design.WindowService>();
                 SimpleIoc.Default.Register<IKeyboardHookService, Service.Design.KeyboardHookService>();
                 SimpleIoc.Default.Register<ISettingsService, Service.Design.SettingsService>();
@@ -33,7 +31,6 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
             }
             else
             {
-                SimpleIoc.Default.Register<IPluginLoader<IKeyboardContract>>(() => new PluginLoaderService<IKeyboardContract>("./plugins"));
                 SimpleIoc.Default.Register<IWindowService, WindowService>();
                 SimpleIoc.Default.Register<ISettingsService>(() => new SettingsService(Properties.Settings.Default));
                 SimpleIoc.Default.Register<IKeyboardHookService, KeyboardHookService>(true);

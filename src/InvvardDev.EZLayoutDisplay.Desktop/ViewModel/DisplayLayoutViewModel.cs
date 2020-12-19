@@ -10,20 +10,21 @@ using InvvardDev.EZLayoutDisplay.Desktop.View;
 using InvvardDev.EZLayoutDisplay.Keyboards.Common;
 using InvvardDev.EZLayoutDisplay.Keyboards.Common.Enum;
 using InvvardDev.EZLayoutDisplay.Keyboards.Common.Model;
+using InvvardDev.EZLayoutDisplay.Keyboards.Zsa;
 using NLog;
 
 namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
 {
     public class DisplayLayoutViewModel : ViewModelBase
     {
-        #region Fields
+#region Fields
 
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
-        private readonly IWindowService _windowService;
-        private readonly ILayoutService _layoutService;
-        private readonly ISettingsService _settingsService;
-        private IKeyboardContract _keyboard;
+        private readonly IWindowService    _windowService;
+        private readonly ILayoutService    _layoutService;
+        private readonly ISettingsService  _settingsService;
+        private          IKeyboardContract _keyboard;
 
         private ICommand _lostFocusCommand;
         private ICommand _hideWindowCommand;
@@ -43,11 +44,11 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
         private string _controlHintEscapeLabel;
         private string _toggleBtnPinWindowContent;
         private string _toggleBtnPinWindowTooltip;
-        private bool _noLayoutAvailable;
+        private bool   _noLayoutAvailable;
 
-        #endregion
+#endregion
 
-        #region Properties
+#region Properties
 
         /// <summary>
         /// Gets or sets the window title.
@@ -157,9 +158,9 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
             set => Set(ref _keyboardView, value);
         }
 
-        #endregion
+#endregion
 
-        #region Relay commands
+#region Relay commands
 
         /// <summary>
         /// Lost focus command.
@@ -189,7 +190,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
             _scrollLayerCommand
             ?? (_scrollLayerCommand = new RelayCommand<MouseWheelEventArgs>(ScrollLayer));
 
-        #endregion
+#endregion
 
         public DisplayLayoutViewModel(IWindowService windowService, ILayoutService layoutService, ISettingsService settingsService)
         {
@@ -201,13 +202,13 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
 
             Messenger.Default.Register<UpdatedLayoutMessage>(this, LoadCompleteLayout);
 
-            SetKeyboardPlugin(pluginLoader);
+            SetCurrentKeyboard();
             SetLabelUi();
             SetWindowParameters();
             LoadCompleteLayout();
         }
 
-        #region Delegates
+#region Delegates
 
         private void LoadCompleteLayout(UpdatedLayoutMessage obj)
         {
@@ -234,15 +235,9 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
 
             SwitchDirection direction = SwitchDirection.Stay;
 
-            if (e.Delta < 0)
-            {
-                direction = SwitchDirection.Up;
-            }
+            if (e.Delta < 0) { direction = SwitchDirection.Up; }
 
-            if (e.Delta > 0)
-            {
-                direction = SwitchDirection.Down;
-            }
+            if (e.Delta > 0) { direction = SwitchDirection.Down; }
 
             SwitchLayer(direction);
         }
@@ -254,9 +249,9 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
             return canExecute;
         }
 
-        #endregion
+#endregion
 
-        #region Private methods
+#region Private methods
 
         private void SetLabelUi()
         {
@@ -276,15 +271,10 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
             IsWindowPinned = false;
         }
 
-        private void SetKeyboardPlugin(IPluginLoader<IKeyboardContract> pluginLoader)
+        private void SetCurrentKeyboard()
         {
-            var keyboard = pluginLoader.Plugins.FirstOrDefault(p => p.SupportedKeyboardModel.Any(k => k == "ergodox ez"));
-
-            if (keyboard != null)
-            {
-                _keyboard = keyboard;
-            }
-        } 
+            _keyboard = new ErgoDoxEzKeyboard();
+        }
 
         private async void LoadCompleteLayout()
         {
@@ -335,6 +325,6 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
             CurrentLayerName = _keyboard.GetCurrentLayerName();
         }
 
-        #endregion
+#endregion
     }
 }

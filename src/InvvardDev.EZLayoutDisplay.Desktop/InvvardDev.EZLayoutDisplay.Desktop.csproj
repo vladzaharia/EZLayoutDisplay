@@ -283,6 +283,10 @@
       <Project>{8B9ED53F-1A7E-44B4-A3BA-3D997B255E5B}</Project>
       <Name>InvvardDev.EZLayoutDisplay.Keyboards.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\InvvardDev.EZLayoutDisplay.Keyboards.Zsa\InvvardDev.EZLayoutDisplay.Keyboards.Zsa.csproj">
+      <Project>{34392DD3-7720-4FCA-8E41-4135DD2F4E06}</Project>
+      <Name>InvvardDev.EZLayoutDisplay.Keyboards.Zsa</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
