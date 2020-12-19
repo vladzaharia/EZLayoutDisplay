@@ -7,8 +7,8 @@
     <ProjectGuid>{34392DD3-7720-4FCA-8E41-4135DD2F4E06}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards</RootNamespace>
-    <AssemblyName>InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards</AssemblyName>
+    <RootNamespace>InvvardDev.EZLayoutDisplay.Keyboards.Zsa</RootNamespace>
+    <AssemblyName>InvvardDev.EZLayoutDisplay.Keyboards.Zsa</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

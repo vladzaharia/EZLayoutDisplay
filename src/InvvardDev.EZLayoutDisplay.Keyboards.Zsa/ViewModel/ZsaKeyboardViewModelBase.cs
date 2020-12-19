@@ -2,7 +2,7 @@
 using GalaSoft.MvvmLight;
 using InvvardDev.EZLayoutDisplay.Keyboards.Common.Model;
 
-namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.ViewModel
+namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa.ViewModel
 {
     public class ZsaKeyboardViewModelBase : ViewModelBase
     {

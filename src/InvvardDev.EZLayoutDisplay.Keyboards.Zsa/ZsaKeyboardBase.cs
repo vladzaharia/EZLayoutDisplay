@@ -6,10 +6,10 @@ using System.Windows.Controls;
 using InvvardDev.EZLayoutDisplay.Keyboards.Common;
 using InvvardDev.EZLayoutDisplay.Keyboards.Common.Enum;
 using InvvardDev.EZLayoutDisplay.Keyboards.Common.Model;
-using InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.Service;
-using InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.ViewModel;
+using InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Service;
+using InvvardDev.EZLayoutDisplay.Keyboards.Zsa.ViewModel;
 
-namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards
+namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa
 {
     public abstract class ZsaKeyboardBase : IKeyboardContract
     {

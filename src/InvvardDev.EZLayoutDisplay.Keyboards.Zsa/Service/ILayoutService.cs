@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using InvvardDev.EZLayoutDisplay.Keyboards.Common.Model;
 
-namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.Service
+namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Service
 {
     public interface ILayoutService
     {

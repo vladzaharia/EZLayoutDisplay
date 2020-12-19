@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using InvvardDev.EZLayoutDisplay.Keyboards.Common.Model;
 using Newtonsoft.Json;
 
-namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.Service
+namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Service
 {
     public class LayoutService : ILayoutService
     {

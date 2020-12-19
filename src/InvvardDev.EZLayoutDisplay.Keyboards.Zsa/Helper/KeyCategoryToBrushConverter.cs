@@ -5,7 +5,7 @@ using System.Windows.Data;
 using System.Windows.Media;
 using InvvardDev.EZLayoutDisplay.Keyboards.Common.Enum;
 
-namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.Helper
+namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Helper
 {
     [ValueConversion(typeof(SolidColorBrush), typeof(KeyCategory))]
     public class KeyCategoryToBrushConverter : IValueConverter

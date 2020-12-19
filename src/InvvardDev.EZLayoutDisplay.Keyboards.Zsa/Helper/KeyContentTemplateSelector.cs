@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using InvvardDev.EZLayoutDisplay.Keyboards.Common.Enum;
 using InvvardDev.EZLayoutDisplay.Keyboards.Common.Model;
 
-namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.Helper
+namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Helper
 {
     public class KeyContentTemplateSelector : DataTemplateSelector
     {
