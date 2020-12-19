@@ -278,14 +278,14 @@
     <Resource Include="Skins\Images\reddit-logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\InvvardDev.EZLayoutDisplay.Keyboards.Common\InvvardDev.EZLayoutDisplay.Keyboards.Common.csproj">
-      <Project>{8B9ED53F-1A7E-44B4-A3BA-3D997B255E5B}</Project>
-      <Name>InvvardDev.EZLayoutDisplay.PluginContract</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.NetAnalyzers.5.0.1\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.NetAnalyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.NetAnalyzers.5.0.1\analyzers\dotnet\cs\Microsoft.CodeAnalysis.NetAnalyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InvvardDev.EZLayoutDisplay.Keyboards.Common\InvvardDev.EZLayoutDisplay.Keyboards.Common.csproj">
+      <Project>{8B9ED53F-1A7E-44B4-A3BA-3D997B255E5B}</Project>
+      <Name>InvvardDev.EZLayoutDisplay.Keyboards.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using InvvardDev.EZLayoutDisplay.Desktop.Model;
-using InvvardDev.EZLayoutDisplay.PluginContract.Enum;
+using InvvardDev.EZLayoutDisplay.Keyboards.Common.Enum;
 using Newtonsoft.Json;
 
 namespace InvvardDev.EZLayoutDisplay.Console

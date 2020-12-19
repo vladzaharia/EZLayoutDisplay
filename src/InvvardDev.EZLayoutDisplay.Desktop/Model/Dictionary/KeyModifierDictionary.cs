@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using InvvardDev.EZLayoutDisplay.PluginContract.Enum;
-using InvvardDev.EZLayoutDisplay.PluginContract.Model;
+using InvvardDev.EZLayoutDisplay.Keyboards.Common.Enum;
+using InvvardDev.EZLayoutDisplay.Keyboards.Common.Model;
 
 namespace InvvardDev.EZLayoutDisplay.Desktop.Model.Dictionary
 {

@@ -3,11 +3,11 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using InvvardDev.EZLayoutDisplay.Keyboards.Common;
+using InvvardDev.EZLayoutDisplay.Keyboards.Common.Enum;
+using InvvardDev.EZLayoutDisplay.Keyboards.Common.Model;
 using InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.Service;
 using InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.ViewModel;
-using InvvardDev.EZLayoutDisplay.PluginContract;
-using InvvardDev.EZLayoutDisplay.PluginContract.Enum;
-using InvvardDev.EZLayoutDisplay.PluginContract.Model;
 
 namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards
 {

@@ -1,6 +1,6 @@
-﻿using InvvardDev.EZLayoutDisplay.PluginContract.Enum;
+﻿using InvvardDev.EZLayoutDisplay.Keyboards.Common.Enum;
 
-namespace InvvardDev.EZLayoutDisplay.PluginContract.Model
+namespace InvvardDev.EZLayoutDisplay.Keyboards.Common.Model
 {
     public class EZKey
     {

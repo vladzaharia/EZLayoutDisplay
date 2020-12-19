@@ -1,8 +1,8 @@
 ﻿using System;
-using Newtonsoft.Json;
 using System.ComponentModel;
+using Newtonsoft.Json;
 
-namespace InvvardDev.EZLayoutDisplay.PluginContract.Model
+namespace InvvardDev.EZLayoutDisplay.Keyboards.Common.Model
 {
     public class KeyTemplate : ICloneable
     {

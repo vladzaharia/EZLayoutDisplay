@@ -6,8 +6,8 @@ using InvvardDev.EZLayoutDisplay.Desktop.Model;
 using InvvardDev.EZLayoutDisplay.Desktop.Model.Enum;
 using InvvardDev.EZLayoutDisplay.Desktop.Service.Implementation;
 using InvvardDev.EZLayoutDisplay.Desktop.Service.Interface;
-using InvvardDev.EZLayoutDisplay.PluginContract.Enum;
-using InvvardDev.EZLayoutDisplay.PluginContract.Model;
+using InvvardDev.EZLayoutDisplay.Keyboards.Common.Enum;
+using InvvardDev.EZLayoutDisplay.Keyboards.Common.Model;
 using Xunit;
 
 namespace InvvardDev.EZLayoutDisplay.Tests.Service

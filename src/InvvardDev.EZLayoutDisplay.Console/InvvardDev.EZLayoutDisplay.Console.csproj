@@ -60,7 +60,7 @@
     </ProjectReference>
     <ProjectReference Include="..\InvvardDev.EZLayoutDisplay.Keyboards.Common\InvvardDev.EZLayoutDisplay.Keyboards.Common.csproj">
       <Project>{8B9ED53F-1A7E-44B4-A3BA-3D997B255E5B}</Project>
-      <Name>InvvardDev.EZLayoutDisplay.PluginContract</Name>
+      <Name>InvvardDev.EZLayoutDisplay.Keyboards.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

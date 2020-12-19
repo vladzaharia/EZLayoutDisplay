@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media;
-using InvvardDev.EZLayoutDisplay.PluginContract.Enum;
+using InvvardDev.EZLayoutDisplay.Keyboards.Common.Enum;
 
 namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.Helper
 {

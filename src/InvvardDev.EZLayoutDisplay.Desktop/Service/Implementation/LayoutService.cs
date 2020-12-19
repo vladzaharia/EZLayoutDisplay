@@ -7,7 +7,7 @@ using InvvardDev.EZLayoutDisplay.Desktop.Helper;
 using InvvardDev.EZLayoutDisplay.Desktop.Model;
 using InvvardDev.EZLayoutDisplay.Desktop.Properties;
 using InvvardDev.EZLayoutDisplay.Desktop.Service.Interface;
-using InvvardDev.EZLayoutDisplay.PluginContract.Model;
+using InvvardDev.EZLayoutDisplay.Keyboards.Common.Model;
 using Newtonsoft.Json;
 using NLog;
 

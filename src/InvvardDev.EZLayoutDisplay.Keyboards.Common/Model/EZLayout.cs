@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace InvvardDev.EZLayoutDisplay.PluginContract.Model
+namespace InvvardDev.EZLayoutDisplay.Keyboards.Common.Model
 {
     public class EZLayout
     {

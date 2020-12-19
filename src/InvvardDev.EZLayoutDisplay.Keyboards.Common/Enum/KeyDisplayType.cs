@@ -1,4 +1,4 @@
-﻿namespace InvvardDev.EZLayoutDisplay.PluginContract.Enum
+﻿namespace InvvardDev.EZLayoutDisplay.Keyboards.Common.Enum
 {
     public enum KeyDisplayType
     {

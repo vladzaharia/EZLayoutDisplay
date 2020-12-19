@@ -3,8 +3,8 @@ using System.Windows.Input;
 using InvvardDev.EZLayoutDisplay.Desktop.Service.Interface;
 using InvvardDev.EZLayoutDisplay.Desktop.View;
 using InvvardDev.EZLayoutDisplay.Desktop.ViewModel;
-using InvvardDev.EZLayoutDisplay.PluginContract;
-using InvvardDev.EZLayoutDisplay.PluginContract.Model;
+using InvvardDev.EZLayoutDisplay.Keyboards.Common;
+using InvvardDev.EZLayoutDisplay.Keyboards.Common.Model;
 using Moq;
 using Xunit;
 

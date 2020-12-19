@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using InvvardDev.EZLayoutDisplay.Keyboards.Common;
 using InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.View;
 using InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.ViewModel;
-using InvvardDev.EZLayoutDisplay.PluginContract;
 
 namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards
 {

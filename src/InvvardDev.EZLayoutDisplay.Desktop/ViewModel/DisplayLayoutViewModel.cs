@@ -7,9 +7,9 @@ using InvvardDev.EZLayoutDisplay.Desktop.Helper;
 using InvvardDev.EZLayoutDisplay.Desktop.Model.Messenger;
 using InvvardDev.EZLayoutDisplay.Desktop.Service.Interface;
 using InvvardDev.EZLayoutDisplay.Desktop.View;
-using InvvardDev.EZLayoutDisplay.PluginContract;
-using InvvardDev.EZLayoutDisplay.PluginContract.Enum;
-using InvvardDev.EZLayoutDisplay.PluginContract.Model;
+using InvvardDev.EZLayoutDisplay.Keyboards.Common;
+using InvvardDev.EZLayoutDisplay.Keyboards.Common.Enum;
+using InvvardDev.EZLayoutDisplay.Keyboards.Common.Model;
 using NLog;
 
 namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel

@@ -2,8 +2,8 @@
 using System.Linq;
 using InvvardDev.EZLayoutDisplay.Desktop.Model;
 using InvvardDev.EZLayoutDisplay.Desktop.Model.Dictionary;
-using InvvardDev.EZLayoutDisplay.PluginContract.Enum;
-using InvvardDev.EZLayoutDisplay.PluginContract.Model;
+using InvvardDev.EZLayoutDisplay.Keyboards.Common.Enum;
+using InvvardDev.EZLayoutDisplay.Keyboards.Common.Model;
 using NLog;
 
 namespace InvvardDev.EZLayoutDisplay.Desktop.Helper

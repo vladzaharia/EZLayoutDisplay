@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvvardDev.EZLayoutDisplay.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvvardDev.EZLayoutDisplay.Console", "InvvardDev.EZLayoutDisplay.Console\InvvardDev.EZLayoutDisplay.Console.csproj", "{CC579192-C568-42B4-969C-445D5F0D79E1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{C6B7D7C3-9B69-4AB0-B285-DB90B59CEBF3}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Keyboards", "Keyboards", "{C6B7D7C3-9B69-4AB0-B285-DB90B59CEBF3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvvardDev.EZLayoutDisplay.Keyboards.Zsa", "InvvardDev.EZLayoutDisplay.Keyboards.Zsa\InvvardDev.EZLayoutDisplay.Keyboards.Zsa.csproj", "{34392DD3-7720-4FCA-8E41-4135DD2F4E06}"
 EndProject

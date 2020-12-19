@@ -1,4 +1,4 @@
-﻿namespace InvvardDev.EZLayoutDisplay.PluginContract.Enum
+﻿namespace InvvardDev.EZLayoutDisplay.Keyboards.Common.Enum
 {
     /// <summary>
     /// Enum that indicates the direction to switch to.

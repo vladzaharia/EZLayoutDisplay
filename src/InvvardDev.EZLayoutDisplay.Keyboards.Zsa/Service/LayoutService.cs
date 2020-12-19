@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using InvvardDev.EZLayoutDisplay.PluginContract.Model;
+using InvvardDev.EZLayoutDisplay.Keyboards.Common.Model;
 using Newtonsoft.Json;
 
 namespace InvvardDev.EZLayoutDisplay.Plugin.ZsaKeyboards.Service
