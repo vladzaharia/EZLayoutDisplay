@@ -36,11 +36,10 @@ namespace InvvardDev.EZLayoutDisplay.Tests.ViewModel
             var mockWindowService = new Mock<IWindowService>();
             var mockLayoutService = new Mock<ILayoutService>();
             var mockSettingsService = new Mock<ISettingsService>();
-            var mockPluginLoader = new Mock<IPluginLoader<IKeyboardContract>>();
             mockSettingsService.SetupProperty(s => s.EZLayout, CreateLayers(1));
 
             //Act
-            var displayLayoutViewModel = new DisplayLayoutViewModel(mockWindowService.Object, mockLayoutService.Object, mockSettingsService.Object, mockPluginLoader.Object);
+            var displayLayoutViewModel = new DisplayLayoutViewModel(mockWindowService.Object, mockLayoutService.Object, mockSettingsService.Object);
 
             //Assert
             Assert.Equal("ErgoDox Layout", displayLayoutViewModel.WindowTitle);
@@ -62,10 +61,9 @@ namespace InvvardDev.EZLayoutDisplay.Tests.ViewModel
             mockWindowService.Setup(w => w.CloseWindow<DisplayLayoutWindow>()).Verifiable();
             var mockLayoutService = new Mock<ILayoutService>();
             var mockSettingsService = new Mock<ISettingsService>();
-            var mockPluginLoader = new Mock<IPluginLoader<IKeyboardContract>>();
 
             //Act
-            var displayLayoutViewModel = new DisplayLayoutViewModel(mockWindowService.Object, mockLayoutService.Object, mockSettingsService.Object, mockPluginLoader.Object);
+            var displayLayoutViewModel = new DisplayLayoutViewModel(mockWindowService.Object, mockLayoutService.Object, mockSettingsService.Object);
             displayLayoutViewModel.LostFocusCommand.Execute(null);
 
             //Assert
@@ -82,22 +80,15 @@ namespace InvvardDev.EZLayoutDisplay.Tests.ViewModel
             mockWindowService.Setup(w => w.CloseWindow<DisplayLayoutWindow>()).Verifiable();
             var mockLayoutService = new Mock<ILayoutService>();
             var mockSettingsService = new Mock<ISettingsService>();
-            var mockPluginLoader = new Mock<IPluginLoader<IKeyboardContract>>();
 
             //Act
-            var displayLayoutViewModel = new DisplayLayoutViewModel(mockWindowService.Object, mockLayoutService.Object, mockSettingsService.Object, mockPluginLoader.Object);
+            var displayLayoutViewModel = new DisplayLayoutViewModel(mockWindowService.Object, mockLayoutService.Object, mockSettingsService.Object);
             displayLayoutViewModel.IsWindowPinned = isPinned;
             displayLayoutViewModel.LostFocusCommand.Execute(null);
 
             //Assert
-            if (isPinned)
-            {
-                mockWindowService.Verify(w => w.CloseWindow<DisplayLayoutWindow>(), Times.Never);
-            }
-            else
-            {
-                mockWindowService.Verify(w => w.CloseWindow<DisplayLayoutWindow>(), Times.Once);
-            }
+            if (isPinned) { mockWindowService.Verify(w => w.CloseWindow<DisplayLayoutWindow>(), Times.Never); }
+            else { mockWindowService.Verify(w => w.CloseWindow<DisplayLayoutWindow>(), Times.Once); }
         }
 
         [ Fact ]
@@ -108,10 +99,9 @@ namespace InvvardDev.EZLayoutDisplay.Tests.ViewModel
             var mockWindowService = new Mock<IWindowService>();
             mockWindowService.Setup(w => w.CloseWindow<DisplayLayoutWindow>()).Verifiable();
             var mockSettingsService = new Mock<ISettingsService>();
-            var mockPluginLoader = new Mock<IPluginLoader<IKeyboardContract>>();
 
             //Act
-            var displayLayoutViewModel = new DisplayLayoutViewModel(mockWindowService.Object, mockLayoutService.Object, mockSettingsService.Object, mockPluginLoader.Object);
+            var displayLayoutViewModel = new DisplayLayoutViewModel(mockWindowService.Object, mockLayoutService.Object, mockSettingsService.Object);
             displayLayoutViewModel.HideWindowCommand.Execute(null);
 
             //Assert
@@ -149,10 +139,9 @@ namespace InvvardDev.EZLayoutDisplay.Tests.ViewModel
             mockLayoutService.Setup(l => l.GetLayoutTemplate()).ReturnsAsync(layoutTemplate).Verifiable();
             var mockSettingsService = new Mock<ISettingsService>();
             mockSettingsService.SetupProperty(s => s.EZLayout, keyboardLayout);
-            var mockPluginLoader = new Mock<IPluginLoader<IKeyboardContract>>();
 
             //Act
-            var displayLayoutViewModel = new DisplayLayoutViewModel(mockWindowService.Object, mockLayoutService.Object, mockSettingsService.Object, mockPluginLoader.Object);
+            var displayLayoutViewModel = new DisplayLayoutViewModel(mockWindowService.Object, mockLayoutService.Object, mockSettingsService.Object);
 
             //Assert
             Assert.Equal(noLayoutAvailable, displayLayoutViewModel.NoLayoutAvailable);
@@ -170,20 +159,16 @@ namespace InvvardDev.EZLayoutDisplay.Tests.ViewModel
 
             var layoutTemplate = new List<KeyTemplate>();
 
-            for (int i = 0 ; i < 1 ; i++)
-            {
-                layoutTemplate.Add(new KeyTemplate(i, i, 54, 81));
-            }
+            for (int i = 0 ; i < 1 ; i++) { layoutTemplate.Add(new KeyTemplate(i, i, 54, 81)); }
 
             var mockLayoutService = new Mock<ILayoutService>();
             mockLayoutService.Setup(l => l.GetLayoutTemplate()).ReturnsAsync(layoutTemplate);
             var mockWindowService = new Mock<IWindowService>();
             var mockSettingsService = new Mock<ISettingsService>();
             mockSettingsService.SetupProperty(s => s.EZLayout, keyboardLayout);
-            var mockPluginLoader = new Mock<IPluginLoader<IKeyboardContract>>();
 
             //Act
-            var displayLayoutViewModel = new DisplayLayoutViewModel(mockWindowService.Object, mockLayoutService.Object, mockSettingsService.Object, mockPluginLoader.Object);
+            var displayLayoutViewModel = new DisplayLayoutViewModel(mockWindowService.Object, mockLayoutService.Object, mockSettingsService.Object);
 
             //Assert
             Assert.Equal(expectedCanExecute, displayLayoutViewModel.NextLayerCommand.CanExecute(null));
@@ -212,25 +197,18 @@ namespace InvvardDev.EZLayoutDisplay.Tests.ViewModel
 
             var layoutTemplate = new List<KeyTemplate>();
 
-            for (int i = 0 ; i < 1 ; i++)
-            {
-                layoutTemplate.Add(new KeyTemplate(i, i, 54, 81));
-            }
+            for (int i = 0 ; i < 1 ; i++) { layoutTemplate.Add(new KeyTemplate(i, i, 54, 81)); }
 
             var mockLayoutService = new Mock<ILayoutService>();
             mockLayoutService.Setup(l => l.GetLayoutTemplate()).ReturnsAsync(layoutTemplate);
             var mockWindowService = new Mock<IWindowService>();
             var mockSettingsService = new Mock<ISettingsService>();
             mockSettingsService.SetupProperty(s => s.EZLayout, keyboardLayout);
-            var mockPluginLoader = new Mock<IPluginLoader<IKeyboardContract>>();
 
             //Act
-            var displayLayoutViewModel = new DisplayLayoutViewModel(mockWindowService.Object, mockLayoutService.Object, mockSettingsService.Object, mockPluginLoader.Object);
+            var displayLayoutViewModel = new DisplayLayoutViewModel(mockWindowService.Object, mockLayoutService.Object, mockSettingsService.Object);
 
-            foreach (var scrollingValue in scrollingValues)
-            {
-                displayLayoutViewModel.ScrollLayerCommand.Execute(new MouseWheelEventArgs(Mouse.PrimaryDevice, 0, scrollingValue));
-            }
+            foreach (var scrollingValue in scrollingValues) { displayLayoutViewModel.ScrollLayerCommand.Execute(new MouseWheelEventArgs(Mouse.PrimaryDevice, 0, scrollingValue)); }
 
             //Assert
             Assert.Equal(expectedCurrentLayerIndex, displayLayoutViewModel.CurrentLayerIndex);
@@ -253,25 +231,18 @@ namespace InvvardDev.EZLayoutDisplay.Tests.ViewModel
             var keyboardLayout = CreateLayers(layerNumber);
             var layoutTemplate = new List<KeyTemplate>();
 
-            for (int i = 0 ; i < 1 ; i++)
-            {
-                layoutTemplate.Add(new KeyTemplate(i, i, 54, 81));
-            }
+            for (int i = 0 ; i < 1 ; i++) { layoutTemplate.Add(new KeyTemplate(i, i, 54, 81)); }
 
             var mockLayoutService = new Mock<ILayoutService>();
             mockLayoutService.Setup(l => l.GetLayoutTemplate()).ReturnsAsync(layoutTemplate);
             var mockWindowService = new Mock<IWindowService>();
             var mockSettingsService = new Mock<ISettingsService>();
             mockSettingsService.SetupProperty(s => s.EZLayout, keyboardLayout);
-            var mockPluginLoader = new Mock<IPluginLoader<IKeyboardContract>>();
 
             //Act
-            var displayLayoutViewModel = new DisplayLayoutViewModel(mockWindowService.Object, mockLayoutService.Object, mockSettingsService.Object, mockPluginLoader.Object);
+            var displayLayoutViewModel = new DisplayLayoutViewModel(mockWindowService.Object, mockLayoutService.Object, mockSettingsService.Object);
 
-            for (int i = 0 ; i < nextLayerHit ; i++)
-            {
-                displayLayoutViewModel.NextLayerCommand.Execute(null);
-            }
+            for (int i = 0 ; i < nextLayerHit ; i++) { displayLayoutViewModel.NextLayerCommand.Execute(null); }
 
             //Assert
             Assert.Equal(expectedCurrentLayerIndex, displayLayoutViewModel.CurrentLayerIndex);
@@ -285,10 +256,9 @@ namespace InvvardDev.EZLayoutDisplay.Tests.ViewModel
             var mockWindowService = new Mock<IWindowService>();
             var mockSettingsService = new Mock<ISettingsService>();
             mockSettingsService.SetupProperty(s => s.EZLayout, CreateLayers(0));
-            var mockPluginLoader = new Mock<IPluginLoader<IKeyboardContract>>();
 
             // Act
-            var displayLayoutViewModel = new DisplayLayoutViewModel(mockWindowService.Object, mockLayoutService.Object, mockSettingsService.Object, mockPluginLoader.Object);
+            var displayLayoutViewModel = new DisplayLayoutViewModel(mockWindowService.Object, mockLayoutService.Object, mockSettingsService.Object);
 
             // Assert
             Assert.True(displayLayoutViewModel.NoLayoutAvailable);
