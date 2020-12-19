@@ -191,7 +191,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
 
         #endregion
 
-        public DisplayLayoutViewModel(IWindowService windowService, ILayoutService layoutService, ISettingsService settingsService, IPluginLoader<IKeyboardContract> pluginLoader)
+        public DisplayLayoutViewModel(IWindowService windowService, ILayoutService layoutService, ISettingsService settingsService)
         {
             Logger.TraceConstructor();
 
