@@ -26,12 +26,6 @@ namespace InvvardDev.EZLayoutDisplay.Keyboards.Common
         string GetCurrentLayerName();
 
         /// <summary>
-        /// Gets the keyboard view.
-        /// </summary>
-        /// <returns>A rendered Keyboard user control.</returns>
-        object GetKeyboardView();
-
-        /// <summary>
         /// Switches to another layer.
         /// </summary>
         /// <param name="direction">The direction to switch the layer to.</param>
