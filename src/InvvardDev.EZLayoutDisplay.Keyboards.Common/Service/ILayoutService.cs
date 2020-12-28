@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using InvvardDev.EZLayoutDisplay.Keyboards.Common.Model;
 
-namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Service
+namespace InvvardDev.EZLayoutDisplay.Keyboards.Common.Service
 {
     public interface ILayoutService
     {
@@ -11,7 +11,7 @@ namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Service
         /// Loads the list of <see cref="KeyTemplate"/> from the local repository.
         /// </summary>
         /// <param name="filePath">The file path to load the list of <see cref="KeyTemplate"/> from.</param>
-        /// <returns>An <see cref="IEnumerable{KeyTemplate}"/></returns>
+        /// <returns>An <see cref="System.Collections.Generic.IEnumerable{T}"/></returns>
         Task<IEnumerable<KeyTemplate>> LoadLayoutDefinitionAsync(string filePath);
 
         /// <summary>

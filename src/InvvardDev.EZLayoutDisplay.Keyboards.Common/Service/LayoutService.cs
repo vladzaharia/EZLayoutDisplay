@@ -6,9 +6,8 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using InvvardDev.EZLayoutDisplay.Keyboards.Common.Model;
-using Newtonsoft.Json;
 
-namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Service
+namespace InvvardDev.EZLayoutDisplay.Keyboards.Common.Service
 {
     public class LayoutService : ILayoutService
     {
