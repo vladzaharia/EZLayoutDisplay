@@ -1,11 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel.Composition;
-using InvvardDev.EZLayoutDisplay.Keyboards.Common;
 using InvvardDev.EZLayoutDisplay.Keyboards.Zsa.ViewModel;
 
 namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa
 {
-    [ Export(typeof(IKeyboardContract)) ]
     public sealed class PlanckEzKeyboard : ZsaKeyboardBase
     {
         public PlanckEzKeyboard()
