@@ -4,7 +4,7 @@ using InvvardDev.EZLayoutDisplay.Keyboards.Common.Model;
 
 namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa.ViewModel
 {
-    public class ZsaKeyboardViewModelBase : ViewModelBase
+    public class ZsaKeyboardViewModel : ViewModelBase
     {
         #region Fields
 

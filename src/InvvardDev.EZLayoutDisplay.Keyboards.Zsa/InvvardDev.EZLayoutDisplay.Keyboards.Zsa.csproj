@@ -75,7 +75,7 @@
     <Compile Include="Service\LayoutService.cs" />
     <Compile Include="ViewModel\ErgoDoxEzViewModel.cs" />
     <Compile Include="ViewModel\PlanckEzViewModel.cs" />
-    <Compile Include="ViewModel\ZsaKeyboardViewModelBase.cs" />
+    <Compile Include="ViewModel\ZsaKeyboardViewModel.cs" />
     <Compile Include="View\ErgoDoxEzView.xaml.cs">
       <DependentUpon>ErgoDoxEzView.xaml</DependentUpon>
     </Compile>

@@ -21,7 +21,7 @@ namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa
 
         protected UserControl KeyboardView;
         protected string LayoutDefinitionPath;
-        protected ZsaKeyboardViewModelBase ViewModel;
+        protected ZsaKeyboardViewModel ViewModel;
 
         public IEnumerable<string> SupportedKeyboardModel { get; protected set; }
 

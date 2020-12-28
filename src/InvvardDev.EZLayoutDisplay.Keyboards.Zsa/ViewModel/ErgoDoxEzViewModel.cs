@@ -1,6 +1,6 @@
 ﻿namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa.ViewModel
 {
-    internal class ErgoDoxEzViewModel : ZsaKeyboardViewModelBase
+    internal class ErgoDoxEzViewModel : ZsaKeyboardViewModel
     {
         internal ErgoDoxEzViewModel() {
         }
