@@ -71,8 +71,6 @@
     <Compile Include="Helper\KeyContentTemplateSelector.cs" />
     <Compile Include="PlanckEzKeyboard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\ILayoutService.cs" />
-    <Compile Include="Service\LayoutService.cs" />
     <Compile Include="ViewModel\ErgoDoxEzViewModel.cs" />
     <Compile Include="ViewModel\PlanckEzViewModel.cs" />
     <Compile Include="ViewModel\ZsaKeyboardViewModel.cs" />
