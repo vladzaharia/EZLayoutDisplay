@@ -14,7 +14,7 @@ namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa.ViewModel
     {
 #region Fields
 
-        private readonly ILayoutService                          _layoutService;
+        private readonly ITemplateService                          _layoutService;
         private          List<ObservableCollection<KeyTemplate>> _layoutTemplates;
         private          ObservableCollection<KeyTemplate>       _currentLayoutTemplate;
         protected        int                                     _currentLayerIndex;
@@ -39,7 +39,7 @@ namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa.ViewModel
 
 #endregion
 
-        public ZsaKeyboardViewModel(ILayoutService layoutService)
+        public ZsaKeyboardViewModel(ITemplateService layoutService)
         {
             _layoutService = layoutService;
             _currentLayerIndex = 0;

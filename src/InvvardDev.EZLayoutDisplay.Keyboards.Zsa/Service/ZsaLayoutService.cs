@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using InvvardDev.EZLayoutDisplay.Desktop.Service.Interface;
 using InvvardDev.EZLayoutDisplay.Keyboards.Common.Helper;
 using InvvardDev.EZLayoutDisplay.Keyboards.Common.Model;
 using InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Helper;
 using InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Model;
+using InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Properties;
 using Newtonsoft.Json;
 using NLog;
 
-namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Implementation
+namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Service
 {
-    public class LayoutService : ILayoutService
+    public class ZsaLayoutService : IZsaLayoutService
     {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
@@ -25,7 +25,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Implementation
 
         private const string GetLayoutRequestUri = "https://oryx.ergodox-ez.com/graphql";
 
-        #region ILayoutService implementation
+#region ILayoutService implementation
 
         /// <inheritdoc />
         public async Task<ZsaLayout> GetLayoutInfo(string layoutHashId, string layoutRevisionId)
@@ -37,7 +37,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Implementation
             ValidateLayoutHashId(layoutHashId);
 
             var info = await QueryData(layoutHashId, layoutRevisionId, GetLayoutInfoRequestBody);
-            
+
             return info;
         }
 
@@ -66,19 +66,9 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Implementation
             return ezLayout;
         }
 
-        /// <inheritdoc />
-        public async Task<IEnumerable<KeyTemplate>> GetLayoutTemplate()
-        {
-            Logger.TraceMethod();
+#endregion
 
-            IEnumerable<KeyTemplate> layoutTemplate = await ReadLayoutDefinition();
-
-            return layoutTemplate;
-        }
-
-        #endregion
-
-        #region Private methods
+#region Private methods
 
         private async Task<ZsaLayout> QueryData(string layoutHashId, string layoutRevisionId, string graphQlQuery)
         {
@@ -131,7 +121,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Implementation
         {
             Logger.TraceMethod();
 
-            if (Resources.layoutDefinition.Length <= 0)
+            if (Resources.ergoDoxEzLayoutDefinition.Length <= 0)
             {
                 Logger.Warn("Layout definition is empty");
 
@@ -139,7 +129,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Implementation
             }
 
             var layoutTemplate = await Task.Run(() => {
-                                                    var json = Encoding.Default.GetString(Resources.layoutDefinition);
+                                                    var json = Encoding.Default.GetString(Resources.ergoDoxEzLayoutDefinition);
 
                                                     var layoutDefinition = JsonConvert.DeserializeObject<IEnumerable<KeyTemplate>>(json);
 
@@ -151,6 +141,6 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Implementation
             return layoutTemplate;
         }
 
-        #endregion
+#endregion
     }
 }

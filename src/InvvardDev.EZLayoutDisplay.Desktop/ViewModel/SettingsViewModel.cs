@@ -13,6 +13,7 @@ using InvvardDev.EZLayoutDisplay.Desktop.Service.Interface;
 using InvvardDev.EZLayoutDisplay.Desktop.View;
 using InvvardDev.EZLayoutDisplay.Keyboards.Common.Helper;
 using InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Model;
+using InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Service;
 using NLog;
 
 namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
@@ -30,10 +31,10 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
 
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
-        private readonly ISettingsService _settingsService;
-        private readonly IWindowService _windowService;
-        private readonly ILayoutService _layoutService;
-        private readonly IProcessService _processService;
+        private readonly ISettingsService  _settingsService;
+        private readonly IWindowService    _windowService;
+        private readonly IZsaLayoutService _layoutService;
+        private readonly IProcessService   _processService;
 
         private ICommand _openTagSearchCommand;
         private ICommand _downloadHexFileCommand;
@@ -238,7 +239,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
 
         #region Constructor
 
-        public SettingsViewModel(ISettingsService settingsService, IWindowService windowService, ILayoutService layoutService, IProcessService processService)
+        public SettingsViewModel(ISettingsService settingsService, IWindowService windowService, IZsaLayoutService layoutService, IProcessService processService)
         {
             Logger.TraceConstructor();
 

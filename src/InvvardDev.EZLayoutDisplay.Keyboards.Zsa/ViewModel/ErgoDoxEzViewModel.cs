@@ -5,7 +5,7 @@ namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa.ViewModel
 {
     public class ErgoDoxEzViewModel : ZsaKeyboardViewModel
     {
-        public ErgoDoxEzViewModel(ILayoutService layoutService) : base(layoutService)
+        public ErgoDoxEzViewModel(ITemplateService layoutService) : base(layoutService)
         {
             _layoutDefinitionPath = "\\data\\ergoDoxEzLayoutDefinition.json";
             SupportedKeyboardModel = new List<string> {

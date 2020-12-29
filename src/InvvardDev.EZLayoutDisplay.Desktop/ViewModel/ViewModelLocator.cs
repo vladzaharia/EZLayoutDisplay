@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Ioc;
 using InvvardDev.EZLayoutDisplay.Desktop.Service.Implementation;
 using InvvardDev.EZLayoutDisplay.Desktop.Service.Interface;
+using InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Service;
 using NLog;
 
 namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
@@ -23,7 +24,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
                 SimpleIoc.Default.Register<IKeyboardHookService, Service.Design.KeyboardHookService>();
                 SimpleIoc.Default.Register<ISettingsService, Service.Design.SettingsService>();
                 SimpleIoc.Default.Register<IApplicationService, Service.Design.ApplicationService>();
-                SimpleIoc.Default.Register<ILayoutService, Service.Design.LayoutService>();
+                SimpleIoc.Default.Register<IZsaLayoutService, DesignZsaLayoutService>();
                 SimpleIoc.Default.Register<IProcessService, Service.Design.ProcessService>();
             }
             else
@@ -32,7 +33,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
                 SimpleIoc.Default.Register<ISettingsService>(() => new SettingsService(Properties.Settings.Default));
                 SimpleIoc.Default.Register<IKeyboardHookService, KeyboardHookService>(true);
                 SimpleIoc.Default.Register<IApplicationService, ApplicationService>();
-                SimpleIoc.Default.Register<ILayoutService, LayoutService>();
+                SimpleIoc.Default.Register<IZsaLayoutService, ZsaLayoutService>();
                 SimpleIoc.Default.Register<IProcessService, ProcessService>();
             }
 

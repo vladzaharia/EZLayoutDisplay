@@ -5,7 +5,7 @@ using InvvardDev.EZLayoutDisplay.Keyboards.Common.Model;
 
 namespace InvvardDev.EZLayoutDisplay.Keyboards.Common.Service
 {
-    public interface ILayoutService
+    public interface ITemplateService
     {
         /// <summary>
         /// Loads the list of <see cref="KeyTemplate"/> from the local repository.

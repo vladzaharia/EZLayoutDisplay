@@ -10,6 +10,7 @@ using InvvardDev.EZLayoutDisplay.Keyboards.Common;
 using InvvardDev.EZLayoutDisplay.Keyboards.Common.Enum;
 using InvvardDev.EZLayoutDisplay.Keyboards.Common.Helper;
 using InvvardDev.EZLayoutDisplay.Keyboards.Common.Model;
+using InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Service;
 using NLog;
 
 namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
@@ -21,7 +22,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
         private readonly IWindowService    _windowService;
-        private readonly ILayoutService    _layoutService;
+        private readonly IZsaLayoutService _layoutService;
         private readonly ISettingsService  _settingsService;
         private          IKeyboardContract _keyboard;
 
@@ -191,7 +192,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
 
 #endregion
 
-        public DisplayLayoutViewModel(IWindowService windowService, ILayoutService layoutService, ISettingsService settingsService)
+        public DisplayLayoutViewModel(IWindowService windowService, IZsaLayoutService layoutService, ISettingsService settingsService)
         {
             Logger.TraceConstructor();
 

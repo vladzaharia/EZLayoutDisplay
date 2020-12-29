@@ -10,9 +10,9 @@ using Newtonsoft.Json;
 
 namespace InvvardDev.EZLayoutDisplay.Keyboards.Common.Service
 {
-    public class LayoutService : ILayoutService
+    public class CommonTemplateService : ITemplateService
     {
-        #region ILayoutService implementation
+        #region ITemplateService implementation
 
         /// <inheritdoc />
         public async Task<IEnumerable<KeyTemplate>> LoadLayoutDefinitionAsync(string filePath)

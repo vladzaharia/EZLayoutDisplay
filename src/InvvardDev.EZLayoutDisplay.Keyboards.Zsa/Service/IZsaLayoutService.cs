@@ -2,9 +2,9 @@
 using InvvardDev.EZLayoutDisplay.Keyboards.Common.Model;
 using InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Model;
 
-namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Interface
+namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Service
 {
-    public interface ILayoutService
+    public interface IZsaLayoutService
     {
         /// <summary>
         /// Gets the <see cref="ZsaLayout"/> basic info.

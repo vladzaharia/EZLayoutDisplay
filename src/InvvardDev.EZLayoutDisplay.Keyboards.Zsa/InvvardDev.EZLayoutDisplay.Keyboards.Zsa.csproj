@@ -91,6 +91,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Service\DesignZsaLayoutService.cs" />
+    <Compile Include="Service\IZsaLayoutService.cs" />
+    <Compile Include="Service\ZsaLayoutService.cs" />
     <Compile Include="ViewModel\ErgoDoxEzViewModel.cs" />
     <Compile Include="ViewModel\PlanckEzViewModel.cs" />
     <Compile Include="ViewModel\ZsaKeyboardViewModel.cs" />
@@ -130,5 +133,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
