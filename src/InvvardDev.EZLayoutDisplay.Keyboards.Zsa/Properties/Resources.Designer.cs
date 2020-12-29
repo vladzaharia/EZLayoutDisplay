@@ -63,9 +63,9 @@ namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] keyDefinitions {
+        internal static byte[] zsaKeyDefinitions {
             get {
-                object obj = ResourceManager.GetObject("keyDefinitions", resourceCulture);
+                object obj = ResourceManager.GetObject("zsaKeyDefinitions", resourceCulture);
                 return ((byte[])(obj));
             }
         }
