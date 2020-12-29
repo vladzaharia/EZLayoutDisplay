@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Threading.Tasks;
 using InvvardDev.EZLayoutDisplay.Desktop.Model;
 using InvvardDev.EZLayoutDisplay.Desktop.Service.Interface;
@@ -13,8 +12,9 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Design
         {
             Debug.WriteLine("Layout retrieved.");
 
-            var layoutInfo = new ErgodoxLayout();
-            layoutInfo.Title = "Layout title v1.0";
+            var layoutInfo = new ErgodoxLayout {
+                                                   Title = "Layout title v1.0"
+                                               };
 
             return await new Task<ErgodoxLayout>(() => layoutInfo);
         }
