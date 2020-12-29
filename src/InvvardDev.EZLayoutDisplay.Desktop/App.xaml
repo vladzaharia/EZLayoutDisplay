@@ -6,6 +6,8 @@
              xmlns:ignore="http://www.galasoft.ch/ignore"
              xmlns:viewModel="clr-namespace:InvvardDev.EZLayoutDisplay.Desktop.ViewModel"
              xmlns:converter="clr-namespace:InvvardDev.EZLayoutDisplay.Desktop.View.Converter"
+             xmlns:zsaViewModel="clr-namespace:InvvardDev.EZLayoutDisplay.Keyboards.Zsa.ViewModel;assembly=InvvardDev.EZLayoutDisplay.Keyboards.Zsa"
+             xmlns:zsaView="clr-namespace:InvvardDev.EZLayoutDisplay.Keyboards.Zsa.View;assembly=InvvardDev.EZLayoutDisplay.Keyboards.Zsa"
              ShutdownMode="OnExplicitShutdown"
              StartupUri="View/MainWindow.xaml"
              mc:Ignorable="d ignore">
@@ -14,6 +16,10 @@
         <ResourceDictionary>
             <!--Global View Model Locator-->
             <viewModel:ViewModelLocator x:Key="Locator" d:IsDataSource="True" />
+
+            <DataTemplate x:Key="ErgoDoxEzTemplate" DataType="{x:Type zsaViewModel:ErgoDoxEzViewModel}">
+                <zsaView:ErgoDoxEzView/>
+            </DataTemplate>
 
             <BitmapImage x:Key="WindowIcon" UriSource="Skins/Images/tray_base.ico" />
             <BitmapImage x:Key="TrayIcon" UriSource="Skins/Images/tray_base.ico" />
