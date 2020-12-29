@@ -202,7 +202,8 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
 
             Messenger.Default.Register<UpdatedLayoutMessage>(this, LoadCompleteLayout);
 
-            SetCurrentKeyboard();
+            // TODO : add the currentKeyboard selector
+            //SetCurrentKeyboard();
             SetLabelUi();
             SetWindowParameters();
             LoadCompleteLayout();
@@ -271,11 +272,6 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
             IsWindowPinned = false;
         }
 
-        private void SetCurrentKeyboard()
-        {
-            _keyboard = new ErgoDoxEzKeyboard();
-        }
-
         private async void LoadCompleteLayout()
         {
             Logger.TraceMethod();
@@ -295,7 +291,9 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
             NoLayoutAvailable = false;
             await _keyboard.LoadLayoutAsync(ezLayout);
 
-            KeyboardView = _keyboard.GetKeyboardView();
+            /* TODO : Add DataTemplates to select correct view and DataTriggers in DisplayLayoutWindow
+             *KeyboardView = _keyboard.GetKeyboardView();
+             */
         }
 
         private bool IsLayoutAvailable(EZLayout ezLayout)
