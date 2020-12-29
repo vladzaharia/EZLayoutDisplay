@@ -114,7 +114,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Helper\LoggerHelper.cs" />
     <Compile Include="Model\Messenger\UpdatedLayoutMessage.cs" />
     <Compile Include="Service\Design\ApplicationService.cs" />
     <Compile Include="Service\Design\KeyboardHookService.cs" />
