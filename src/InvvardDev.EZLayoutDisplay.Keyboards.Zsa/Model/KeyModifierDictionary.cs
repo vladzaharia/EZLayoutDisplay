@@ -2,7 +2,7 @@
 using InvvardDev.EZLayoutDisplay.Keyboards.Common.Enum;
 using InvvardDev.EZLayoutDisplay.Keyboards.Common.Model;
 
-namespace InvvardDev.EZLayoutDisplay.Desktop.Model.Dictionary
+namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Model
 {
     public class KeyModifierDictionary
     {

@@ -78,6 +78,7 @@
     <Compile Include="Helper\KeyCategoryToBrushConverter.cs" />
     <Compile Include="Helper\KeyContentTemplateSelector.cs" />
     <Compile Include="Model\KeyDefinitionDictionary.cs" />
+    <Compile Include="Model\KeyModifierDictionary.cs" />
     <Compile Include="Model\ZsaKey.cs" />
     <Compile Include="Model\ZsaLayer.cs" />
     <Compile Include="Model\ZsaLayout.cs" />
