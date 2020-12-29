@@ -32,7 +32,7 @@ namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Model
         /// <summary>
         /// Gets or sets the <see cref="ZsaRevision"/>.
         /// </summary>
-        [JsonProperty("zsaRevision")]
+        [JsonProperty("revision")]
         public ZsaRevision ZsaRevision { get; set; }
     }
 
