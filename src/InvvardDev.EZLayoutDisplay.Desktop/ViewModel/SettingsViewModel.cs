@@ -12,6 +12,7 @@ using InvvardDev.EZLayoutDisplay.Desktop.Model;
 using InvvardDev.EZLayoutDisplay.Desktop.Model.Messenger;
 using InvvardDev.EZLayoutDisplay.Desktop.Service.Interface;
 using InvvardDev.EZLayoutDisplay.Desktop.View;
+using InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Model;
 using NLog;
 
 namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
@@ -427,14 +428,14 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
             }
         }
 
-        private void CheckLatestRevisionId(ErgodoxLayout layoutInfo)
+        private void CheckLatestRevisionId(ZsaLayout layoutInfo)
         {
             if (CurrentLayoutRevisionId.ToLower() != DefaultLatestRevisionId)
             {
                 return;
             }
 
-            CurrentLayoutRevisionId = layoutInfo.Revision.HashId;
+            CurrentLayoutRevisionId = layoutInfo.ZsaRevision.HashId;
         }
 
         private void ClearLayoutInfo()
@@ -450,7 +451,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
             _layoutIsCompiled = false;
         }
 
-        private void UpdateLayoutInfo(ErgodoxLayout layoutInfo)
+        private void UpdateLayoutInfo(ZsaLayout layoutInfo)
         {
             Logger.TraceMethod();
 
@@ -462,13 +463,13 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
                 Tags = new ObservableCollection<string>(layoutInfo.Tags.Select(t => t.Name));
             }
 
-            if (layoutInfo.Revision != null)
+            if (layoutInfo.ZsaRevision != null)
             {
-                KeyboardModel = GetKeyBoardDescription(_keyboardGeometry, layoutInfo.Revision.Model);
-                UpdateLayoutButtons(layoutInfo.Revision);
+                KeyboardModel = GetKeyBoardDescription(_keyboardGeometry, layoutInfo.ZsaRevision.Model);
+                UpdateLayoutButtons(layoutInfo.ZsaRevision);
                 LayoutStatus = !_layoutIsCompiled ? "Not compiled" : "Compiled";
 
-                Layers = new ObservableCollection<string>(layoutInfo.Revision.Layers.Select(l => l.ToString()));
+                Layers = new ObservableCollection<string>(layoutInfo.ZsaRevision.Layers.Select(l => l.ToString()));
             }
         }
 
@@ -497,17 +498,17 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
             return keyboardDescription;
         }
 
-        private void UpdateLayoutButtons(Revision revision)
+        private void UpdateLayoutButtons(ZsaRevision zsaRevision)
         {
             Logger.TraceMethod();
 
-            _layoutIsCompiled = Uri.IsWellFormedUriString(revision.HexUrl, UriKind.Absolute) && Uri.IsWellFormedUriString(revision.SourcesUrl, UriKind.Absolute);
+            _layoutIsCompiled = Uri.IsWellFormedUriString(zsaRevision.HexUrl, UriKind.Absolute) && Uri.IsWellFormedUriString(zsaRevision.SourcesUrl, UriKind.Absolute);
 
             ((RelayCommand) DownloadHexFileCommand).RaiseCanExecuteChanged();
             ((RelayCommand) DownloadSourcesCommand).RaiseCanExecuteChanged();
 
-            _hexFileUri = revision.HexUrl;
-            _sourcesZipUri = revision.SourcesUrl;
+            _hexFileUri = zsaRevision.HexUrl;
+            _sourcesZipUri = zsaRevision.SourcesUrl;
         }
 
         private async Task UpdateLayout()
@@ -560,7 +561,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
 
             Logger.Debug("Layout URL = {0}", layoutUrl);
             Logger.Debug("Layout Hash ID = {0}", layoutHashId);
-            Logger.Debug("Layout Revision ID = {0}", layoutRevisionId);
+            Logger.Debug("Layout ZsaRevision ID = {0}", layoutRevisionId);
 
             return (layoutHashId, layoutRevisionId);
         }

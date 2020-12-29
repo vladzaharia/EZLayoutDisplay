@@ -45,9 +45,9 @@ using System.Windows;
 //      Major Version
 //      Minor Version 
 //      Build Number
-//      Revision
+//      ZsaRevision
 //
-// You can specify all the values or you can default the Build and Revision Numbers 
+// You can specify all the values or you can default the Build and ZsaRevision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.1.0")]

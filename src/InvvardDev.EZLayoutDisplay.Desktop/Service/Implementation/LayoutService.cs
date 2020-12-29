@@ -8,6 +8,7 @@ using InvvardDev.EZLayoutDisplay.Desktop.Model;
 using InvvardDev.EZLayoutDisplay.Desktop.Properties;
 using InvvardDev.EZLayoutDisplay.Desktop.Service.Interface;
 using InvvardDev.EZLayoutDisplay.Keyboards.Common.Model;
+using InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Model;
 using Newtonsoft.Json;
 using NLog;
 
@@ -18,17 +19,17 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Implementation
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
         private readonly string GetLayoutBody =
-            "{{\"operationName\":\"getLayout\",\"variables\":{{\"hashId\":\"{0}\",\"revisionId\":\"{1}\"}},\"query\":\"query getLayout($hashId: String!, $revisionId: String!) {{\\n  Layout(hashId: $hashId, revisionId: $revisionId) {{\\n ...LayoutData\\n }}\\n}}\\n\\nfragment LayoutData on Layout {{\\n geometry\\n hashId\\n title\\n tags {{\\n id\\n hashId\\n name\\n }}\\n revision {{\\n ...RevisionData\\n }}\\n}}\\n\\nfragment RevisionData on Revision {{\\n hashId\\n model\\n title\\n swatch\\n hexUrl\\n zipUrl\\n  qmkVersion\\n  qmkUptodate\\n  config\\n layers {{\\n hashId\\n keys\\n position\\n title\\n color\\n}}\\n}}\\n\"}}";
+            "{{\"operationName\":\"getLayout\",\"variables\":{{\"hashId\":\"{0}\",\"revisionId\":\"{1}\"}},\"query\":\"query getLayout($hashId: String!, $revisionId: String!) {{\\n  Layout(hashId: $hashId, revisionId: $revisionId) {{\\n ...LayoutData\\n }}\\n}}\\n\\nfragment LayoutData on Layout {{\\n geometry\\n hashId\\n title\\n tags {{\\n id\\n hashId\\n name\\n }}\\n zsaRevision {{\\n ...RevisionData\\n }}\\n}}\\n\\nfragment RevisionData on ZsaRevision {{\\n hashId\\n model\\n title\\n swatch\\n hexUrl\\n zipUrl\\n  qmkVersion\\n  qmkUptodate\\n  config\\n layers {{\\n hashId\\n keys\\n position\\n title\\n color\\n}}\\n}}\\n\"}}";
 
         private readonly string GetLayoutInfoRequestBody =
-            "{{\"operationName\":\"getLayout\",\"variables\":{{\"hashId\":\"{0}\",\"revisionId\":\"{1}\"}},\"query\":\"query getLayout($hashId: String!, $revisionId: String!) {{\\n Layout(hashId: $hashId, revisionId: $revisionId) {{\\n ...LayoutData\\n __typename\\n }}\\n}}\\n\\nfragment LayoutData on Layout {{\\n geometry\\n hashId\\n title\\n tags {{\\n id\\n hashId\\n name\\n }}\\n revision {{\\n hashId\\n title\\n hexUrl\\n model\\n zipUrl\\n  qmkVersion\\n  qmkUptodate\\n layers {{\\n position\\n title\\n }}\\n }}\\n __typename\\n}}\\n\"}}";
+            "{{\"operationName\":\"getLayout\",\"variables\":{{\"hashId\":\"{0}\",\"revisionId\":\"{1}\"}},\"query\":\"query getLayout($hashId: String!, $revisionId: String!) {{\\n Layout(hashId: $hashId, revisionId: $revisionId) {{\\n ...LayoutData\\n __typename\\n }}\\n}}\\n\\nfragment LayoutData on Layout {{\\n geometry\\n hashId\\n title\\n tags {{\\n id\\n hashId\\n name\\n }}\\n zsaRevision {{\\n hashId\\n title\\n hexUrl\\n model\\n zipUrl\\n  qmkVersion\\n  qmkUptodate\\n layers {{\\n position\\n title\\n }}\\n }}\\n __typename\\n}}\\n\"}}";
 
         private const string GetLayoutRequestUri = "https://oryx.ergodox-ez.com/graphql";
 
         #region ILayoutService implementation
 
         /// <inheritdoc />
-        public async Task<ErgodoxLayout> GetLayoutInfo(string layoutHashId, string layoutRevisionId)
+        public async Task<ZsaLayout> GetLayoutInfo(string layoutHashId, string layoutRevisionId)
         {
             Logger.TraceMethod();
             Logger.DebugInputParam(nameof(layoutHashId), layoutHashId);
@@ -42,7 +43,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Implementation
         }
 
         /// <inheritdoc />
-        public async Task<ErgodoxLayout> GetErgodoxLayout(string layoutHashId, string layoutRevisionId)
+        public async Task<ZsaLayout> GetErgodoxLayout(string layoutHashId, string layoutRevisionId)
         {
             Logger.TraceMethod();
             Logger.DebugInputParam(nameof(layoutHashId), layoutHashId);
@@ -56,12 +57,12 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Implementation
         }
 
         /// <inheritdoc />
-        public EZLayout PrepareEZLayout(ErgodoxLayout ergodoxLayout)
+        public EZLayout PrepareEZLayout(ZsaLayout zsaLayout)
         {
             Logger.TraceMethod();
 
             var ezLayoutMaker = new EZLayoutMaker();
-            EZLayout ezLayout = ezLayoutMaker.PrepareEZLayout(ergodoxLayout);
+            EZLayout ezLayout = ezLayoutMaker.PrepareEZLayout(zsaLayout);
 
             return ezLayout;
         }
@@ -80,7 +81,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Implementation
 
         #region Private methods
 
-        private async Task<ErgodoxLayout> QueryData(string layoutHashId, string layoutRevisionId, string graphQlQuery)
+        private async Task<ZsaLayout> QueryData(string layoutHashId, string layoutRevisionId, string graphQlQuery)
         {
             var requestBody = string.Format(graphQlQuery, layoutHashId, layoutRevisionId);
 

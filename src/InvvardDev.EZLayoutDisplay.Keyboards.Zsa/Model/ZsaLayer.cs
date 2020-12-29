@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace InvvardDev.EZLayoutDisplay.Desktop.Model
+namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Model
 {
-    public class ErgodoxLayer
+    public class ZsaLayer
     {
         /// <summary>
         /// Gets or sets the layer hash identifier.
@@ -12,10 +12,10 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Model
         public string HashId { get; set; }
 
         /// <summary>
-        /// Gets or sets the layer's list of <see cref="ErgodoxKey"/>.
+        /// Gets or sets the layer's list of <see cref="ZsaKey"/>.
         /// </summary>
         [JsonProperty("keys")]
-        public List<ErgodoxKey> Keys { get; set; }
+        public List<ZsaKey> Keys { get; set; }
 
         /// <summary>
         /// Gets or sets the layer's position.

@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace InvvardDev.EZLayoutDisplay.Desktop.Model
+namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Model
 {
-    public class ErgodoxModifiers
+    public class ZsaModifiers
     {
         /// <summary>
         /// Gets or sets the Left Alt modifier indicator.

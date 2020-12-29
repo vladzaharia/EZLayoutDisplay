@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace InvvardDev.EZLayoutDisplay.Desktop.Model
+namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Model
 {
-    public class ErgodoxLayout
+    public class ZsaLayout
     {
         /// <summary>
         /// Gets or sets the layout hash identifier.
@@ -27,13 +27,13 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Model
         /// Gets or sets the keyboard tags.
         /// </summary>
         [JsonProperty("tags", NullValueHandling = NullValueHandling.Ignore)]
-        public List<ErgodoxTag> Tags { get; set; }
+        public List<ZsaTag> Tags { get; set; }
 
         /// <summary>
-        /// Gets or sets the <see cref="Revision"/>.
+        /// Gets or sets the <see cref="ZsaRevision"/>.
         /// </summary>
-        [JsonProperty("revision")]
-        public Revision Revision { get; set; }
+        [JsonProperty("zsaRevision")]
+        public ZsaRevision ZsaRevision { get; set; }
     }
 
     public class DataRoot
@@ -45,6 +45,6 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Model
     public class ErgodoxLayoutRoot
     {
         [JsonProperty("Layout")]
-        public ErgodoxLayout Layout { get; set; }
+        public ZsaLayout Layout { get; set; }
     }
 }

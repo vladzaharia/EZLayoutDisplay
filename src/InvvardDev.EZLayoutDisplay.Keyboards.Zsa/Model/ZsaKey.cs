@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace InvvardDev.EZLayoutDisplay.Desktop.Model
+namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Model
 {
-    public class ErgodoxKey
+    public class ZsaKey
     {
         /// <summary>
         /// Gets or sets the supported OS name.
@@ -44,6 +44,6 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Model
         /// Gets or sets the modifiers.
         /// </summary>
         [JsonProperty("modifiers", NullValueHandling = NullValueHandling.Ignore)]
-        public ErgodoxModifiers Modifiers { get; set; }
+        public ZsaModifiers Modifiers { get; set; }
     }
 }

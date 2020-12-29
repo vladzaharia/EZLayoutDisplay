@@ -4,6 +4,7 @@ using InvvardDev.EZLayoutDisplay.Desktop.Model;
 using InvvardDev.EZLayoutDisplay.Desktop.Model.Dictionary;
 using InvvardDev.EZLayoutDisplay.Keyboards.Common.Enum;
 using InvvardDev.EZLayoutDisplay.Keyboards.Common.Model;
+using InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Model;
 using NLog;
 
 namespace InvvardDev.EZLayoutDisplay.Desktop.Helper
@@ -23,14 +24,14 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Helper
             _keyDefinitionDictionary = new KeyDefinitionDictionary();
         }
 
-        public EZLayout PrepareEZLayout(ErgodoxLayout ergodoxLayout)
+        public EZLayout PrepareEZLayout(ZsaLayout zsaLayout)
         {
             Logger.TraceMethod();
-            Logger.DebugInputParam(nameof(ergodoxLayout), ergodoxLayout);
+            Logger.DebugInputParam(nameof(zsaLayout), zsaLayout);
 
-            var ezLayout = new EZLayout { HashId = ergodoxLayout.HashId, Name = ergodoxLayout.Title };
+            var ezLayout = new EZLayout { HashId = zsaLayout.HashId, Name = zsaLayout.Title };
 
-            var ergodoxLayers = ergodoxLayout.Revision.Layers ?? ergodoxLayout.Revision.Layers;
+            var ergodoxLayers = zsaLayout.ZsaRevision.Layers ?? zsaLayout.ZsaRevision.Layers;
 
             if (ergodoxLayers?.Any() != null)
             {
@@ -46,7 +47,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Helper
             return ezLayout;
         }
 
-        private EZLayer PrepareEZLayer(ErgodoxLayer ergodoxLayer)
+        private EZLayer PrepareEZLayer(ZsaLayer ergodoxLayer)
         {
             Logger.TraceMethod();
             Logger.DebugInputParam(nameof(ergodoxLayer), ergodoxLayer);
@@ -65,12 +66,12 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Helper
             return layer;
         }
 
-        private EZKey PrepareKeyLabels(ErgodoxKey ergodoxKey, string layerColor)
+        private EZKey PrepareKeyLabels(ZsaKey zsaKey, string layerColor)
         {
             Logger.TraceMethod();
-            Logger.DebugInputParam(nameof(ergodoxKey), ergodoxKey);
+            Logger.DebugInputParam(nameof(zsaKey), zsaKey);
 
-            var keyDefinition = GetKeyDefinition(ergodoxKey.Code);
+            var keyDefinition = GetKeyDefinition(zsaKey.Code);
 
             /** Every category has a label, so no need to make a special case :
              *
@@ -91,7 +92,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Helper
                       {
                           KeyCategory = keyDefinition.KeyCategory,
                           Label = new KeyLabel(keyDefinition.Label, keyDefinition.IsGlyph),
-                          Color = GetColor(ergodoxKey.GlowColor, layerColor),
+                          Color = GetColor(zsaKey.GlowColor, layerColor),
                           DisplayType = KeyDisplayType.SimpleLabel
                       };
 
@@ -99,7 +100,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Helper
             {
                 case KeyCategory.DualFunction:
 
-                    if (AddCommandLabel(ergodoxKey, key))
+                    if (AddCommandLabel(zsaKey, key))
                         key.DisplayType = KeyDisplayType.ModifierUnder;
                     else
                         key.KeyCategory = KeyCategory.Modifier;
@@ -107,17 +108,17 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Helper
                     break;
                 case KeyCategory.Layer:
                 case KeyCategory.LayerShortcuts:
-                    key.Label.Content = string.Format(key.Label.Content, ergodoxKey.Layer.ToString());
+                    key.Label.Content = string.Format(key.Label.Content, zsaKey.Layer.ToString());
 
-                    if (AddCommandLabel(ergodoxKey, key)) key.DisplayType = KeyDisplayType.ModifierUnder;
+                    if (AddCommandLabel(zsaKey, key)) key.DisplayType = KeyDisplayType.ModifierUnder;
 
                     break;
 
                 case KeyCategory.Modifier:
 
-                    if (ergodoxKey.Code == KeyCodeOsm && !IsCommandEmpty(ergodoxKey.Command))
+                    if (zsaKey.Code == KeyCodeOsm && !IsCommandEmpty(zsaKey.Command))
                     {
-                        var commandDefinition = GetKeyDefinition(ergodoxKey.Command);
+                        var commandDefinition = GetKeyDefinition(zsaKey.Command);
                         key.Modifier = new KeyLabel(commandDefinition.Label);
                         key.DisplayType = KeyDisplayType.ModifierOnTop;
                     }
@@ -134,9 +135,9 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Helper
 
                 case KeyCategory.Shortcuts:
 
-                    if (!IsCommandEmpty(ergodoxKey.Command))
+                    if (!IsCommandEmpty(zsaKey.Command))
                     {
-                        var commandDefinition = GetKeyDefinition(ergodoxKey.Command);
+                        var commandDefinition = GetKeyDefinition(zsaKey.Command);
                         key.Label.Content = $"{key.Label.Content} + {commandDefinition.Label}";
                     }
 
@@ -163,7 +164,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Helper
                     break;
             }
 
-            ProcessModifiers(ergodoxKey, key);
+            ProcessModifiers(zsaKey, key);
 
             Logger.DebugOutputParam(nameof(key), key);
 
@@ -193,25 +194,25 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Helper
         /// <summary>
         ///     Apply the command label.
         /// </summary>
-        /// <param name="ergodoxKey">The <see cref="ErgodoxKey" /> containing the command to be applied.</param>
+        /// <param name="zsaKey">The <see cref="ZsaKey" /> containing the command to be applied.</param>
         /// <param name="key">The <see cref="EZKey" /> to apply the command to.</param>
         /// <returns><c>True</c> if command has been applied.</returns>
-        private bool AddCommandLabel(ErgodoxKey ergodoxKey, EZKey key)
+        private bool AddCommandLabel(ZsaKey zsaKey, EZKey key)
         {
-            if (IsCommandEmpty(ergodoxKey.Command)) return false;
+            if (IsCommandEmpty(zsaKey.Command)) return false;
 
-            var commandDefinition = GetKeyDefinition(ergodoxKey.Command);
+            var commandDefinition = GetKeyDefinition(zsaKey.Command);
             key.Modifier = key.Label;
             key.Label = new KeyLabel(commandDefinition.Label, commandDefinition.IsGlyph);
 
             return true;
         }
 
-        private void ProcessModifiers(ErgodoxKey ergodoxKey, EZKey key)
+        private void ProcessModifiers(ZsaKey zsaKey, EZKey key)
         {
-            if (ergodoxKey.Modifiers == null) return;
+            if (zsaKey.Modifiers == null) return;
 
-            var mods = GetModifiersApplied(ergodoxKey.Modifiers);
+            var mods = GetModifiersApplied(zsaKey.Modifiers);
 
             if (!mods.Any()) return;
 
@@ -219,26 +220,26 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Helper
             key.DisplayType = KeyDisplayType.ModifierOnTop;
         }
 
-        private List<EZModifier> GetModifiersApplied(ErgodoxModifiers ergodoxModifiers)
+        private List<EZModifier> GetModifiersApplied(ZsaModifiers zsaModifiers)
         {
             var keyModifiers = new KeyModifierDictionary();
             var mods = new List<EZModifier>();
 
-            if (ergodoxModifiers.LeftAlt) mods.Add(keyModifiers.EZModifiers.First(m => m.KeyModifier == KeyModifier.LeftAlt));
+            if (zsaModifiers.LeftAlt) mods.Add(keyModifiers.EZModifiers.First(m => m.KeyModifier == KeyModifier.LeftAlt));
 
-            if (ergodoxModifiers.LeftCtrl) mods.Add(keyModifiers.EZModifiers.First(m => m.KeyModifier == KeyModifier.LeftCtrl));
+            if (zsaModifiers.LeftCtrl) mods.Add(keyModifiers.EZModifiers.First(m => m.KeyModifier == KeyModifier.LeftCtrl));
 
-            if (ergodoxModifiers.LeftShift) mods.Add(keyModifiers.EZModifiers.First(m => m.KeyModifier == KeyModifier.LeftShift));
+            if (zsaModifiers.LeftShift) mods.Add(keyModifiers.EZModifiers.First(m => m.KeyModifier == KeyModifier.LeftShift));
 
-            if (ergodoxModifiers.LeftWin) mods.Add(keyModifiers.EZModifiers.First(m => m.KeyModifier == KeyModifier.LeftWin));
+            if (zsaModifiers.LeftWin) mods.Add(keyModifiers.EZModifiers.First(m => m.KeyModifier == KeyModifier.LeftWin));
 
-            if (ergodoxModifiers.RightAlt) mods.Add(keyModifiers.EZModifiers.First(m => m.KeyModifier == KeyModifier.RightAlt));
+            if (zsaModifiers.RightAlt) mods.Add(keyModifiers.EZModifiers.First(m => m.KeyModifier == KeyModifier.RightAlt));
 
-            if (ergodoxModifiers.RightCtrl) mods.Add(keyModifiers.EZModifiers.First(m => m.KeyModifier == KeyModifier.RightCtrl));
+            if (zsaModifiers.RightCtrl) mods.Add(keyModifiers.EZModifiers.First(m => m.KeyModifier == KeyModifier.RightCtrl));
 
-            if (ergodoxModifiers.RightShift) mods.Add(keyModifiers.EZModifiers.First(m => m.KeyModifier == KeyModifier.RightShift));
+            if (zsaModifiers.RightShift) mods.Add(keyModifiers.EZModifiers.First(m => m.KeyModifier == KeyModifier.RightShift));
 
-            if (ergodoxModifiers.RightWin) mods.Add(keyModifiers.EZModifiers.First(m => m.KeyModifier == KeyModifier.RightWin));
+            if (zsaModifiers.RightWin) mods.Add(keyModifiers.EZModifiers.First(m => m.KeyModifier == KeyModifier.RightWin));
 
             return mods.OrderBy(m => m.Index).ToList();
         }

@@ -1,18 +1,18 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace InvvardDev.EZLayoutDisplay.Desktop.Model
+namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Model
 {
-    public class Revision
+    public class ZsaRevision
     {
         /// <summary>
-        /// Gets or sets the revision hash identifier.
+        /// Gets or sets the zsaRevision hash identifier.
         /// </summary>
         [JsonProperty("hashId")]
         public string HashId { get; set; }
 
         /// <summary>
-        /// Gets or sets the keyboard revision comment.
+        /// Gets or sets the keyboard zsaRevision comment.
         /// </summary>
         [JsonProperty("title")]
         public string Comment { get; set; }
@@ -36,9 +36,9 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Model
         public string SourcesUrl { get; set; }
 
         /// <summary>
-        /// Gets or sets the list of <see cref="ErgodoxLayer"/>.
+        /// Gets or sets the list of <see cref="ZsaLayer"/>.
         /// </summary>
         [JsonProperty("layers")]
-        public List<ErgodoxLayer> Layers { get; set; }
+        public List<ZsaLayer> Layers { get; set; }
     }
 }
