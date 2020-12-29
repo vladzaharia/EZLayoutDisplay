@@ -10,7 +10,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Interface
         /// Gets the <see cref="ZsaLayout"/> basic info.
         /// </summary>
         /// <param name="layoutHashId">The layout hash ID to get.</param>
-        /// <param name="layoutRevisionId">The layout revision ID to get.</param>
+        /// <param name="layoutRevisionId">The layout zsaRevision ID to get.</param>
         /// <returns>The <see cref="ZsaLayout"/>.</returns>
         Task<ZsaLayout> GetLayoutInfo(string layoutHashId, string layoutRevisionId);
 
@@ -18,7 +18,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Interface
         /// Gets the <see cref="ZsaLayout"/>.
         /// </summary>
         /// <param name="layoutHashId">The layout hash ID to get.</param>
-        /// <param name="layoutRevisionId">The layout revision ID to get.</param>
+        /// <param name="layoutRevisionId">The layout zsaRevision ID to get.</param>
         /// <returns>The <see cref="ZsaLayout"/>.</returns>
         Task<ZsaLayout> GetErgodoxLayout(string layoutHashId, string layoutRevisionId);
 

@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using InvvardDev.EZLayoutDisplay.Desktop.Model;
-using InvvardDev.EZLayoutDisplay.Desktop.Model.Dictionary;
 using InvvardDev.EZLayoutDisplay.Keyboards.Common.Enum;
 using InvvardDev.EZLayoutDisplay.Keyboards.Common.Model;
 using InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Model;
 using NLog;
 
-namespace InvvardDev.EZLayoutDisplay.Desktop.Helper
+namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Helper
 {
     public class EZLayoutMaker
     {
@@ -225,21 +223,21 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Helper
             var keyModifiers = new KeyModifierDictionary();
             var mods = new List<EZModifier>();
 
-            if (zsaModifiers.LeftAlt) mods.Add(keyModifiers.EZModifiers.First(m => m.KeyModifier == KeyModifier.LeftAlt));
+            if (zsaModifiers.LeftAlt) mods.Add(Enumerable.First<EZModifier>(keyModifiers.EZModifiers, m => m.KeyModifier == KeyModifier.LeftAlt));
 
-            if (zsaModifiers.LeftCtrl) mods.Add(keyModifiers.EZModifiers.First(m => m.KeyModifier == KeyModifier.LeftCtrl));
+            if (zsaModifiers.LeftCtrl) mods.Add(Enumerable.First<EZModifier>(keyModifiers.EZModifiers, m => m.KeyModifier == KeyModifier.LeftCtrl));
 
-            if (zsaModifiers.LeftShift) mods.Add(keyModifiers.EZModifiers.First(m => m.KeyModifier == KeyModifier.LeftShift));
+            if (zsaModifiers.LeftShift) mods.Add(Enumerable.First<EZModifier>(keyModifiers.EZModifiers, m => m.KeyModifier == KeyModifier.LeftShift));
 
-            if (zsaModifiers.LeftWin) mods.Add(keyModifiers.EZModifiers.First(m => m.KeyModifier == KeyModifier.LeftWin));
+            if (zsaModifiers.LeftWin) mods.Add(Enumerable.First<EZModifier>(keyModifiers.EZModifiers, m => m.KeyModifier == KeyModifier.LeftWin));
 
-            if (zsaModifiers.RightAlt) mods.Add(keyModifiers.EZModifiers.First(m => m.KeyModifier == KeyModifier.RightAlt));
+            if (zsaModifiers.RightAlt) mods.Add(Enumerable.First<EZModifier>(keyModifiers.EZModifiers, m => m.KeyModifier == KeyModifier.RightAlt));
 
-            if (zsaModifiers.RightCtrl) mods.Add(keyModifiers.EZModifiers.First(m => m.KeyModifier == KeyModifier.RightCtrl));
+            if (zsaModifiers.RightCtrl) mods.Add(Enumerable.First<EZModifier>(keyModifiers.EZModifiers, m => m.KeyModifier == KeyModifier.RightCtrl));
 
-            if (zsaModifiers.RightShift) mods.Add(keyModifiers.EZModifiers.First(m => m.KeyModifier == KeyModifier.RightShift));
+            if (zsaModifiers.RightShift) mods.Add(Enumerable.First<EZModifier>(keyModifiers.EZModifiers, m => m.KeyModifier == KeyModifier.RightShift));
 
-            if (zsaModifiers.RightWin) mods.Add(keyModifiers.EZModifiers.First(m => m.KeyModifier == KeyModifier.RightWin));
+            if (zsaModifiers.RightWin) mods.Add(Enumerable.First<EZModifier>(keyModifiers.EZModifiers, m => m.KeyModifier == KeyModifier.RightWin));
 
             return mods.OrderBy(m => m.Index).ToList();
         }

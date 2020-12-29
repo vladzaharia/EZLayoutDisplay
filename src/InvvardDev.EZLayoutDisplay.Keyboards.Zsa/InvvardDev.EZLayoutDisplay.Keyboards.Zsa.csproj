@@ -47,11 +47,19 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.7.6\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MvvmLightLibs.5.4.1.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -66,8 +74,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helper\BoolToVisibilityConverter.cs" />
+    <Compile Include="Helper\EZLayoutMaker.cs" />
     <Compile Include="Helper\KeyCategoryToBrushConverter.cs" />
     <Compile Include="Helper\KeyContentTemplateSelector.cs" />
+    <Compile Include="Model\KeyDefinitionDictionary.cs" />
     <Compile Include="Model\ZsaKey.cs" />
     <Compile Include="Model\ZsaLayer.cs" />
     <Compile Include="Model\ZsaLayout.cs" />
