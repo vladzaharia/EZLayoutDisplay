@@ -14,7 +14,7 @@ namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa.ViewModel
     {
 #region Fields
 
-        private readonly ITemplateService                          _layoutService;
+        private readonly ITemplateService                        _layoutService;
         private          List<ObservableCollection<KeyTemplate>> _layoutTemplates;
         private          ObservableCollection<KeyTemplate>       _currentLayoutTemplate;
         protected        int                                     _currentLayerIndex;

@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight.Ioc;
 using InvvardDev.EZLayoutDisplay.Desktop.Service.Implementation;
 using InvvardDev.EZLayoutDisplay.Desktop.Service.Interface;
 using InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Service;
+using InvvardDev.EZLayoutDisplay.Keyboards.Zsa.ViewModel;
 using NLog;
 
 namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
@@ -41,21 +42,14 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
             SimpleIoc.Default.Register<DisplayLayoutViewModel>();
             SimpleIoc.Default.Register<SettingsViewModel>();
             SimpleIoc.Default.Register<AboutViewModel>();
+            SimpleIoc.Default.Register<ErgoDoxEzViewModel>();
         }
 
-        /// <summary>
-        /// Gets the Main property.
-        /// </summary>
-        [ System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
-                                                          "CA1822:MarkMembersAsStatic",
-                                                          Justification = "This non-static member is needed for data binding purposes.") ]
-        public MainViewModel Main => SimpleIoc.Default.GetInstance<MainViewModel>();
-
+        public MainViewModel          Main          => SimpleIoc.Default.GetInstance<MainViewModel>();
         public DisplayLayoutViewModel DisplayLayout => SimpleIoc.Default.GetInstance<DisplayLayoutViewModel>();
-
-        public SettingsViewModel Settings => SimpleIoc.Default.GetInstance<SettingsViewModel>();
-
-        public AboutViewModel About => SimpleIoc.Default.GetInstance<AboutViewModel>();
+        public SettingsViewModel      Settings      => SimpleIoc.Default.GetInstance<SettingsViewModel>();
+        public AboutViewModel         About         => SimpleIoc.Default.GetInstance<AboutViewModel>();
+        public ErgoDoxEzViewModel     ErgoDoxEz     => SimpleIoc.Default.GetInstance<ErgoDoxEzViewModel>();
 
         /// <summary>
         /// Cleans up all the resources.
