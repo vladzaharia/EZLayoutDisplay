@@ -11,7 +11,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyProduct("InvvardDev.EZLayoutDisplay")]
 [assembly: AssemblyCompany("InvvardDev")]
-[assembly: AssemblyCopyright("Copyright © InvvardDev 2019")]
+[assembly: AssemblyCopyright("Copyright © InvvardDev 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -45,7 +45,7 @@ using System.Windows;
 //      Major Version
 //      Minor Version 
 //      Build Number
-//      ZsaRevision
+//      Revision
 //
 // You can specify all the values or you can default the Build and ZsaRevision Numbers 
 // by using the '*' as shown below:
