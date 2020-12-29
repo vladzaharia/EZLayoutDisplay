@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace InvvardDev.EZLayoutDisplay.Desktop.Properties {
+namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("InvvardDev.EZLayoutDisplay.Desktop.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -66,16 +66,6 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Properties {
         internal static byte[] keyDefinitions {
             get {
                 object obj = ResourceManager.GetObject("keyDefinitions", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] layoutDefinition {
-            get {
-                object obj = ResourceManager.GetObject("layoutDefinition", resourceCulture);
                 return ((byte[])(obj));
             }
         }

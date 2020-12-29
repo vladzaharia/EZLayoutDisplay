@@ -116,11 +116,6 @@
     </ApplicationDefinition>
     <Compile Include="Helper\LoggerHelper.cs" />
     <Compile Include="Model\Messenger\UpdatedLayoutMessage.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Service\Design\ApplicationService.cs" />
     <Compile Include="Service\Design\KeyboardHookService.cs" />
     <Compile Include="Service\Design\LayoutService.cs" />
@@ -208,7 +203,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="packages.config" />
-    <None Include="Properties\keyDefinitions.json" />
     <None Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -228,13 +222,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Skins\Images\tray_base.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.1">
