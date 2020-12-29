@@ -63,6 +63,16 @@ namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] ergoDoxEzLayoutDefinition {
+            get {
+                object obj = ResourceManager.GetObject("ergoDoxEzLayoutDefinition", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] zsaKeyDefinitions {
             get {
                 object obj = ResourceManager.GetObject("zsaKeyDefinitions", resourceCulture);
