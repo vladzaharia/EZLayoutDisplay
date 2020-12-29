@@ -21,7 +21,7 @@ namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Model
             Logger.TraceMethod();
             KeyDefinitions = new List<KeyDefinition>();
 
-            if (Resources.keyDefinitions.Length <= 0)
+            if (Resources.zsaKeyDefinitions.Length <= 0)
             {
                 Logger.Warn("KeyDefinitioins are missing from Resources");
                 return;
@@ -29,7 +29,7 @@ namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Model
 
             try
             {
-                var json = Encoding.Default.GetString(Resources.keyDefinitions);
+                var json = Encoding.Default.GetString(Resources.zsaKeyDefinitions);
                 Logger.Debug($"Resource content = {json}");
 
                 var keyDefinitions = JsonConvert.DeserializeObject<List<KeyDefinition>>(json);
