@@ -36,14 +36,19 @@
     </Window.InputBindings>
 
     <Grid Width="1075" Height="423">
-        <ContentPresenter Content="{Binding KeyboardView}" Focusable="False"
-                          Visibility="{Binding NoLayoutAvailable, Converter={StaticResource BoolToVisibleConverter}}">
-            <ContentPresenter.ContentTemplate>
-                <ItemContainerTemplate>
-                    <Canvas Margin="10"/>
-                </ItemContainerTemplate>
-            </ContentPresenter.ContentTemplate>
-        </ContentPresenter>
+        <ContentControl Margin="10" Content="{Binding}" Focusable="False"
+                        Visibility="{Binding NoLayoutAvailable, Converter={StaticResource BoolToVisibleConverter}}">
+            <ContentControl.Style>
+                <Style TargetType="{x:Type ContentControl}">
+                    <Setter Property="ContentTemplate" Value="{StaticResource ErgoDoxEzTemplate}" />
+                    <!-- <Style.Triggers>
+                        <DataTrigger Binding="{Binding VmContent}" Value="internal">
+                            <Setter Property="ContentTemplate" Value="{StaticResource ErgoDoxEzTemplate}"  />
+                        </DataTrigger>
+                    </Style.Triggers> -->
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
 
         <StackPanel Style="{StaticResource SpLayerNameStyle}"
                     Visibility="{Binding NoLayoutAvailable, Converter={StaticResource BoolToVisibleConverter}}">
