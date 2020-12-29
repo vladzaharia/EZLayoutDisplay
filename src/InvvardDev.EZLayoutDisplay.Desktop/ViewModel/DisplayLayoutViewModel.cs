@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
+using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Messaging;
 using InvvardDev.EZLayoutDisplay.Desktop.Model.Messenger;
 using InvvardDev.EZLayoutDisplay.Desktop.Service.Interface;
@@ -11,6 +12,7 @@ using InvvardDev.EZLayoutDisplay.Keyboards.Common.Enum;
 using InvvardDev.EZLayoutDisplay.Keyboards.Common.Helper;
 using InvvardDev.EZLayoutDisplay.Keyboards.Common.Model;
 using InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Service;
+using InvvardDev.EZLayoutDisplay.Keyboards.Zsa.ViewModel;
 using NLog;
 
 namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
@@ -202,8 +204,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
 
             Messenger.Default.Register<UpdatedLayoutMessage>(this, LoadCompleteLayout);
 
-            // TODO : add the currentKeyboard selector
-            //SetCurrentKeyboard();
+            SetCurrentKeyboard();
             SetLabelUi();
             SetWindowParameters();
             LoadCompleteLayout();
@@ -294,6 +295,11 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
             /* TODO : Add DataTemplates to select correct view and DataTriggers in DisplayLayoutWindow
              *KeyboardView = _keyboard.GetKeyboardView();
              */
+        }
+
+        private void SetCurrentKeyboard()
+        {
+            _keyboard = SimpleIoc.Default.GetInstance<ErgoDoxEzViewModel>();
         }
 
         private bool IsLayoutAvailable(EZLayout ezLayout)
