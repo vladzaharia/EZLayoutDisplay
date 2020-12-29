@@ -264,6 +264,10 @@
       <Name>InvvardDev.EZLayoutDisplay.Keyboards.Zsa</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helper\" />
+    <Folder Include="Model\Dictionary\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>SET path=$(TargetDir)plugins

@@ -1,6 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
+using InvvardDev.EZLayoutDisplay.Keyboards.Common.Helper;
+using InvvardDev.EZLayoutDisplay.Keyboards.Common.Model;
+using InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Properties;
 using Newtonsoft.Json;
+using NLog;
 
 namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Model
 {

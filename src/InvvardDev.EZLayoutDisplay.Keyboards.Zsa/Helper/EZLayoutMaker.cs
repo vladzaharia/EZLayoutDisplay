@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using InvvardDev.EZLayoutDisplay.Keyboards.Common.Enum;
+using InvvardDev.EZLayoutDisplay.Keyboards.Common.Helper;
 using InvvardDev.EZLayoutDisplay.Keyboards.Common.Model;
 using InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Model;
 using NLog;

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
-using InvvardDev.EZLayoutDisplay.Desktop.Helper;
 using InvvardDev.EZLayoutDisplay.Desktop.Service.Interface;
+using InvvardDev.EZLayoutDisplay.Keyboards.Common.Helper;
 using NLog;
 
 namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Implementation
