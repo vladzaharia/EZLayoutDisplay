@@ -3,9 +3,9 @@ using InvvardDev.EZLayoutDisplay.Keyboards.Common.Service;
 
 namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa.ViewModel
 {
-    internal class PlanckEzViewModel : ZsaKeyboardViewModel
+    public class PlanckEzViewModel : ZsaKeyboardViewModel
     {
-        internal PlanckEzViewModel(ILayoutService layoutService) : base(layoutService)
+        public PlanckEzViewModel(ILayoutService layoutService) : base(layoutService)
         {
             _layoutDefinitionPath = "\\data\\planckEzLayoutDefinition.json";
             SupportedKeyboardModel = new List<string> {
