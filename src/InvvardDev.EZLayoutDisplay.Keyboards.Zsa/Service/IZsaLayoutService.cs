@@ -23,7 +23,7 @@ namespace InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Service
         Task<ZsaLayout> GetErgodoxLayout(string layoutHashId, string layoutRevisionId);
 
         /// <summary>
-        /// Transforms an <see cref="ZsaLayout"/> into a <see cref="EZLayout"/>.
+        /// Transforms a <see cref="ZsaLayout"/> into a <see cref="EZLayout"/>.
         /// </summary>
         /// <param name="zsaLayout">The <see cref="ZsaLayout"/> to be transformed.</param>
         /// <returns>The <see cref="EZLayout"/> transformed into.</returns>
