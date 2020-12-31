@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using InvvardDev.EZLayoutDisplay.Desktop.Model;
 using InvvardDev.EZLayoutDisplay.Desktop.Model.Enum;
-using Newtonsoft.Json;
 
 namespace InvvardDev.EZLayoutDisplay.Console
 {
