@@ -12,6 +12,7 @@ using InvvardDev.EZLayoutDisplay.Desktop.Model.Messenger;
 using InvvardDev.EZLayoutDisplay.Desktop.Service.Interface;
 using InvvardDev.EZLayoutDisplay.Desktop.View;
 using InvvardDev.EZLayoutDisplay.Keyboards.Common.Helper;
+using InvvardDev.EZLayoutDisplay.Keyboards.Common.Model;
 using InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Model;
 using InvvardDev.EZLayoutDisplay.Keyboards.Zsa.Service;
 using NLog;
