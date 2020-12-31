@@ -120,7 +120,6 @@
     <Compile Include="Service\Design\ProcessService.cs" />
     <Compile Include="Service\Design\SettingsService.cs" />
     <Compile Include="Service\Design\WindowService.cs" />
-    <Compile Include="Model\Hotkey.cs" />
     <Compile Include="Service\Implementation\ApplicationService.cs" />
     <Compile Include="Service\Implementation\KeyboardHookService.cs" />
     <Compile Include="Service\Implementation\ProcessService.cs" />
