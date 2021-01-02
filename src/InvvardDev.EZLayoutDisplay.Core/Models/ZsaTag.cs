@@ -1,6 +1,8 @@
-﻿namespace InvvardDev.EZLayoutDisplay.Core.Models
+﻿using Newtonsoft.Json;
+
+namespace InvvardDev.EZLayoutDisplay.Core.Models
 {
-    public class ErgodoxTag
+    public class ZsaTag
     {
         /// <summary>
         /// Gets or sets the tag name.

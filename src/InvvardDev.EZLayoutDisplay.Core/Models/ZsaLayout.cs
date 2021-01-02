@@ -27,7 +27,7 @@ namespace InvvardDev.EZLayoutDisplay.Core.Models
         /// Gets or sets the keyboard tags.
         /// </summary>
         [JsonProperty("tags", NullValueHandling = NullValueHandling.Ignore)]
-        public List<ErgodoxTag> Tags { get; set; }
+        public List<ZsaTag> Tags { get; set; }
 
         /// <summary>
         /// Gets or sets the <see cref="Revision"/>.
