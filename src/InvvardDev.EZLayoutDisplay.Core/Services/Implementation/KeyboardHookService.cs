@@ -1,30 +1,35 @@
 ﻿using System;
+using System.Linq;
+using System.Net.Mime;
+using InvvardDev.EZLayoutDisplay.Core.Helper;
+using InvvardDev.EZLayoutDisplay.Core.Models;
 using InvvardDev.EZLayoutDisplay.Core.Services.Interface;
 using NLog;
+using NonInvasiveKeyboardHookLibrary;
 
 namespace InvvardDev.EZLayoutDisplay.Core.Services.Implementation
 {
     // ReSharper disable once ClassNeverInstantiated.Global
     public class KeyboardHookService : IKeyboardHookService
     {
-        #region Fields
+#region Fields
 
-        private bool _disposed;
-        private static KeyboardHookManager _hook;
-        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+        private                 bool                _disposed;
+        private static          KeyboardHookManager _hook;
+        private static readonly Logger              Logger = LogManager.GetCurrentClassLogger();
 
-        private readonly IWindowService _windowService;
+        private readonly IWindowService   _windowService;
         private readonly ISettingsService _settingsService;
 
-        #endregion
+#endregion
 
-        #region Properties
+#region Properties
 
         private static KeyboardHookManager Hook => _hook ?? (_hook = new KeyboardHookManager());
 
-        #endregion
+#endregion
 
-        #region Constructor
+#region Constructor
 
         public KeyboardHookService(IWindowService windowService, ISettingsService settingsService)
         {
@@ -50,20 +55,23 @@ namespace InvvardDev.EZLayoutDisplay.Core.Services.Implementation
             {
                 case 0:
                     Hook.RegisterHotkey(hotkeyShowLayout.KeyCode, DisplayLayout);
+
                     break;
                 case 1:
                     Hook.RegisterHotkey(hotkeyShowLayout.ModifierKeys.First(), hotkeyShowLayout.KeyCode, DisplayLayout);
+
                     break;
                 default:
                     var sumModifierKeys = SumModifiers(hotkeyShowLayout);
                     Hook.RegisterHotkey(sumModifierKeys, hotkeyShowLayout.KeyCode, DisplayLayout);
+
                     break;
             }
         }
 
-        #endregion
+#endregion
 
-        #region IKeyboardHookService implementation
+#region IKeyboardHookService implementation
 
         public void RegisterHotkey(ModifierKeys modifiers, int keyCode)
         {
@@ -82,9 +90,9 @@ namespace InvvardDev.EZLayoutDisplay.Core.Services.Implementation
             Hook.RegisterHotkey(keyCode, DisplayLayout);
         }
 
-        #endregion
+#endregion
 
-        #region Private methods
+#region Private methods
 
         private static ModifierKeys SumModifiers(Hotkey hotkeyShowLayout)
         {
@@ -93,10 +101,7 @@ namespace InvvardDev.EZLayoutDisplay.Core.Services.Implementation
 
             var sumModifierKeys = hotkeyShowLayout.ModifierKeys[0];
 
-            for (int i = 1; i < hotkeyShowLayout.ModifierKeys.Count; i++)
-            {
-                sumModifierKeys = sumModifierKeys | hotkeyShowLayout.ModifierKeys[i];
-            }
+            for (int i = 1 ; i < hotkeyShowLayout.ModifierKeys.Count ; i++) { sumModifierKeys = sumModifierKeys | hotkeyShowLayout.ModifierKeys[i]; }
 
             Logger.DebugOutputParam(nameof(sumModifierKeys), sumModifierKeys);
 
@@ -107,15 +112,12 @@ namespace InvvardDev.EZLayoutDisplay.Core.Services.Implementation
         {
             Logger.TraceMethod();
 
-            Application.Current.Dispatcher.Invoke(delegate
-            {
-                _windowService.ShowWindow<DisplayLayoutWindow>();
-            });
+            MediaTypeNames.Application.Current.Dispatcher.Invoke(delegate { _windowService.ShowWindow<DisplayLayoutWindow>(); });
         }
 
-        #endregion
+#endregion
 
-        #region IDispose implementation
+#region IDispose implementation
 
         public void Dispose()
         {
@@ -125,8 +127,7 @@ namespace InvvardDev.EZLayoutDisplay.Core.Services.Implementation
 
         protected virtual void Dispose(bool disposing)
         {
-            if (_disposed)
-                return;
+            if (_disposed) return;
 
             if (disposing)
             {
@@ -135,8 +136,8 @@ namespace InvvardDev.EZLayoutDisplay.Core.Services.Implementation
             }
 
             _disposed = true;
-        } 
+        }
 
-        #endregion
+#endregion
     }
 }

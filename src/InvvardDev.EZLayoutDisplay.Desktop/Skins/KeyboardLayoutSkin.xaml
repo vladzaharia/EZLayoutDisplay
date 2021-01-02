@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:helper="clr-namespace:InvvardDev.EZLayoutDisplay.Desktop.Helper"
-                    xmlns:converter="clr-namespace:InvvardDev.EZLayoutDisplay.Desktop.View.Converter">
+                    xmlns:converter="clr-namespace:InvvardDev.EZLayoutDisplay.Desktop.View.Converter"
+                    xmlns:helper="clr-namespace:InvvardDev.EZLayoutDisplay.Core.Helper;assembly=InvvardDev.EZLayoutDisplay.Core">
 
     <FontFamily x:Key="LatoFontFamily">/InvvardDev.EZLayoutDisplay.Desktop;component/Skins/Fonts/#Lato</FontFamily>
     <FontFamily x:Key="OryxFontFamily">/InvvardDev.EZLayoutDisplay.Desktop;component/Skins/Fonts/#Oryx</FontFamily>

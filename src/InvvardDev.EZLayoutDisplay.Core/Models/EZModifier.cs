@@ -1,4 +1,5 @@
-﻿using InvvardDev.EZLayoutDisplay.Core.Models.Enum;
+﻿using System.Collections.Generic;
+using InvvardDev.EZLayoutDisplay.Core.Models.Enum;
 
 namespace InvvardDev.EZLayoutDisplay.Core.Models
 {

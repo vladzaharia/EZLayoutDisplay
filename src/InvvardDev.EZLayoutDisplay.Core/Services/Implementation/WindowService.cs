@@ -1,12 +1,14 @@
-﻿using InvvardDev.EZLayoutDisplay.Core.Services.Interface;
+﻿using System.Collections.Generic;
+using InvvardDev.EZLayoutDisplay.Core.Helper;
+using InvvardDev.EZLayoutDisplay.Core.Services.Interface;
 using NLog;
 
 namespace InvvardDev.EZLayoutDisplay.Core.Services.Implementation
 {
     public class WindowService : IWindowService
     {
-        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
-        private readonly Dictionary<string, Window> _windows;
+        private static readonly Logger                     Logger = LogManager.GetCurrentClassLogger();
+        private readonly        Dictionary<string, Window> _windows;
 
         public WindowService()
         {

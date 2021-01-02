@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Windows;
 using System.Windows.Threading;
-using InvvardDev.EZLayoutDisplay.Desktop.Helper;
+using InvvardDev.EZLayoutDisplay.Core.Helper;
 using NLog;
 
 namespace InvvardDev.EZLayoutDisplay.Desktop

@@ -5,7 +5,7 @@ using InvvardDev.EZLayoutDisplay.Core.Models.Dictionary;
 using InvvardDev.EZLayoutDisplay.Core.Models.Enum;
 using NLog;
 
-namespace InvvardDev.EZLayoutDisplay.Desktop.Helper
+namespace InvvardDev.EZLayoutDisplay.Core.Helper
 {
     public class EZLayoutMaker
     {
@@ -168,7 +168,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Helper
 
             return key;
         }
-ErgodoxModifiers
+
         private static string GetColor(string keyColor, string defaultColor = "#777")
         {
             var fontColor = string.IsNullOrWhiteSpace(keyColor) ? defaultColor : keyColor;

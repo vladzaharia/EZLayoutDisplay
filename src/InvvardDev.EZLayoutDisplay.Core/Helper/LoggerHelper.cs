@@ -1,7 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using NLog;
 
-namespace InvvardDev.EZLayoutDisplay.Desktop.Helper
+namespace InvvardDev.EZLayoutDisplay.Core.Helper
 {
     public static class LoggerHelper
     {
