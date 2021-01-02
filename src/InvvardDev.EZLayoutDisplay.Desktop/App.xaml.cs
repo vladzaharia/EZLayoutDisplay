@@ -2,7 +2,6 @@
 using System.Threading;
 using System.Windows;
 using System.Windows.Threading;
-using GalaSoft.MvvmLight.Threading;
 using InvvardDev.EZLayoutDisplay.Desktop.Helper;
 using NLog;
 
