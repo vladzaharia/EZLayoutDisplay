@@ -1,4 +1,6 @@
-﻿namespace InvvardDev.EZLayoutDisplay.Core.ViewModel
+﻿using MvvmCross.ViewModels;
+
+namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
 {
     /// <summary>
     /// This class contains properties that the main View can data bind to.

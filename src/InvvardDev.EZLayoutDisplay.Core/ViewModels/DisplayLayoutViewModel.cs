@@ -190,8 +190,7 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
         /// Next layer command.
         /// </summary>
         public IMvxCommand ScrollLayerCommand =>
-            _scrollLayerCommand
-            ?? (_scrollLayerCommand = new MvxCommand<MouseWheelEventArgs>(ScrollLayer));
+            _scrollLayerCommand ??= new MvxCommand<MouseWheelEventArgs>(ScrollLayer);
 
 #endregion
 

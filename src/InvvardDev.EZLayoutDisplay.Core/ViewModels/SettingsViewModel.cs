@@ -1,6 +1,6 @@
 ﻿using MvvmCross.ViewModels;
 
-namespace InvvardDev.EZLayoutDisplay.Core.ViewModel
+namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
 {
     public class SettingsViewModel : MvxViewModel
     {

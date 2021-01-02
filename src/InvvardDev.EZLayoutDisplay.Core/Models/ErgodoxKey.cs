@@ -1,4 +1,6 @@
-﻿namespace InvvardDev.EZLayoutDisplay.Core.Model
+﻿using Newtonsoft.Json;
+
+namespace InvvardDev.EZLayoutDisplay.Core.Models
 {
     public class ErgodoxKey
     {

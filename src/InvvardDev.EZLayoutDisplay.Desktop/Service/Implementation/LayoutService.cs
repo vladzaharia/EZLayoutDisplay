@@ -4,7 +4,6 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using InvvardDev.EZLayoutDisplay.Desktop.Helper;
-using InvvardDev.EZLayoutDisplay.Desktop.Model;
 using InvvardDev.EZLayoutDisplay.Desktop.Properties;
 using InvvardDev.EZLayoutDisplay.Desktop.Service.Interface;
 using Newtonsoft.Json;
