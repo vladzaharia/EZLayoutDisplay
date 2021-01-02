@@ -1,12 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
+using InvvardDev.EZLayoutDisplay.Core.Models;
+using InvvardDev.EZLayoutDisplay.Core.Models.Enum;
+using InvvardDev.EZLayoutDisplay.Core.Services.Interface;
 using MvvmCross.Commands;
-using MvvmCross.Logging.LogProviders;
 using MvvmCross.ViewModels;
+using Newtonsoft.Json;
+using NLog;
+using Logger = MvvmCross.Logging.LogProviders.Logger;
 
 namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
 {
