@@ -57,7 +57,7 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
         public string WindowTitle
         {
             get => _windowTitle;
-            private set => Set(ref _windowTitle, value);
+            private set => SetProperty(ref _windowTitle, value);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
         public string NoLayoutWarningFirstLine
         {
             get => _noLayoutWarningFirstLine;
-            private set => Set(ref _noLayoutWarningFirstLine, value);
+            private set => SetProperty(ref _noLayoutWarningFirstLine, value);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
         public string NoLayoutWarningSecondLine
         {
             get => _noLayoutWarningSecondLine;
-            private set => Set(ref _noLayoutWarningSecondLine, value);
+            private set => SetProperty(ref _noLayoutWarningSecondLine, value);
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
         public string CurrentLayerNameTitle
         {
             get => _currentLayerNameTitle;
-            private set => Set(ref _currentLayerNameTitle, value);
+            private set => SetProperty(ref _currentLayerNameTitle, value);
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
         public string CurrentLayerName
         {
             get => _currentLayerName;
-            private set => Set(ref _currentLayerName, value);
+            private set => SetProperty(ref _currentLayerName, value);
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
         public string ControlHintSpaceLabel
         {
             get => _controlHintSpaceLabel;
-            private set => Set(ref _controlHintSpaceLabel, value);
+            private set => SetProperty(ref _controlHintSpaceLabel, value);
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
         public string ControlHintEscapeLabel
         {
             get => _controlHintEscapeLabel;
-            private set => Set(ref _controlHintEscapeLabel, value);
+            private set => SetProperty(ref _controlHintEscapeLabel, value);
         }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
         public string ToggleBtnPinWindowContent
         {
             get => _toggleBtnPinWindowContent;
-            private set => Set(ref _toggleBtnPinWindowContent, value);
+            private set => SetProperty(ref _toggleBtnPinWindowContent, value);
         }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
         public string ToggleBtnPinWindowTooltip
         {
             get => _toggleBtnPinWindowTooltip;
-            private set => Set(ref _toggleBtnPinWindowTooltip, value);
+            private set => SetProperty(ref _toggleBtnPinWindowTooltip, value);
         }
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
         public bool NoLayoutAvailable
         {
             get => _noLayoutAvailable;
-            private set => Set(ref _noLayoutAvailable, value);
+            private set => SetProperty(ref _noLayoutAvailable, value);
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
         public ObservableCollection<KeyTemplate> CurrentLayoutTemplate
         {
             get => _currentLayoutTemplate;
-            set => Set(ref _currentLayoutTemplate, value);
+            set => SetProperty(ref _currentLayoutTemplate, value);
         }
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
         public int CurrentLayerIndex
         {
             get => _currentLayerIndex;
-            private set => Set(ref _currentLayerIndex, value);
+            private set => SetProperty(ref _currentLayerIndex, value);
         }
 
         /// <summary>
@@ -165,7 +165,7 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
         public bool IsWindowPinned
         {
             get => _isWindowPinned;
-            set => Set(ref _isWindowPinned, value);
+            set => SetProperty(ref _isWindowPinned, value);
         }
 
 #endregion

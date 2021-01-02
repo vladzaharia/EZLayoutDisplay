@@ -2,7 +2,9 @@
 using System.Linq;
 using System.Reflection;
 using System.Windows.Input;
+using InvvardDev.EZLayoutDisplay.Core.Services.Interface;
 using MvvmCross.ViewModels;
+using NLog;
 
 namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
 {

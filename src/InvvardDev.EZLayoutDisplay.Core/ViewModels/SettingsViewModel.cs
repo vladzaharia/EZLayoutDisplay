@@ -1,4 +1,13 @@
-﻿using MvvmCross.ViewModels;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using InvvardDev.EZLayoutDisplay.Core.Models;
+using InvvardDev.EZLayoutDisplay.Core.Services.Interface;
+using MvvmCross.Commands;
+using MvvmCross.ViewModels;
+using NLog;
 
 namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
 {
@@ -20,25 +29,25 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
         private readonly ILayoutService _layoutService;
         private readonly IProcessService _processService;
 
-        private ICommand _openTagSearchCommand;
-        private ICommand _downloadHexFileCommand;
-        private ICommand _downloadSourcesCommand;
-        private ICommand _applySettingsCommand;
-        private ICommand _updateLayoutCommand;
-        private ICommand _closeSettingsCommand;
-        private ICommand _cancelSettingsCommand;
+        private IMvxCommand _openTagSearchCommand;
+        private IMvxCommand _downloadHexFileCommand;
+        private IMvxCommand _downloadSourcesCommand;
+        private IMvxCommand _applySettingsCommand;
+        private IMvxCommand _updateLayoutCommand;
+        private IMvxCommand _closeSettingsCommand;
+        private IMvxCommand _cancelSettingsCommand;
 
-        private string _currentLayoutHashId;
-        private string _currentLayoutRevisionId;
-        private string _layoutTitle;
-        private string _keyboardModel;
-        private string _layoutStatus;
+        private string                       _currentLayoutHashId;
+        private string                       _currentLayoutRevisionId;
+        private string                       _layoutTitle;
+        private string                       _keyboardModel;
+        private string                       _layoutStatus;
         private ObservableCollection<string> _tags;
         private ObservableCollection<string> _layers;
-        private string _hexFileUri;
-        private string _sourcesZipUri;
-        private bool _layoutIsCompiled;
-        private string _keyboardGeometry;
+        private string                       _hexFileUri;
+        private string                       _sourcesZipUri;
+        private bool                         _layoutIsCompiled;
+        private string                       _keyboardGeometry;
 
         private string _altModifierLabel;
         private string _ctrlModifierLabel;
@@ -55,51 +64,44 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
         /// <summary>
         /// Open tag search command.
         /// </summary>
-        public ICommand OpenTagSearchCommand =>
-            _openTagSearchCommand
-            ?? (_openTagSearchCommand = new RelayCommand<string>(OpenTagSearchUrl));
+        public IMvxCommand OpenTagSearchCommand =>
+            _openTagSearchCommand ??= new MvxCommand<string>(OpenTagSearchUrl);
 
         /// <summary>
         /// Download HEX file.
         /// </summary>
-        public ICommand DownloadHexFileCommand =>
-            _downloadHexFileCommand
-            ?? (_downloadHexFileCommand = new RelayCommand(DownloadHexFile, LayoutIsCompiled));
+        public IMvxCommand DownloadHexFileCommand =>
+            _downloadHexFileCommand ??= new MvxCommand(DownloadHexFile, LayoutIsCompiled);
 
         /// <summary>
         /// Download Sources ZIP.
         /// </summary>
-        public ICommand DownloadSourcesCommand =>
-            _downloadSourcesCommand
-            ?? (_downloadSourcesCommand = new RelayCommand(DownloadSources, LayoutIsCompiled));
+        public IMvxCommand DownloadSourcesCommand =>
+            _downloadSourcesCommand ??= new MvxCommand(DownloadSources, LayoutIsCompiled);
 
         /// <summary>
         /// Cancel settings edition.
         /// </summary>
-        public ICommand CancelSettingsCommand =>
-            _cancelSettingsCommand
-            ?? (_cancelSettingsCommand = new RelayCommand(CancelSettings, IsDirty));
+        public IMvxCommand CancelSettingsCommand =>
+            _cancelSettingsCommand ??= new MvxCommand(CancelSettings, IsDirty);
 
         /// <summary>
         /// Applies the settings.
         /// </summary>
-        public ICommand ApplySettingsCommand =>
-            _applySettingsCommand
-            ?? (_applySettingsCommand = new RelayCommand(SaveSettings, IsDirty));
+        public IMvxCommand ApplySettingsCommand =>
+            _applySettingsCommand ??= new MvxCommand(SaveSettings, IsDirty);
 
         /// <summary>
         /// Update the layout from Ergodox website.
         /// </summary>
-        public ICommand UpdateLayoutCommand =>
-            _updateLayoutCommand
-            ?? (_updateLayoutCommand = new RelayCommand(SaveSettings));
+        public IMvxCommand UpdateLayoutCommand =>
+            _updateLayoutCommand ??= new MvxCommand(SaveSettings);
 
         /// <summary>
         /// Closes the settings window.
         /// </summary>
-        public ICommand CloseSettingsCommand =>
-            _closeSettingsCommand
-            ?? (_closeSettingsCommand = new RelayCommand(CloseSettingsWindow));
+        public IMvxCommand CloseSettingsCommand =>
+            _closeSettingsCommand ??= new MvxCommand(CloseSettingsWindow);
 
         #endregion
 
@@ -138,7 +140,7 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
             get => _layoutUrlContent;
             set
             {
-                if (!Set(ref _layoutUrlContent, value)) return;
+                if (!SetProperty(ref _layoutUrlContent, value)) return;
 
                 UpdateButtonCanExecute();
                 UpdateErgoDoxInfo();
@@ -148,31 +150,31 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
         public string LayoutTitle
         {
             get => _layoutTitle;
-            private set => Set(ref _layoutTitle, value);
+            private set => SetProperty(ref _layoutTitle, value);
         }
 
         public string KeyboardModel
         {
             get => _keyboardModel;
-            private set => Set(ref _keyboardModel, value);
+            private set => SetProperty(ref _keyboardModel, value);
         }
 
         public string LayoutStatus
         {
             get => _layoutStatus;
-            private set => Set(ref _layoutStatus, value);
+            private set => SetProperty(ref _layoutStatus, value);
         }
 
         public ObservableCollection<string> Tags
         {
-            get => _tags ?? (_tags = new ObservableCollection<string>());
-            private set => Set(ref _tags, value);
+            get => _tags ??= new ObservableCollection<string>();
+            private set => SetProperty(ref _tags, value);
         }
 
         public ObservableCollection<string> Layers
         {
-            get => _layers ?? (_layers = new ObservableCollection<string>());
-            private set => Set(ref _layers, value);
+            get => _layers ??= new ObservableCollection<string>();
+            private set => SetProperty(ref _layers, value);
         }
 
         public string HotkeyTitleLabel { get; set; }
@@ -180,43 +182,43 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
         public string AltModifierLabel
         {
             get => _altModifierLabel;
-            private set => Set(ref _altModifierLabel, value);
+            private set => SetProperty(ref _altModifierLabel, value);
         }
 
         public string CtrlModifierLabel
         {
             get => _ctrlModifierLabel;
-            private set => Set(ref _ctrlModifierLabel, value);
+            private set => SetProperty(ref _ctrlModifierLabel, value);
         }
 
         public string ShiftModifierLabel
         {
             get => _shiftModifierLabel;
-            private set => Set(ref _shiftModifierLabel, value);
+            private set => SetProperty(ref _shiftModifierLabel, value);
         }
 
         public string WindowsModifierLabel
         {
             get => _windowsModifierLabel;
-            private set => Set(ref _windowsModifierLabel, value);
+            private set => SetProperty(ref _windowsModifierLabel, value);
         }
 
         private Hotkey HotkeyShowLayout
         {
             get => _hotkeyDisplayLayout;
-            set => Set(ref _hotkeyDisplayLayout, value);
+            set => SetProperty(ref _hotkeyDisplayLayout, value);
         }
 
         public string CurrentLayoutHashId
         {
             get => _currentLayoutHashId;
-            set => Set(ref _currentLayoutHashId, value);
+            set => SetProperty(ref _currentLayoutHashId, value);
         }
 
         public string CurrentLayoutRevisionId
         {
             get => _currentLayoutRevisionId;
-            set => Set(ref _currentLayoutRevisionId, value);
+            set => SetProperty(ref _currentLayoutRevisionId, value);
         }
 
         #endregion
@@ -311,7 +313,7 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
 
         private void CancelSettings()
         {
-            Logger.TraceRelayCommand();
+            Logger.TraceMvxCommand();
 
             _settingsService.Cancel();
 
@@ -321,7 +323,7 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
 
         private void CloseSettingsWindow()
         {
-            Logger.TraceRelayCommand();
+            Logger.TraceMvxCommand();
 
             if (IsDirty())
             {
@@ -333,7 +335,7 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
 
         private void OpenTagSearchUrl(string tag)
         {
-            Logger.TraceRelayCommand();
+            Logger.TraceMvxCommand();
 
             if (string.IsNullOrWhiteSpace(tag) || string.IsNullOrWhiteSpace(_keyboardGeometry))
             {
@@ -346,14 +348,14 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
 
         private void DownloadHexFile()
         {
-            Logger.TraceRelayCommand();
+            Logger.TraceMvxCommand();
 
             _processService.StartWebUrl(_hexFileUri);
         }
 
         private void DownloadSources()
         {
-            Logger.TraceRelayCommand();
+            Logger.TraceMvxCommand();
 
             _processService.StartWebUrl(_sourcesZipUri);
         }
@@ -362,8 +364,8 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
         {
             Logger.TraceMethod();
 
-            ((RelayCommand) ApplySettingsCommand).RaiseCanExecuteChanged();
-            ((RelayCommand) CancelSettingsCommand).RaiseCanExecuteChanged();
+            ((MvxCommand) ApplySettingsCommand).RaiseCanExecuteChanged();
+            ((MvxCommand) CancelSettingsCommand).RaiseCanExecuteChanged();
         }
 
         private bool IsDirty()
@@ -413,7 +415,7 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
             }
         }
 
-        private void CheckLatestRevisionId(ErgodoxLayout layoutInfo)
+        private void CheckLatestRevisionId(ZsaLayout layoutInfo)
         {
             if (CurrentLayoutRevisionId.ToLower() != DefaultLatestRevisionId)
             {
@@ -436,7 +438,7 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
             _layoutIsCompiled = false;
         }
 
-        private void UpdateLayoutInfo(ErgodoxLayout layoutInfo)
+        private void UpdateLayoutInfo(ZsaLayout layoutInfo)
         {
             Logger.TraceMethod();
 
@@ -483,14 +485,14 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
             return keyboardDescription;
         }
 
-        private void UpdateLayoutButtons(Revision revision)
+        private void UpdateLayoutButtons(ZsaRevision revision)
         {
             Logger.TraceMethod();
 
             _layoutIsCompiled = Uri.IsWellFormedUriString(revision.HexUrl, UriKind.Absolute) && Uri.IsWellFormedUriString(revision.SourcesUrl, UriKind.Absolute);
 
-            ((RelayCommand) DownloadHexFileCommand).RaiseCanExecuteChanged();
-            ((RelayCommand) DownloadSourcesCommand).RaiseCanExecuteChanged();
+            ((MvxCommand) DownloadHexFileCommand).RaiseCanExecuteChanged();
+            ((MvxCommand) DownloadSourcesCommand).RaiseCanExecuteChanged();
 
             _hexFileUri = revision.HexUrl;
             _sourcesZipUri = revision.SourcesUrl;
