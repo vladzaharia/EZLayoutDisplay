@@ -1,44 +1,34 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Messaging;
-using InvvardDev.EZLayoutDisplay.Desktop.Helper;
-using InvvardDev.EZLayoutDisplay.Desktop.Model;
-using InvvardDev.EZLayoutDisplay.Desktop.Model.Enum;
-using InvvardDev.EZLayoutDisplay.Desktop.Model.Messenger;
-using InvvardDev.EZLayoutDisplay.Desktop.Properties;
-using InvvardDev.EZLayoutDisplay.Desktop.Service.Interface;
-using InvvardDev.EZLayoutDisplay.Desktop.View;
-using Newtonsoft.Json;
-using NLog;
+using MvvmCross.Commands;
+using MvvmCross.Logging.LogProviders;
+using MvvmCross.ViewModels;
 
-namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
+namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
 {
-    public class DisplayLayoutViewModel : ViewModelBase
+    public class DisplayLayoutViewModel : MvxViewModel
     {
-        #region Fields
+#region Fields
 
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
-        private readonly IWindowService _windowService;
-        private readonly ILayoutService _layoutService;
+        private readonly IWindowService   _windowService;
+        private readonly ILayoutService   _layoutService;
         private readonly ISettingsService _settingsService;
 
-        private ICommand _lostFocusCommand;
-        private ICommand _hideWindowCommand;
-        private ICommand _nextLayerCommand;
-        private ICommand _scrollLayerCommand;
+        private IMvxCommand _lostFocusCommand;
+        private IMvxCommand _hideWindowCommand;
+        private IMvxCommand _nextLayerCommand;
+        private IMvxCommand _scrollLayerCommand;
 
-        private List<List<KeyTemplate>> _layoutTemplates;
+        private List<List<KeyTemplate>>           _layoutTemplates;
         private ObservableCollection<KeyTemplate> _currentLayoutTemplate;
-        private int _currentLayerIndex;
-        private EZLayout _ezLayout;
+        private int                               _currentLayerIndex;
+        private EZLayout                          _ezLayout;
 
         private bool _isWindowPinned;
 
@@ -51,11 +41,11 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
         private string _controlHintEscapeLabel;
         private string _toggleBtnPinWindowContent;
         private string _toggleBtnPinWindowTooltip;
-        private bool _noLayoutAvailable;
+        private bool   _noLayoutAvailable;
 
-        #endregion
+#endregion
 
-        #region Properties
+#region Properties
 
         /// <summary>
         /// Gets or sets the window title.
@@ -174,39 +164,36 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
             set => Set(ref _isWindowPinned, value);
         }
 
-        #endregion
+#endregion
 
-        #region Relay commands
+#region Relay commands
 
         /// <summary>
         /// Lost focus command.
         /// </summary>
-        public ICommand LostFocusCommand =>
-            _lostFocusCommand
-            ?? (_lostFocusCommand = new RelayCommand(LostFocus, LostFocusCanExecute));
+        public IMvxCommand LostFocusCommand =>
+            _lostFocusCommand ??= new MvxCommand(LostFocus, LostFocusCanExecute);
 
         /// <summary>
         /// Hide window command.
         /// </summary>
-        public ICommand HideWindowCommand =>
-            _hideWindowCommand
-            ?? (_hideWindowCommand = new RelayCommand(LostFocus));
+        public IMvxCommand HideWindowCommand =>
+            _hideWindowCommand ??= new MvxCommand(LostFocus);
 
         /// <summary>
         /// Next layer command.
         /// </summary>
-        public ICommand NextLayerCommand =>
-            _nextLayerCommand
-            ?? (_nextLayerCommand = new RelayCommand(NextLayer, NextLayerCanExecute));
+        public IMvxCommand NextLayerCommand =>
+            _nextLayerCommand ??= new MvxCommand(NextLayer, NextLayerCanExecute);
 
         /// <summary>
         /// Next layer command.
         /// </summary>
-        public ICommand ScrollLayerCommand =>
+        public IMvxCommand ScrollLayerCommand =>
             _scrollLayerCommand
-            ?? (_scrollLayerCommand = new RelayCommand<MouseWheelEventArgs>(ScrollLayer));
+            ?? (_scrollLayerCommand = new MvxCommand<MouseWheelEventArgs>(ScrollLayer));
 
-        #endregion
+#endregion
 
         public DisplayLayoutViewModel(IWindowService windowService, ILayoutService layoutService, ISettingsService settingsService)
         {
@@ -225,7 +212,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
             LoadCompleteLayout();
         }
 
-        #region Private methods
+#region Private methods
 
         private void SetLabelUi()
         {
@@ -327,10 +314,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
             {
                 if (!(await LoadLayoutDefinition() is List<KeyTemplate> layoutTemplate)) break;
 
-                for (int j = 0 ; j < layoutTemplate.Count ; j++)
-                {
-                    layoutTemplate[j].EZKey = t.EZKeys[j];
-                }
+                for (int j = 0 ; j < layoutTemplate.Count ; j++) { layoutTemplate[j].EZKey = t.EZKeys[j]; }
 
                 _layoutTemplates.Add(layoutTemplate);
             }
@@ -361,7 +345,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
             CurrentLayerName = $"{_ezLayout.EZLayers[CurrentLayerIndex].Name} {_ezLayout.EZLayers[CurrentLayerIndex].Index}";
         }
 
-        #region Delegates
+#region Delegates
 
         private void LoadCompleteLayout(UpdatedLayoutMessage obj)
         {
@@ -386,15 +370,9 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
         {
             Logger.TraceRelayCommand();
 
-            if (e.Delta < 0)
-            {
-                VaryLayer(1);
-            }
+            if (e.Delta < 0) { VaryLayer(1); }
 
-            if (e.Delta > 0)
-            {
-                VaryLayer(-1);
-            }
+            if (e.Delta > 0) { VaryLayer(-1); }
         }
 
         private void VaryLayer(int variation)
@@ -444,8 +422,8 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
             return canExecute;
         }
 
-        #endregion
+#endregion
 
-        #endregion
+#endregion
     }
 }

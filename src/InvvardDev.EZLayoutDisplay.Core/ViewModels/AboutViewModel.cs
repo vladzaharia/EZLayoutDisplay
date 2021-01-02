@@ -2,16 +2,11 @@
 using System.Linq;
 using System.Reflection;
 using System.Windows.Input;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using InvvardDev.EZLayoutDisplay.Desktop.Helper;
-using InvvardDev.EZLayoutDisplay.Desktop.Service.Interface;
-using InvvardDev.EZLayoutDisplay.Desktop.View;
-using NLog;
+using MvvmCross.ViewModels;
 
-namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
+namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
 {
-    public class AboutViewModel : ViewModelBase
+    public class AboutViewModel : MvxViewModel
     {
         #region Fields
 

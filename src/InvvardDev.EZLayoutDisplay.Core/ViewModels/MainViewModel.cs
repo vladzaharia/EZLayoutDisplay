@@ -1,12 +1,4 @@
-﻿using System.Windows.Input;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using InvvardDev.EZLayoutDisplay.Desktop.Helper;
-using InvvardDev.EZLayoutDisplay.Desktop.Service.Interface;
-using InvvardDev.EZLayoutDisplay.Desktop.View;
-using NLog;
-
-namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
+﻿namespace InvvardDev.EZLayoutDisplay.Core.ViewModel
 {
     /// <summary>
     /// This class contains properties that the main View can data bind to.
@@ -14,7 +6,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
     /// See http://www.mvvmlight.net
     /// </para>
     /// </summary>
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel : MvxViewModel
     {
         #region Fields
 
