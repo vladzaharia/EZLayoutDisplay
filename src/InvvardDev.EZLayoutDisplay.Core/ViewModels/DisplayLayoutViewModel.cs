@@ -11,7 +11,6 @@ using MvvmCross.Commands;
 using MvvmCross.ViewModels;
 using Newtonsoft.Json;
 using NLog;
-using Logger = MvvmCross.Logging.LogProviders.Logger;
 
 namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
 {
