@@ -1,4 +1,6 @@
-﻿using ModifierKeys = NonInvasiveKeyboardHookLibrary.ModifierKeys;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
+using ModifierKeys = NonInvasiveKeyboardHookLibrary.ModifierKeys;
 
 namespace InvvardDev.EZLayoutDisplay.Core.Models
 {

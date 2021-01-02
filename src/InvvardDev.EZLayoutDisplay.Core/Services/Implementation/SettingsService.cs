@@ -1,7 +1,10 @@
 ﻿using System;
+using InvvardDev.EZLayoutDisplay.Core.Models;
+using InvvardDev.EZLayoutDisplay.Core.Models.Enum;
 using InvvardDev.EZLayoutDisplay.Core.Services.Interface;
 using Newtonsoft.Json;
 using NLog;
+using NonInvasiveKeyboardHookLibrary;
 
 namespace InvvardDev.EZLayoutDisplay.Core.Services.Implementation
 {

@@ -1,4 +1,6 @@
-﻿namespace InvvardDev.EZLayoutDisplay.Core.Models
+﻿using System.Collections.Generic;
+
+namespace InvvardDev.EZLayoutDisplay.Core.Models
 {
     public class EZLayer
     {

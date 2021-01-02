@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using InvvardDev.EZLayoutDisplay.Core.Models;
+using InvvardDev.EZLayoutDisplay.Core.Models.Enum;
 
 namespace InvvardDev.EZLayoutDisplay.Desktop.Helper
 {

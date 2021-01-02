@@ -1,4 +1,6 @@
 ﻿using InvvardDev.EZLayoutDisplay.Core.Models.Enum;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace InvvardDev.EZLayoutDisplay.Core.Models
 {

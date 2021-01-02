@@ -1,5 +1,7 @@
 ﻿using System.Diagnostics;
+using InvvardDev.EZLayoutDisplay.Core.Models;
 using InvvardDev.EZLayoutDisplay.Core.Services.Interface;
+using NonInvasiveKeyboardHookLibrary;
 
 namespace InvvardDev.EZLayoutDisplay.Core.Services.Design
 {

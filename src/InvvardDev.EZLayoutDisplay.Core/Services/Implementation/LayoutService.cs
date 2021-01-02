@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using InvvardDev.EZLayoutDisplay.Core.Models;
 using InvvardDev.EZLayoutDisplay.Core.Services.Interface;
 using Newtonsoft.Json;
 using NLog;
@@ -24,7 +25,7 @@ namespace InvvardDev.EZLayoutDisplay.Core.Services.Implementation
         #region ILayoutService implementation
 
         /// <inheritdoc />
-        public async Task<ErgodoxLayout> GetLayoutInfo(string layoutHashId, string layoutRevisionId)
+        public async Task<ZsaLayout> GetLayoutInfo(string layoutHashId, string layoutRevisionId)
         {
             Logger.TraceMethod();
             Logger.DebugInputParam(nameof(layoutHashId), layoutHashId);
@@ -38,7 +39,7 @@ namespace InvvardDev.EZLayoutDisplay.Core.Services.Implementation
         }
 
         /// <inheritdoc />
-        public async Task<ErgodoxLayout> GetErgodoxLayout(string layoutHashId, string layoutRevisionId)
+        public async Task<ZsaLayout> GetZsaLayout(string layoutHashId, string layoutRevisionId)
         {
             Logger.TraceMethod();
             Logger.DebugInputParam(nameof(layoutHashId), layoutHashId);
@@ -52,7 +53,7 @@ namespace InvvardDev.EZLayoutDisplay.Core.Services.Implementation
         }
 
         /// <inheritdoc />
-        public EZLayout PrepareEZLayout(ErgodoxLayout ergodoxLayout)
+        public EZLayout PrepareEZLayout(ZsaLayout ergodoxLayout)
         {
             Logger.TraceMethod();
 
@@ -76,7 +77,7 @@ namespace InvvardDev.EZLayoutDisplay.Core.Services.Implementation
 
         #region Private methods
 
-        private async Task<ErgodoxLayout> QueryData(string layoutHashId, string layoutRevisionId, string graphQlQuery)
+        private async Task<ZsaLayout> QueryData(string layoutHashId, string layoutRevisionId, string graphQlQuery)
         {
             var requestBody = string.Format(graphQlQuery, layoutHashId, layoutRevisionId);
 

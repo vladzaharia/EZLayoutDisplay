@@ -1,4 +1,7 @@
-﻿namespace InvvardDev.EZLayoutDisplay.Core.Models
+﻿using System.ComponentModel;
+using Newtonsoft.Json;
+
+namespace InvvardDev.EZLayoutDisplay.Core.Models
 {
     public class KeyTemplate
     {

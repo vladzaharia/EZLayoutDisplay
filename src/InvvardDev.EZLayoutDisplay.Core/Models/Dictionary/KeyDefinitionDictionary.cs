@@ -1,4 +1,10 @@
-﻿namespace InvvardDev.EZLayoutDisplay.Core.Models.Dictionary
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using Newtonsoft.Json;
+using NLog;
+
+namespace InvvardDev.EZLayoutDisplay.Core.Models.Dictionary
 {
     public class KeyDefinitionDictionary
     {

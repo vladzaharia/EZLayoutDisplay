@@ -1,4 +1,6 @@
-﻿namespace InvvardDev.EZLayoutDisplay.Core.Services.Interface
+﻿using InvvardDev.EZLayoutDisplay.Core.Models;
+
+namespace InvvardDev.EZLayoutDisplay.Core.Services.Interface
 {
     public interface ISettingsService
     {
