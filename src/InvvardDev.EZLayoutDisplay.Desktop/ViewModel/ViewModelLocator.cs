@@ -1,5 +1,4 @@
-﻿using CommonServiceLocator;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using InvvardDev.EZLayoutDisplay.Desktop.Service.Implementation;
 using InvvardDev.EZLayoutDisplay.Desktop.Service.Interface;
@@ -18,8 +17,6 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
     {
         static ViewModelLocator()
         {
-            ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
-
             if (ViewModelBase.IsInDesignModeStatic)
             {
                 SimpleIoc.Default.Register<IWindowService, Service.Design.WindowService>();
@@ -51,13 +48,13 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
             "CA1822:MarkMembersAsStatic",
             Justification = "This non-static member is needed for data binding purposes.")]
-        public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
+        public MainViewModel Main => SimpleIoc.Default.GetInstance<MainViewModel>();
 
-        public DisplayLayoutViewModel DisplayLayout => ServiceLocator.Current.GetInstance<DisplayLayoutViewModel>();
+        public DisplayLayoutViewModel DisplayLayout => SimpleIoc.Default.GetInstance<DisplayLayoutViewModel>();
 
-        public SettingsViewModel Settings => ServiceLocator.Current.GetInstance<SettingsViewModel>();
+        public SettingsViewModel Settings => SimpleIoc.Default.GetInstance<SettingsViewModel>();
 
-        public AboutViewModel About => ServiceLocator.Current.GetInstance<AboutViewModel>();
+        public AboutViewModel About => SimpleIoc.Default.GetInstance<AboutViewModel>();
         
         /// <summary>
         /// Cleans up all the resources.
