@@ -1,6 +1,9 @@
-﻿namespace InvvardDev.EZLayoutDisplay.Core.Models
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
+
+namespace InvvardDev.EZLayoutDisplay.Core.Models
 {
-    public class Revision
+    public class ZsaRevision
     {
         /// <summary>
         /// Gets or sets the revision hash identifier.
@@ -33,9 +36,9 @@
         public string SourcesUrl { get; set; }
 
         /// <summary>
-        /// Gets or sets the list of <see cref="ErgodoxLayer"/>.
+        /// Gets or sets the list of <see cref="ZsaLayer"/>.
         /// </summary>
         [JsonProperty("layers")]
-        public List<ErgodoxLayer> Layers { get; set; }
+        public List<ZsaLayer> Layers { get; set; }
     }
 }

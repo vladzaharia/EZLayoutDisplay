@@ -1,6 +1,9 @@
-﻿namespace InvvardDev.EZLayoutDisplay.Core.Models
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
+
+namespace InvvardDev.EZLayoutDisplay.Core.Models
 {
-    public class ErgodoxLayout
+    public class ZsaLayout
     {
         /// <summary>
         /// Gets or sets the layout hash identifier.
@@ -30,18 +33,6 @@
         /// Gets or sets the <see cref="Revision"/>.
         /// </summary>
         [JsonProperty("revision")]
-        public Revision Revision { get; set; }
-    }
-
-    public class DataRoot
-    {
-        [JsonProperty("data")]
-        public ErgodoxLayoutRoot LayoutRoot { get; set; }
-    }
-
-    public class ErgodoxLayoutRoot
-    {
-        [JsonProperty("Layout")]
-        public ErgodoxLayout Layout { get; set; }
+        public ZsaRevision Revision { get; set; }
     }
 }
