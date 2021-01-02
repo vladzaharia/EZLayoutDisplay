@@ -1,4 +1,4 @@
-﻿namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Interface
+﻿namespace InvvardDev.EZLayoutDisplay.Core.Services.Interface
 {
     public interface IProcessService
     {

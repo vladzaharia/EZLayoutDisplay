@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using InvvardDev.EZLayoutDisplay.Desktop.Helper;
-using InvvardDev.EZLayoutDisplay.Desktop.Properties;
-using InvvardDev.EZLayoutDisplay.Desktop.Service.Interface;
+using InvvardDev.EZLayoutDisplay.Core.Services.Interface;
 using Newtonsoft.Json;
 using NLog;
 
-namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Implementation
+namespace InvvardDev.EZLayoutDisplay.Core.Services.Implementation
 {
     public class LayoutService : ILayoutService
     {
@@ -137,7 +135,7 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Implementation
             }
 
             var layoutTemplate = await Task.Run(() => {
-                                                    var json = Encoding.Default.GetString(Resources.layoutDefinition);
+                                                    var json = Encoding.Default.GetString((byte[]) Resources.layoutDefinition);
 
                                                     var layoutDefinition = JsonConvert.DeserializeObject<IEnumerable<KeyTemplate>>(json);
 

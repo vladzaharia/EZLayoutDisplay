@@ -1,20 +1,18 @@
-﻿using System.Windows;
-
-namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Interface
+﻿namespace InvvardDev.EZLayoutDisplay.Core.Services.Interface
 {
     public interface IWindowService
     {
         /// <summary>
-        /// Shows the specified <see cref="Window"/>.
+        /// Shows the specified <see cref="System.Windows.Window"/>.
         /// </summary>
-        /// <typeparam name="T">The type of the <see cref="Window"/>.</typeparam>
+        /// <typeparam name="T">The type of the <see cref="System.Windows.Window"/>.</typeparam>
         void ShowWindow<T>()
             where T : Window, new();
 
         /// <summary>
-        /// Closes the specified <see cref="Window"/>.
+        /// Closes the specified <see cref="System.Windows.Window"/>.
         /// </summary>
-        /// <typeparam name="T">The type of the <see cref="Window"/>.</typeparam>
+        /// <typeparam name="T">The type of the <see cref="System.Windows.Window"/>.</typeparam>
         void CloseWindow<T>();
 
         /// <summary>

@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Linq;
-using System.Windows;
-using InvvardDev.EZLayoutDisplay.Desktop.Helper;
-using InvvardDev.EZLayoutDisplay.Desktop.Service.Interface;
-using InvvardDev.EZLayoutDisplay.Desktop.View;
+using InvvardDev.EZLayoutDisplay.Core.Services.Interface;
 using NLog;
-using NonInvasiveKeyboardHookLibrary;
 
-namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Implementation
+namespace InvvardDev.EZLayoutDisplay.Core.Services.Implementation
 {
     // ReSharper disable once ClassNeverInstantiated.Global
     public class KeyboardHookService : IKeyboardHookService

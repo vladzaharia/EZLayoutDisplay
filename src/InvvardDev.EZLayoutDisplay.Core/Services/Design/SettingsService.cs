@@ -1,8 +1,7 @@
 ﻿using System.Diagnostics;
-using InvvardDev.EZLayoutDisplay.Desktop.Service.Interface;
-using NonInvasiveKeyboardHookLibrary;
+using InvvardDev.EZLayoutDisplay.Core.Services.Interface;
 
-namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Design
+namespace InvvardDev.EZLayoutDisplay.Core.Services.Design
 {
     public class SettingsService : ISettingsService
     {

@@ -1,9 +1,7 @@
-﻿using System.Windows;
-using InvvardDev.EZLayoutDisplay.Desktop.Helper;
-using InvvardDev.EZLayoutDisplay.Desktop.Service.Interface;
+﻿using InvvardDev.EZLayoutDisplay.Core.Services.Interface;
 using NLog;
 
-namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Implementation
+namespace InvvardDev.EZLayoutDisplay.Core.Services.Implementation
 {
     public class ApplicationService : IApplicationService
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Interface
+namespace InvvardDev.EZLayoutDisplay.Core.Services.Interface
 {
     public interface ILayoutService
     {

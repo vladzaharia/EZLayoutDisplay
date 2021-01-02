@@ -1,7 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
-using InvvardDev.EZLayoutDisplay.Desktop.Service.Implementation;
-using InvvardDev.EZLayoutDisplay.Desktop.Service.Interface;
 using NLog;
 
 namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel

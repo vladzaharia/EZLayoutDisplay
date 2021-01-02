@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using InvvardDev.EZLayoutDisplay.Desktop.Service.Interface;
+using InvvardDev.EZLayoutDisplay.Core.Services.Interface;
 
-namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Design
+namespace InvvardDev.EZLayoutDisplay.Core.Services.Design
 {
     public class LayoutService : ILayoutService
     {

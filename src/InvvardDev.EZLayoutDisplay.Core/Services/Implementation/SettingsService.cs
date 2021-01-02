@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Windows.Forms;
-using InvvardDev.EZLayoutDisplay.Desktop.Helper;
-using InvvardDev.EZLayoutDisplay.Desktop.Properties;
-using InvvardDev.EZLayoutDisplay.Desktop.Service.Interface;
+using InvvardDev.EZLayoutDisplay.Core.Services.Interface;
 using Newtonsoft.Json;
 using NLog;
-using ModifierKeys = NonInvasiveKeyboardHookLibrary.ModifierKeys;
 
-namespace InvvardDev.EZLayoutDisplay.Desktop.Service.Implementation
+namespace InvvardDev.EZLayoutDisplay.Core.Services.Implementation
 {
     public class SettingsService : ISettingsService
     {
