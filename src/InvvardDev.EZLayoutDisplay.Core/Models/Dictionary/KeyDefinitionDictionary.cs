@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using InvvardDev.EZLayoutDisplay.Desktop.Helper;
-using InvvardDev.EZLayoutDisplay.Desktop.Properties;
-using Newtonsoft.Json;
-using NLog;
-
-namespace InvvardDev.EZLayoutDisplay.Desktop.Model.Dictionary
+﻿namespace InvvardDev.EZLayoutDisplay.Core.Models.Dictionary
 {
     public class KeyDefinitionDictionary
     {

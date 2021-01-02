@@ -1,8 +1,6 @@
-﻿using InvvardDev.EZLayoutDisplay.Desktop.Model.Enum;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+﻿using InvvardDev.EZLayoutDisplay.Core.Models.Enum;
 
-namespace InvvardDev.EZLayoutDisplay.Desktop.Model
+namespace InvvardDev.EZLayoutDisplay.Core.Models
 {
     public class KeyDefinition
     {

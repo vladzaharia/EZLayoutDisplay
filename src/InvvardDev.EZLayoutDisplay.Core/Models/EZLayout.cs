@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace InvvardDev.EZLayoutDisplay.Desktop.Model
+﻿namespace InvvardDev.EZLayoutDisplay.Core.Models
 {
     public class EZLayout
     {

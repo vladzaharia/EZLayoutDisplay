@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
-
-namespace InvvardDev.EZLayoutDisplay.Desktop.Model
+﻿namespace InvvardDev.EZLayoutDisplay.Core.Models
 {
     public class ErgodoxLayer
     {

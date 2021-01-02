@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using InvvardDev.EZLayoutDisplay.Desktop.Model.Enum;
+﻿using InvvardDev.EZLayoutDisplay.Core.Models.Enum;
 
-namespace InvvardDev.EZLayoutDisplay.Desktop.Model.Dictionary
+namespace InvvardDev.EZLayoutDisplay.Core.Models.Dictionary
 {
     public class KeyModifierDictionary
     {

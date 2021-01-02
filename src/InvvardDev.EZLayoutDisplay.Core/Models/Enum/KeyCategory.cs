@@ -1,4 +1,4 @@
-﻿namespace InvvardDev.EZLayoutDisplay.Desktop.Model.Enum
+﻿namespace InvvardDev.EZLayoutDisplay.Core.Models.Enum
 {
     public enum KeyCategory
     {

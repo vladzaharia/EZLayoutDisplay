@@ -1,6 +1,6 @@
-﻿using InvvardDev.EZLayoutDisplay.Desktop.Model.Enum;
+﻿using InvvardDev.EZLayoutDisplay.Core.Models.Enum;
 
-namespace InvvardDev.EZLayoutDisplay.Desktop.Model
+namespace InvvardDev.EZLayoutDisplay.Core.Models
 {
     public class EZKey
     {
