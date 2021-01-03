@@ -1,57 +1,38 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using InvvardDev.EZLayoutDisplay.Core.Helper;
-using InvvardDev.EZLayoutDisplay.Core.Services.Interface;
+using MvvmCross.Navigation;
+using MvvmCross.ViewModels;
 using NLog;
 
 namespace InvvardDev.EZLayoutDisplay.Core.Services.Implementation
 {
-    public class WindowService : IWindowService
+    public class WindowService : MvxNavigationService
     {
-        private static readonly Logger                     Logger = LogManager.GetCurrentClassLogger();
-        private readonly        Dictionary<string, Window> _windows;
+        private static readonly Logger       Logger = LogManager.GetCurrentClassLogger();
+        private readonly        List<string> _windows;
 
-        public WindowService()
+        public WindowService(IMvxNavigationCache navigationCache, IMvxViewModelLoader viewModelLoader) : base(navigationCache, viewModelLoader)
         {
             Logger.TraceConstructor();
-            _windows = new Dictionary<string, Window>();
+            _windows = new List<string>();
         }
 
-        #region IWindowService implementation
-
-        public void ShowWindow<T>()
-            where T : Window, new()
+        public override Task<bool> Navigate<TViewModel>(IMvxBundle presentationBundle = null, CancellationToken cancellationToken = new CancellationToken())
         {
-            Logger.TraceMethod();
-            Logger.Info("Opening {windowType} window", typeof(T));
+            _windows.Add(typeof(TViewModel).ToString());
 
-            var windowKey = typeof(T).ToString();
-
-            Logger.Debug("Windows opened list : {@windows}", _windows);
-
-            if (!_windows.ContainsKey(windowKey))
-            {
-                Logger.Debug("{windowType} window added", typeof(T));
-
-                _windows.Add(windowKey, new T());
-                _windows[windowKey].Closing += WindowService_Closing;
-            }
-
-            _windows[windowKey].Show();
-            _windows[windowKey].Activate();
+            return base.Navigate<TViewModel>(presentationBundle, cancellationToken);
         }
 
-        public void CloseWindow<T>()
+        public override Task<bool> Close(IMvxViewModel viewModel, CancellationToken cancellationToken = new CancellationToken())
         {
-            Logger.TraceMethod();
-            Logger.Info("Closing {windowType} window", typeof(T));
+            var windowKey = viewModel.GetType().ToString();
 
-            var windowKey = typeof(T).ToString();
+            if (_windows.Contains(windowKey)) { _windows.Remove(windowKey); }
 
-            if (_windows.ContainsKey(windowKey))
-            {
-                Logger.Debug("{windowType} window is going to be closed", typeof(T));
-                _windows[windowKey].Close();
-            }
+            return base.Close(viewModel, cancellationToken);
         }
 
         public bool ShowWarning(string warningMessage)
@@ -63,24 +44,6 @@ namespace InvvardDev.EZLayoutDisplay.Core.Services.Implementation
             Logger.DebugOutputParam(nameof(result), result);
 
             return result;
-        }
-
-        #endregion
-
-        private void WindowService_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            Logger.TraceMethod();
-
-            var windowKey = sender.GetType().ToString();
-            Logger.Debug("Window {window} is closing", windowKey);
-
-            if (_windows.ContainsKey(windowKey))
-            {
-                Logger.Debug("Finalizing {windowType} window close", windowKey);
-
-                _windows[windowKey].Closing -= WindowService_Closing;
-                _windows.Remove(windowKey);
-            }
         }
     }
 }
