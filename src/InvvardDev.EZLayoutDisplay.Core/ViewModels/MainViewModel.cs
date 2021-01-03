@@ -1,5 +1,7 @@
-﻿using InvvardDev.EZLayoutDisplay.Core.Services.Interface;
+﻿using InvvardDev.EZLayoutDisplay.Core.Helper;
+using InvvardDev.EZLayoutDisplay.Core.Services.Interface;
 using MvvmCross.Commands;
+using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using NLog;
 
@@ -22,8 +24,8 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
         private IMvxCommand _showAboutCommand;
         private IMvxCommand _exitCommand;
 
-        private readonly IWindowService      _windowService;
-        private readonly IApplicationService _applicationService;
+        private readonly IMvxNavigationService _navigationService;
+        private readonly IApplicationService   _applicationService;
 
         private string _trayMenuShowLayoutCommandLabel;
         private string _trayMenuShowLayoutShortcutLabel;
@@ -96,11 +98,11 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
-        public MainViewModel(IWindowService windowService, IApplicationService applicationService)
+        public MainViewModel(IMvxNavigationService navigationService, IApplicationService applicationService)
         {
             Logger.TraceConstructor();
 
-            _windowService = windowService;
+            _navigationService = navigationService;
             _applicationService = applicationService;
 
             SetLabelUi();
@@ -121,25 +123,25 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
 
         private void ShowLayoutWindow()
         {
-            Logger.TraceMvxCommand();
-            _windowService.ShowWindow<DisplayLayoutWindow>();
+            Logger.TraceCommand();
+            _navigationService.Navigate<DisplayLayoutViewModel>();
         }
 
         private void ShowSettingsWindow()
         {
-            Logger.TraceMvxCommand();
-            _windowService.ShowWindow<SettingsWindow>();
+            Logger.TraceCommand();
+            _navigationService.Navigate<SettingsViewModel>();
         }
 
         private void ShowAboutWindow()
         {
-            Logger.TraceMvxCommand();
-            _windowService.ShowWindow<AboutWindow>();
+            Logger.TraceCommand();
+            _navigationService.Navigate<AboutViewModel>();
         }
 
         private void ShutdownApplication()
         {
-            Logger.TraceMvxCommand();
+            Logger.TraceCommand();
             _applicationService.ShutdownApplication();
         }
 
