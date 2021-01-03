@@ -13,10 +13,10 @@ namespace InvvardDev.EZLayoutDisplay.Core.Helper
             logger.Trace(message, memberName, sourceLineNumber);
         }
 
-        internal static void TraceRelayCommand(this Logger                 logger,
-                                               string                      message          = "[Relay Command] {0} (line {1})",
-                                               [ CallerMemberName ] string memberName       = "",
-                                               [ CallerLineNumber ] int    sourceLineNumber = 0)
+        internal static void TraceCommand(this Logger                 logger,
+                                          string                      message          = "[Relay Command] {0} (line {1})",
+                                          [ CallerMemberName ] string memberName       = "",
+                                          [ CallerLineNumber ] int    sourceLineNumber = 0)
         {
             logger.Trace(message, memberName, sourceLineNumber);
         }
@@ -83,10 +83,7 @@ namespace InvvardDev.EZLayoutDisplay.Core.Helper
         {
             var target = LogManager.Configuration.FindTargetByName("logfile");
 
-            if (target != null)
-            {
-                LogManager.Configuration.AddRule(logLevel, LogLevel.Fatal, target);
-            }
+            if (target != null) { LogManager.Configuration.AddRule(logLevel, LogLevel.Fatal, target); }
         }
     }
 }
