@@ -1,6 +1,7 @@
 ﻿using InvvardDev.EZLayoutDisplay.Core.Helper;
 using InvvardDev.EZLayoutDisplay.Core.Services.Interface;
 using MvvmCross.Commands;
+using MvvmCross.Logging;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using NLog;
@@ -13,7 +14,7 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
     /// See http://www.mvvmlight.net
     /// </para>
     /// </summary>
-    public class MainViewModel : MvxViewModel
+    public class NotifyIconViewModel : MvxNavigationViewModel
     {
 #region Fields
 
@@ -24,8 +25,7 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
         private IMvxCommand _showAboutCommand;
         private IMvxCommand _exitCommand;
 
-        private readonly IMvxNavigationService _navigationService;
-        private readonly IApplicationService   _applicationService;
+        private readonly IApplicationService _applicationService;
 
         private string _trayMenuShowLayoutCommandLabel;
         private string _trayMenuShowLayoutShortcutLabel;
@@ -98,11 +98,11 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
-        public MainViewModel(IMvxNavigationService navigationService, IApplicationService applicationService)
+        public NotifyIconViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, IApplicationService applicationService)
+            : base(logProvider, navigationService)
         {
             Logger.TraceConstructor();
 
-            _navigationService = navigationService;
             _applicationService = applicationService;
 
             SetLabelUi();
@@ -124,19 +124,19 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
         private void ShowLayoutWindow()
         {
             Logger.TraceCommand();
-            _navigationService.Navigate<DisplayLayoutViewModel>();
+            NavigationService.Navigate<DisplayLayoutViewModel>();
         }
 
         private void ShowSettingsWindow()
         {
             Logger.TraceCommand();
-            _navigationService.Navigate<SettingsViewModel>();
+            NavigationService.Navigate<SettingsViewModel>();
         }
 
         private void ShowAboutWindow()
         {
             Logger.TraceCommand();
-            _navigationService.Navigate<AboutViewModel>();
+            NavigationService.Navigate<AboutViewModel>();
         }
 
         private void ShutdownApplication()
