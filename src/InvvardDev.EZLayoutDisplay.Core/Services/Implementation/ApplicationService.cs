@@ -1,4 +1,5 @@
-﻿using InvvardDev.EZLayoutDisplay.Core.Services.Interface;
+﻿using InvvardDev.EZLayoutDisplay.Core.Helper;
+using InvvardDev.EZLayoutDisplay.Core.Services.Interface;
 using NLog;
 
 namespace InvvardDev.EZLayoutDisplay.Core.Services.Implementation
