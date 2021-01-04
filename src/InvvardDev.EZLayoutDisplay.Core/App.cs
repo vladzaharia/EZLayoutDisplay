@@ -1,4 +1,5 @@
 ﻿using InvvardDev.EZLayoutDisplay.Core.Services.Implementation;
+using InvvardDev.EZLayoutDisplay.Core.ViewModels;
 using MvvmCross;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
@@ -17,7 +18,7 @@ namespace InvvardDev.EZLayoutDisplay.Core
 
                                                                          return new WindowService(navigationCache, viewModelLoader);
                                                                      });
-            //RegisterAppStart<TipViewModel>();
+            RegisterAppStart<NotifyIconViewModel>();
         }
     }
 }
