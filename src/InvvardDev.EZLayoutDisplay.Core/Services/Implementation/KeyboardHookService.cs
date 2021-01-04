@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Linq;
-using System.Net.Mime;
 using InvvardDev.EZLayoutDisplay.Core.Helper;
 using InvvardDev.EZLayoutDisplay.Core.Models;
 using InvvardDev.EZLayoutDisplay.Core.Services.Interface;
+using InvvardDev.EZLayoutDisplay.Core.ViewModels;
+using MvvmCross.Navigation;
 using NLog;
 using NonInvasiveKeyboardHookLibrary;
 
@@ -18,8 +19,8 @@ namespace InvvardDev.EZLayoutDisplay.Core.Services.Implementation
         private static          KeyboardHookManager _hook;
         private static readonly Logger              Logger = LogManager.GetCurrentClassLogger();
 
-        private readonly IWindowService   _windowService;
-        private readonly ISettingsService _settingsService;
+        private readonly IMvxNavigationService _navigationService;
+        private readonly ISettingsService      _settingsService;
 
 #endregion
 
@@ -31,11 +32,11 @@ namespace InvvardDev.EZLayoutDisplay.Core.Services.Implementation
 
 #region Constructor
 
-        public KeyboardHookService(IWindowService windowService, ISettingsService settingsService)
+        public KeyboardHookService(IMvxNavigationService navigationService, ISettingsService settingsService)
         {
             Logger.TraceConstructor();
 
-            _windowService = windowService;
+            _navigationService = navigationService;
             _settingsService = settingsService;
 
             InitKeyboardHook();
@@ -112,7 +113,7 @@ namespace InvvardDev.EZLayoutDisplay.Core.Services.Implementation
         {
             Logger.TraceMethod();
 
-            MediaTypeNames.Application.Current.Dispatcher.Invoke(delegate { _windowService.ShowWindow<DisplayLayoutWindow>(); });
+            Application.Current.Dispatcher.Invoke(delegate { _navigationService.Navigate<DisplayLayoutViewModel>(); });
         }
 
 #endregion
