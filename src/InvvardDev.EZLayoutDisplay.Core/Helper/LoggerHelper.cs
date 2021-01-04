@@ -14,7 +14,7 @@ namespace InvvardDev.EZLayoutDisplay.Core.Helper
         }
 
         internal static void TraceCommand(this Logger                 logger,
-                                          string                      message          = "[Relay Command] {0} (line {1})",
+                                          string                      message          = "[Command] {0} (line {1})",
                                           [ CallerMemberName ] string memberName       = "",
                                           [ CallerLineNumber ] int    sourceLineNumber = 0)
         {
