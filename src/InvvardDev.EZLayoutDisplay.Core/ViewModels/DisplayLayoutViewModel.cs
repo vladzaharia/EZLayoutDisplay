@@ -359,20 +359,20 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
 
         private void LostFocus()
         {
-            Logger.TraceRelayCommand();
+            Logger.TraceCommand();
             _windowService.CloseWindow<DisplayLayoutWindow>();
         }
 
         private void NextLayer()
         {
-            Logger.TraceRelayCommand();
+            Logger.TraceCommand();
 
             VaryLayer(1);
         }
 
         private void ScrollLayer(MouseWheelEventArgs e)
         {
-            Logger.TraceRelayCommand();
+            Logger.TraceCommand();
 
             if (e.Delta < 0) { VaryLayer(1); }
 
@@ -381,7 +381,7 @@ namespace InvvardDev.EZLayoutDisplay.Core.ViewModels
 
         private void VaryLayer(int variation)
         {
-            Logger.TraceRelayCommand();
+            Logger.TraceCommand();
 
             var maxLayerIndex = _ezLayout.EZLayers.Count - 1;
 
