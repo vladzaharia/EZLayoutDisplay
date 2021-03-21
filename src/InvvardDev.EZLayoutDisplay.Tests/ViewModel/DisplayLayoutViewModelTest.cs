@@ -43,8 +43,8 @@ namespace InvvardDev.EZLayoutDisplay.Tests.ViewModel
 
             //Assert
             Assert.Equal("ErgoDox Layout", displayLayoutViewModel.WindowTitle);
-            Assert.Equal("No layout available !", displayLayoutViewModel.NoLayoutWarningFirstLine);
-            Assert.Equal("Please, go to the settings and update the layout.", displayLayoutViewModel.NoLayoutWarningSecondLine);
+            Assert.Equal("Not supported!", displayLayoutViewModel.NoLayoutWarningFirstLine);
+            Assert.Equal("Sorry, your keyboard is not supported yet.", displayLayoutViewModel.NoLayoutWarningSecondLine);
             Assert.Equal("Current layer :", displayLayoutViewModel.CurrentLayerNameTitle);
             Assert.Equal("", displayLayoutViewModel.CurrentLayerName);
             Assert.Equal("Scroll up/down or press 'Space' to display next layer", displayLayoutViewModel.ControlHintSpaceLabel);
@@ -142,7 +142,7 @@ namespace InvvardDev.EZLayoutDisplay.Tests.ViewModel
 
             var mockWindowService = new Mock<IWindowService>();
             var mockLayoutService = new Mock<ILayoutService>();
-            mockLayoutService.Setup(l => l.GetLayoutTemplate("")).ReturnsAsync(layoutTemplate).Verifiable();
+            mockLayoutService.Setup(l => l.GetLayoutTemplate(null)).ReturnsAsync(layoutTemplate).Verifiable();
             var mockSettingsService = new Mock<ISettingsService>();
             mockSettingsService.SetupProperty(s => s.EZLayout, keyboardLayout);
 
@@ -151,7 +151,7 @@ namespace InvvardDev.EZLayoutDisplay.Tests.ViewModel
 
             //Assert
             Assert.Equal(noLayoutAvailable, displayLayoutViewModel.NoLayoutAvailable);
-            mockLayoutService.Verify(l => l.GetLayoutTemplate(""), Times.AtMost(numberOfLayer));
+            mockLayoutService.Verify(l => l.GetLayoutTemplate(null), Times.AtMost(numberOfLayer));
             Assert.Equal(numberOfKey, displayLayoutViewModel.CurrentLayoutTemplate.Count);
         }
 
@@ -171,7 +171,7 @@ namespace InvvardDev.EZLayoutDisplay.Tests.ViewModel
             }
 
             var mockLayoutService = new Mock<ILayoutService>();
-            mockLayoutService.Setup(l => l.GetLayoutTemplate("")).ReturnsAsync(layoutTemplate);
+            mockLayoutService.Setup(l => l.GetLayoutTemplate(null)).ReturnsAsync(layoutTemplate);
             var mockWindowService = new Mock<IWindowService>();
             var mockSettingsService = new Mock<ISettingsService>();
             mockSettingsService.SetupProperty(s => s.EZLayout, keyboardLayout);
@@ -212,7 +212,7 @@ namespace InvvardDev.EZLayoutDisplay.Tests.ViewModel
             }
 
             var mockLayoutService = new Mock<ILayoutService>();
-            mockLayoutService.Setup(l => l.GetLayoutTemplate("")).ReturnsAsync(layoutTemplate);
+            mockLayoutService.Setup(l => l.GetLayoutTemplate(null)).ReturnsAsync(layoutTemplate);
             var mockWindowService = new Mock<IWindowService>();
             var mockSettingsService = new Mock<ISettingsService>();
             mockSettingsService.SetupProperty(s => s.EZLayout, keyboardLayout);
@@ -252,7 +252,7 @@ namespace InvvardDev.EZLayoutDisplay.Tests.ViewModel
             }
 
             var mockLayoutService = new Mock<ILayoutService>();
-            mockLayoutService.Setup(l => l.GetLayoutTemplate("")).ReturnsAsync(layoutTemplate);
+            mockLayoutService.Setup(l => l.GetLayoutTemplate(null)).ReturnsAsync(layoutTemplate);
             var mockWindowService = new Mock<IWindowService>();
             var mockSettingsService = new Mock<ISettingsService>();
             mockSettingsService.SetupProperty(s => s.EZLayout, keyboardLayout);

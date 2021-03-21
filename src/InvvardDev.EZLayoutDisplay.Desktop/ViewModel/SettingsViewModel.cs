@@ -486,6 +486,9 @@ namespace InvvardDev.EZLayoutDisplay.Desktop.ViewModel
                     keyboardDescription = "Planck EZ ";
 
                     break;
+                case "moonlander":
+                    keyboardDescription = "Moonlander ";
+                    break;
                 default:
                     keyboardDescription = $"{keyboardGeometry} ";
 
